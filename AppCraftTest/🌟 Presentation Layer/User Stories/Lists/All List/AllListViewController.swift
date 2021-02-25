@@ -7,6 +7,7 @@
 //
 
 import GKViper
+import GKRepresentable
 
 protocol AllListViewInput: ViperViewInput { }
 
@@ -15,8 +16,11 @@ protocol AllListViewOutput: ViperViewOutput { }
 class AllListViewController: ViperViewController, AllListViewInput {
 
     // MARK: - Outlets
+    @IBOutlet weak var tableVw: UITableView!
     
     // MARK: - Props
+    private var rows : [TableCellIdentifiable] = []
+    
     fileprivate var output: AllListViewOutput? {
         guard let output = self._output as? AllListViewOutput else { return nil }
         return output
@@ -52,3 +56,18 @@ extension AllListViewController { }
 
 // MARK: - Module functions
 extension AllListViewController { }
+
+extension AllListViewController: UITableViewDelegate, UITableViewDataSource {
+    private func setupTableView() {
+        self.tableVw.delegate = self
+        self.tableVw.dataSource = self
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return rows.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        <#code#>
+    }
+}

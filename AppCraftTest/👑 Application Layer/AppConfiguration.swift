@@ -15,7 +15,7 @@ enum AppConfiguration {
     }
     
     static var serverUrl: String {
-        let url = ""
+        let url = "https://pokeapi.co/"
         if url.isEmpty {
             fatalError("[AppConfiguration] - Set your server url in AppConfiguration")
         }
@@ -23,7 +23,7 @@ enum AppConfiguration {
     }
     
     static var serverApi: String {
-        return AppConfiguration.serverUrl + "/api"
+        return AppConfiguration.serverUrl + "api/"
     }
     
 }

@@ -13,5 +13,4 @@ public class AppCraftTestRepository: Repository {
     init() {
         super.init(modelName: AppConfiguration.databaseContainerName)
     }
-    
 }
