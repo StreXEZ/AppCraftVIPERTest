@@ -8,7 +8,9 @@
 
 import GKViper
 
-protocol InitialRouterInput: ViperRouterInput { }
+protocol InitialRouterInput: ViperRouterInput {
+    func presentMain()
+}
 
 class InitialRouter: ViperRouter, InitialRouterInput {
     
@@ -21,6 +23,12 @@ class InitialRouter: ViperRouter, InitialRouterInput {
     }
     
     // MARK: - InitialRouterInput
+    
+    func presentMain() {
+        let vc = CustomTabBarController(firstSelected: 1)
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true)
+    }
     
     // MARK: - Module functions
 }

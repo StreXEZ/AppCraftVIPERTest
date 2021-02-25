@@ -15,4 +15,16 @@ enum AppAssets {
     static var wipLogo: UIImage? {
         return UIImage(named: "AppWip")
     }
+    static var tbRemoteList: UIImage? {
+        return UIImage(systemName: "book")
+    }
+    static var tbRemoteListActive: UIImage? {
+        return UIImage(systemName: "book.fill")
+    }
+    static var tbLocalList: UIImage? {
+        return UIImage(systemName: "star")
+    }
+    static var tbLocalListActive: UIImage? {
+        return UIImage(systemName: "star.fill")
+    }
 }

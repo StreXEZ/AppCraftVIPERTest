@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		469F383DC3364E751D89BA19 /* Pods_AppCraftTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 271B7010515BF007417FEECD /* Pods_AppCraftTest.framework */; };
 		E722D06725E7BBC50004EA7D /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = E722D06625E7BBC50004EA7D /* Podfile */; };
 		E722D06925E7BBC50004EA7D /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = E722D06825E7BBC50004EA7D /* .swiftlint.yml */; };
 		E722D06B25E7BBC50004EA7D /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = E722D06A25E7BBC50004EA7D /* .gitignore */; };
@@ -29,7 +30,7 @@
 		E722D09925E7BBC60004EA7D /* AppThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E722D09825E7BBC60004EA7D /* AppThemeManager.swift */; };
 		E722D09C25E7BBC60004EA7D /* Stylable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E722D09B25E7BBC60004EA7D /* Stylable.swift */; };
 		E722D09E25E7BBC60004EA7D /* StyleWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E722D09D25E7BBC60004EA7D /* StyleWrapper.swift */; };
-		E722D0A125E7BBC60004EA7D /* LaunchScreen.strings in Resources */ = {isa = PBXBuildFile; fileRef = E722D09F25E7BBC60004EA7D /* LaunchScreen.strings */; };
+		E722D0A125E7BBC60004EA7D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E722D09F25E7BBC60004EA7D /* LaunchScreen.storyboard */; };
 		E722D0AD25E7BBC60004EA7D /* AppCraftTest.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E722D0AB25E7BBC60004EA7D /* AppCraftTest.xcdatamodeld */; };
 		E722D0AF25E7BBC60004EA7D /* AppCraftTestRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E722D0AE25E7BBC60004EA7D /* AppCraftTestRepository.swift */; };
 		E722D0C025E7BBC60004EA7D /* BasicNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E722D0BF25E7BBC60004EA7D /* BasicNavigationController.swift */; };
@@ -39,11 +40,36 @@
 		E722D0CA25E7BBC60004EA7D /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E722D0C925E7BBC60004EA7D /* InitialViewController.swift */; };
 		E722D0CC25E7BBC60004EA7D /* InitialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E722D0CB25E7BBC60004EA7D /* InitialViewController.xib */; };
 		E722D0CE25E7BBC60004EA7D /* InitialViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E722D0CD25E7BBC60004EA7D /* InitialViewModel.swift */; };
+		E722D11325E7D3B00004EA7D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E722D09F25E7BBC60004EA7D /* LaunchScreen.storyboard */; };
+		E722D11725E7D53A0004EA7D /* CustomTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E722D11625E7D53A0004EA7D /* CustomTabBarItem.swift */; };
+		E722D11B25E7D5B10004EA7D /* CustomTabBarItemPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E722D11A25E7D5B10004EA7D /* CustomTabBarItemPresentable.swift */; };
+		E722D12525E7D78D0004EA7D /* CustomTabBarPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E722D12425E7D78D0004EA7D /* CustomTabBarPresentable.swift */; };
+		E722D12825E7D7C20004EA7D /* CustomTabBarComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E722D12725E7D7C20004EA7D /* CustomTabBarComponent.swift */; };
+		E722D13525E7DA720004EA7D /* CustomTabBarItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E722D13425E7DA720004EA7D /* CustomTabBarItemView.xib */; };
+		E722D13825E7DD980004EA7D /* CustomTabBarItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E722D13725E7DD980004EA7D /* CustomTabBarItemView.swift */; };
+		E722D13B25E7E4410004EA7D /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E722D13A25E7E4410004EA7D /* CustomTabBarController.swift */; };
+		E722D14225E7E6D40004EA7D /* StyleWrapper+UITabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E722D14125E7E6D40004EA7D /* StyleWrapper+UITabBar.swift */; };
+		E722D14A25E7E8380004EA7D /* AllListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E722D14425E7E8380004EA7D /* AllListViewModel.swift */; };
+		E722D14B25E7E8380004EA7D /* AllListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E722D14525E7E8380004EA7D /* AllListViewController.swift */; };
+		E722D14C25E7E8380004EA7D /* AllListAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E722D14625E7E8380004EA7D /* AllListAssembly.swift */; };
+		E722D14D25E7E8380004EA7D /* AllListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E722D14725E7E8380004EA7D /* AllListRouter.swift */; };
+		E722D14E25E7E8380004EA7D /* AllListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E722D14825E7E8380004EA7D /* AllListViewController.xib */; };
+		E722D14F25E7E8380004EA7D /* AllListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E722D14925E7E8380004EA7D /* AllListPresenter.swift */; };
+		E722D15825E7E8490004EA7D /* SavedListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E722D15225E7E8490004EA7D /* SavedListViewModel.swift */; };
+		E722D15925E7E8490004EA7D /* SavedListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E722D15325E7E8490004EA7D /* SavedListViewController.swift */; };
+		E722D15A25E7E8490004EA7D /* SavedListAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E722D15425E7E8490004EA7D /* SavedListAssembly.swift */; };
+		E722D15B25E7E8490004EA7D /* SavedListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E722D15525E7E8490004EA7D /* SavedListRouter.swift */; };
+		E722D15C25E7E8490004EA7D /* SavedListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E722D15625E7E8490004EA7D /* SavedListViewController.xib */; };
+		E722D15D25E7E8490004EA7D /* SavedListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E722D15725E7E8490004EA7D /* SavedListPresenter.swift */; };
+		E722D16025E7F3130004EA7D /* ConnectionErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E722D15F25E7F3130004EA7D /* ConnectionErrorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		271B7010515BF007417FEECD /* Pods_AppCraftTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppCraftTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		328C261FF65B37BF0AEA87E2 /* Pods-AppCraftTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppCraftTest.debug.xcconfig"; path = "Target Support Files/Pods-AppCraftTest/Pods-AppCraftTest.debug.xcconfig"; sourceTree = "<group>"; };
+		A34D1A160EE387042F402154 /* Pods-AppCraftTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppCraftTest.release.xcconfig"; path = "Target Support Files/Pods-AppCraftTest/Pods-AppCraftTest.release.xcconfig"; sourceTree = "<group>"; };
 		E722D06325E7BBC50004EA7D /* AppCraftTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppCraftTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		E722D06625E7BBC50004EA7D /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = "<group>"; };
+		E722D06625E7BBC50004EA7D /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		E722D06825E7BBC50004EA7D /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; name = .swiftlint.yml; path = ../.swiftlint.yml; sourceTree = "<group>"; };
 		E722D06A25E7BBC50004EA7D /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; name = .gitignore; path = ../.gitignore; sourceTree = "<group>"; };
 		E722D06D25E7BBC60004EA7D /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
@@ -88,6 +114,27 @@
 		E722D0CD25E7BBC60004EA7D /* InitialViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewModel.swift; sourceTree = "<group>"; };
 		E722D0D025E7BBC60004EA7D /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		E722D0D125E7BBC60004EA7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E722D11625E7D53A0004EA7D /* CustomTabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarItem.swift; sourceTree = "<group>"; };
+		E722D11A25E7D5B10004EA7D /* CustomTabBarItemPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarItemPresentable.swift; sourceTree = "<group>"; };
+		E722D12425E7D78D0004EA7D /* CustomTabBarPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarPresentable.swift; sourceTree = "<group>"; };
+		E722D12725E7D7C20004EA7D /* CustomTabBarComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarComponent.swift; sourceTree = "<group>"; };
+		E722D13425E7DA720004EA7D /* CustomTabBarItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTabBarItemView.xib; sourceTree = "<group>"; };
+		E722D13725E7DD980004EA7D /* CustomTabBarItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarItemView.swift; sourceTree = "<group>"; };
+		E722D13A25E7E4410004EA7D /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
+		E722D14125E7E6D40004EA7D /* StyleWrapper+UITabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "StyleWrapper+UITabBar.swift"; path = "AppCraftTest/🌟 Presentation Layer/Navigation/TabBar Controller/Custom/StyleWrapper+UITabBar.swift"; sourceTree = SOURCE_ROOT; };
+		E722D14425E7E8380004EA7D /* AllListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllListViewModel.swift; sourceTree = "<group>"; };
+		E722D14525E7E8380004EA7D /* AllListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllListViewController.swift; sourceTree = "<group>"; };
+		E722D14625E7E8380004EA7D /* AllListAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllListAssembly.swift; sourceTree = "<group>"; };
+		E722D14725E7E8380004EA7D /* AllListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllListRouter.swift; sourceTree = "<group>"; };
+		E722D14825E7E8380004EA7D /* AllListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AllListViewController.xib; sourceTree = "<group>"; };
+		E722D14925E7E8380004EA7D /* AllListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllListPresenter.swift; sourceTree = "<group>"; };
+		E722D15225E7E8490004EA7D /* SavedListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedListViewModel.swift; sourceTree = "<group>"; };
+		E722D15325E7E8490004EA7D /* SavedListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedListViewController.swift; sourceTree = "<group>"; };
+		E722D15425E7E8490004EA7D /* SavedListAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedListAssembly.swift; sourceTree = "<group>"; };
+		E722D15525E7E8490004EA7D /* SavedListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedListRouter.swift; sourceTree = "<group>"; };
+		E722D15625E7E8490004EA7D /* SavedListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SavedListViewController.xib; sourceTree = "<group>"; };
+		E722D15725E7E8490004EA7D /* SavedListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedListPresenter.swift; sourceTree = "<group>"; };
+		E722D15F25E7F3130004EA7D /* ConnectionErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionErrorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,17 +142,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				469F383DC3364E751D89BA19 /* Pods_AppCraftTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1CE0770416923DF33015F82F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				328C261FF65B37BF0AEA87E2 /* Pods-AppCraftTest.debug.xcconfig */,
+				A34D1A160EE387042F402154 /* Pods-AppCraftTest.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		81C347169D85F223271934B6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				271B7010515BF007417FEECD /* Pods_AppCraftTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E722D05925E7BBC50004EA7D = {
 			isa = PBXGroup;
 			children = (
 				E722D06525E7BBC50004EA7D /* AppCraftTest */,
 				E722D06425E7BBC50004EA7D /* Products */,
+				1CE0770416923DF33015F82F /* Pods */,
+				81C347169D85F223271934B6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -140,6 +207,7 @@
 				E722D06F25E7BBC60004EA7D /* AppManager.swift */,
 				E722D07125E7BBC60004EA7D /* AppDefaults.swift */,
 				E722D07325E7BBC60004EA7D /* AppDelegate.swift */,
+				E722D09F25E7BBC60004EA7D /* LaunchScreen.storyboard */,
 				E722D07525E7BBC60004EA7D /* LaunchScreen.storyboard */,
 				E722D07825E7BBC60004EA7D /* Extension */,
 				E722D07A25E7BBC60004EA7D /* Localization */,
@@ -152,6 +220,7 @@
 			isa = PBXGroup;
 			children = (
 				E722D07925E7BBC60004EA7D /* .gitkeep */,
+				E722D14125E7E6D40004EA7D /* StyleWrapper+UITabBar.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -334,6 +403,7 @@
 			isa = PBXGroup;
 			children = (
 				E722D0BC25E7BBC60004EA7D /* .gitkeep */,
+				E722D15F25E7F3130004EA7D /* ConnectionErrorView.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -341,6 +411,7 @@
 		E722D0BD25E7BBC60004EA7D /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				E722D11425E7D4AE0004EA7D /* TabBar Controller */,
 				E722D0BE25E7BBC60004EA7D /* Navigation Controller */,
 			);
 			path = Navigation;
@@ -357,6 +428,7 @@
 		E722D0C125E7BBC60004EA7D /* User Stories */ = {
 			isa = PBXGroup;
 			children = (
+				E722D13E25E7E5860004EA7D /* Lists */,
 				E722D0C225E7BBC60004EA7D /* Initial */,
 			);
 			path = "User Stories";
@@ -383,6 +455,71 @@
 			path = "🤖 Service Layer";
 			sourceTree = "<group>";
 		};
+		E722D11425E7D4AE0004EA7D /* TabBar Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E722D11525E7D4CA0004EA7D /* Custom */,
+			);
+			path = "TabBar Controller";
+			sourceTree = "<group>";
+		};
+		E722D11525E7D4CA0004EA7D /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				E722D12725E7D7C20004EA7D /* CustomTabBarComponent.swift */,
+				E722D11625E7D53A0004EA7D /* CustomTabBarItem.swift */,
+				E722D11A25E7D5B10004EA7D /* CustomTabBarItemPresentable.swift */,
+				E722D12425E7D78D0004EA7D /* CustomTabBarPresentable.swift */,
+				E722D13A25E7E4410004EA7D /* CustomTabBarController.swift */,
+				E722D13325E7D8EB0004EA7D /* CustomTabBarItemView */,
+			);
+			path = Custom;
+			sourceTree = "<group>";
+		};
+		E722D13325E7D8EB0004EA7D /* CustomTabBarItemView */ = {
+			isa = PBXGroup;
+			children = (
+				E722D13425E7DA720004EA7D /* CustomTabBarItemView.xib */,
+				E722D13725E7DD980004EA7D /* CustomTabBarItemView.swift */,
+			);
+			path = CustomTabBarItemView;
+			sourceTree = "<group>";
+		};
+		E722D13E25E7E5860004EA7D /* Lists */ = {
+			isa = PBXGroup;
+			children = (
+				E722D13F25E7E59B0004EA7D /* All List */,
+				E722D14025E7E5AA0004EA7D /* Saved List */,
+			);
+			path = Lists;
+			sourceTree = "<group>";
+		};
+		E722D13F25E7E59B0004EA7D /* All List */ = {
+			isa = PBXGroup;
+			children = (
+				E722D14425E7E8380004EA7D /* AllListViewModel.swift */,
+				E722D14525E7E8380004EA7D /* AllListViewController.swift */,
+				E722D14625E7E8380004EA7D /* AllListAssembly.swift */,
+				E722D14725E7E8380004EA7D /* AllListRouter.swift */,
+				E722D14825E7E8380004EA7D /* AllListViewController.xib */,
+				E722D14925E7E8380004EA7D /* AllListPresenter.swift */,
+			);
+			path = "All List";
+			sourceTree = "<group>";
+		};
+		E722D14025E7E5AA0004EA7D /* Saved List */ = {
+			isa = PBXGroup;
+			children = (
+				E722D15225E7E8490004EA7D /* SavedListViewModel.swift */,
+				E722D15325E7E8490004EA7D /* SavedListViewController.swift */,
+				E722D15425E7E8490004EA7D /* SavedListAssembly.swift */,
+				E722D15525E7E8490004EA7D /* SavedListRouter.swift */,
+				E722D15625E7E8490004EA7D /* SavedListViewController.xib */,
+				E722D15725E7E8490004EA7D /* SavedListPresenter.swift */,
+			);
+			path = "Saved List";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -390,10 +527,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E722D0D425E7BBC60004EA7D /* Build configuration list for PBXNativeTarget "AppCraftTest" */;
 			buildPhases = (
+				D5574604B01ED28F765E0F02 /* [CP] Check Pods Manifest.lock */,
 				E722D05E25E7BBC50004EA7D /* Sources */,
 				E722D05F25E7BBC50004EA7D /* Frameworks */,
 				E722D06025E7BBC50004EA7D /* Resources */,
 				E722D06125E7BBC50004EA7D /* Swift Lint */,
+				26411DF9B733C2716AFE5665 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -442,11 +581,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E722D14E25E7E8380004EA7D /* AllListViewController.xib in Resources */,
+				E722D15C25E7E8490004EA7D /* SavedListViewController.xib in Resources */,
 				E722D07D25E7BBC60004EA7D /* Localizable.strings in Resources */,
 				E722D0CC25E7BBC60004EA7D /* InitialViewController.xib in Resources */,
 				E722D06925E7BBC50004EA7D /* .swiftlint.yml in Resources */,
+				E722D13525E7DA720004EA7D /* CustomTabBarItemView.xib in Resources */,
 				E722D09225E7BBC60004EA7D /* FiraSans-SemiBold.ttf in Resources */,
-				E722D0A125E7BBC60004EA7D /* LaunchScreen.strings in Resources */,
+				E722D0A125E7BBC60004EA7D /* LaunchScreen.storyboard in Resources */,
+				E722D11325E7D3B00004EA7D /* LaunchScreen.storyboard in Resources */,
 				E722D07725E7BBC60004EA7D /* LaunchScreen.storyboard in Resources */,
 				E722D08E25E7BBC60004EA7D /* FiraSans-ExtraBold.ttf in Resources */,
 				E722D06B25E7BBC50004EA7D /* .gitignore in Resources */,
@@ -459,6 +602,45 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		26411DF9B733C2716AFE5665 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AppCraftTest/Pods-AppCraftTest-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AppCraftTest/Pods-AppCraftTest-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AppCraftTest/Pods-AppCraftTest-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D5574604B01ED28F765E0F02 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AppCraftTest-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		E722D06125E7BBC50004EA7D /* Swift Lint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -488,23 +670,41 @@
 				E722D0AD25E7BBC60004EA7D /* AppCraftTest.xcdatamodeld in Sources */,
 				E722D08025E7BBC60004EA7D /* AppLocalization.swift in Sources */,
 				E722D0C425E7BBC60004EA7D /* InitialAssembly.swift in Sources */,
+				E722D14D25E7E8380004EA7D /* AllListRouter.swift in Sources */,
+				E722D15B25E7E8490004EA7D /* SavedListRouter.swift in Sources */,
 				E722D0C825E7BBC60004EA7D /* InitialRouter.swift in Sources */,
+				E722D15825E7E8490004EA7D /* SavedListViewModel.swift in Sources */,
 				E722D09425E7BBC60004EA7D /* FiraSans.swift in Sources */,
 				E722D0C625E7BBC60004EA7D /* InitialPresenter.swift in Sources */,
+				E722D14F25E7E8380004EA7D /* AllListPresenter.swift in Sources */,
 				E722D07425E7BBC60004EA7D /* AppDelegate.swift in Sources */,
+				E722D15D25E7E8490004EA7D /* SavedListPresenter.swift in Sources */,
 				E722D0CE25E7BBC60004EA7D /* InitialViewModel.swift in Sources */,
+				E722D11B25E7D5B10004EA7D /* CustomTabBarItemPresentable.swift in Sources */,
 				E722D06E25E7BBC60004EA7D /* AppConfiguration.swift in Sources */,
+				E722D14A25E7E8380004EA7D /* AllListViewModel.swift in Sources */,
+				E722D14B25E7E8380004EA7D /* AllListViewController.swift in Sources */,
 				E722D07025E7BBC60004EA7D /* AppManager.swift in Sources */,
+				E722D16025E7F3130004EA7D /* ConnectionErrorView.swift in Sources */,
 				E722D08425E7BBC60004EA7D /* AppLocalizationManager.swift in Sources */,
 				E722D08225E7BBC60004EA7D /* Localizable.swift in Sources */,
 				E722D0AF25E7BBC60004EA7D /* AppCraftTestRepository.swift in Sources */,
+				E722D12825E7D7C20004EA7D /* CustomTabBarComponent.swift in Sources */,
+				E722D15A25E7E8490004EA7D /* SavedListAssembly.swift in Sources */,
+				E722D13825E7DD980004EA7D /* CustomTabBarItemView.swift in Sources */,
 				E722D09925E7BBC60004EA7D /* AppThemeManager.swift in Sources */,
 				E722D08825E7BBC60004EA7D /* AppAssets.swift in Sources */,
 				E722D0CA25E7BBC60004EA7D /* InitialViewController.swift in Sources */,
 				E722D09C25E7BBC60004EA7D /* Stylable.swift in Sources */,
+				E722D14C25E7E8380004EA7D /* AllListAssembly.swift in Sources */,
 				E722D09E25E7BBC60004EA7D /* StyleWrapper.swift in Sources */,
+				E722D12525E7D78D0004EA7D /* CustomTabBarPresentable.swift in Sources */,
 				E722D07225E7BBC60004EA7D /* AppDefaults.swift in Sources */,
 				E722D09725E7BBC60004EA7D /* AppTheme.swift in Sources */,
+				E722D14225E7E6D40004EA7D /* StyleWrapper+UITabBar.swift in Sources */,
+				E722D15925E7E8490004EA7D /* SavedListViewController.swift in Sources */,
+				E722D11725E7D53A0004EA7D /* CustomTabBarItem.swift in Sources */,
+				E722D13B25E7E4410004EA7D /* CustomTabBarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -515,7 +715,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				E722D07625E7BBC60004EA7D /* Base */,
-				E722D09F25E7BBC60004EA7D /* LaunchScreen.strings */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -529,12 +728,12 @@
 			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
-		E722D09F25E7BBC60004EA7D /* LaunchScreen.strings */ = {
+		E722D09F25E7BBC60004EA7D /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				E722D0A025E7BBC60004EA7D /* ru */,
 			);
-			name = LaunchScreen.strings;
+			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -658,6 +857,7 @@
 		};
 		E722D0D525E7BBC60004EA7D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 328C261FF65B37BF0AEA87E2 /* Pods-AppCraftTest.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -675,6 +875,7 @@
 		};
 		E722D0D625E7BBC60004EA7D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A34D1A160EE387042F402154 /* Pods-AppCraftTest.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
