@@ -1,0 +1,34 @@
+/* 
+  Localizable.strings
+ AppCraftTest
+
+  Created by Khusnullin Denis on 25.02.2021.
+  Copyright © 2021 AppCraft. All rights reserved.
+*/
+
+// MARK: - Common
+"OK"            = "OK";
+"SAVE"          = "Save";
+"CANCEL"        = "Cancel";
+"CLOSE"         = "Close";
+"ATTENSION"     = "Attention!";
+"UNKNOWN"       = "Unknown";
+"LOADING"       = "Loading";
+"REFRESH"       = "Refresh";
+"TRY_AGAIN"     = "Try Again";
+"YES"           = "Yes";
+"NO"            = "No";
+"ERROR"         = "Error";
+"WARNING"       = "Warning";
+"CONTINUE"      = "Continue";
+"SEARCH"        = "Search";
+"NEXT"          = "Next";
+
+// MARK: - Themes and languages
+"APP_THEME_LIGHT"   = "Light";
+"APP_THEME_DARK"    = "Dark";
+"APP_LANG_ENG"      = "English";
+"APP_LANG_RUS"      = "Russian";
+
+// MARK: - Initial
+"INITIAL_TITLE" = "";
