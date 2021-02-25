@@ -13,7 +13,7 @@ struct PokemonsListResponse: Codable {
 
 extension PokemonsListResponse: RemoteMappable {
     func mapResponseToDomain() -> AnyObject? {
-        let model = PokemonsListResponse(results: results)
+        let model = PokemonsListModel(result: results.map { $0.mapResponseToDomain() as? PokemonShortModel } as? [PokemonShortModel] ?? [])
         return model as AnyObject
     }
 }

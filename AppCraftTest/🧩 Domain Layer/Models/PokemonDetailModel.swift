@@ -14,5 +14,4 @@ struct PokemonDetailModel  {
     let is_default: Int
     let name: String
     let base_experience: Int
-    let abilities: [AbilitiesModel]
 }

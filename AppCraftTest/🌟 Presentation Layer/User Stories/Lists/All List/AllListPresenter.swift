@@ -27,11 +27,16 @@ class AllListPresenter: ViperPresenter, AllListPresenterInput, AllListViewOutput
         return router
     }
     
-    var viewModel: AllListViewModel
+    private let useCase: GetPokemonsUseCaseInput
+    private let viewModel: AllListViewModel
     
     // MARK: - Initialization
     override init() {
         self.viewModel = AllListViewModel()
+        self.useCase = GetPokemonsUseCase()
+        super.init()
+        self.useCase.subscribe(with: self)
+        self.useCase.get(viewModel: self.viewModel)
     }
     
     // MARK: - AllListPresenterInput
@@ -42,4 +47,14 @@ class AllListPresenter: ViperPresenter, AllListPresenterInput, AllListViewOutput
     }
         
     // MARK: - Module functions
+}
+
+extension AllListPresenter: GetPokemonsUseCaseOutput {
+    func error(useCase: GetPokemonsUseCase, error: Error) {
+        print(error.localizedDescription)
+    }
+    
+    func loadList(useCase: GetPokemonsUseCase, result: PokemonsListModel) {
+        print(result)
+    }
 }
