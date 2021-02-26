@@ -33,6 +33,7 @@ class GetPokemonsUseCase: UseCase, GetPokemonsUseCaseInput {
         pokemonListRepository.getPokemons { (result) in
             switch result {
             case .success(let pokemons):
+                viewModel.pokemons = pokemons
                 self.output?.loadList(useCase: self, result: pokemons)
             case .failure(let err):
                 self.output?.error(useCase: self, error: err)

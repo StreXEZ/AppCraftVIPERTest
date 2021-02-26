@@ -9,17 +9,18 @@
 import GKViper
 import GKRepresentable
 
-protocol AllListViewInput: ViperViewInput { }
+protocol AllListViewInput: ViperViewInput {
+    func reloadTable(with cells: [TableCellModel])
+}
 
 protocol AllListViewOutput: ViperViewOutput { }
 
 class AllListViewController: ViperViewController, AllListViewInput {
-
     // MARK: - Outlets
     @IBOutlet weak var tableVw: UITableView!
     
     // MARK: - Props
-    private var rows : [TableCellIdentifiable] = []
+    private var rows : [TableCellModel] = []
     
     fileprivate var output: AllListViewOutput? {
         guard let output = self._output as? AllListViewOutput else { return nil }
@@ -35,6 +36,7 @@ class AllListViewController: ViperViewController, AllListViewInput {
     func setupComponents() {
         self.navigationItem.title = ""
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        self.setupTableView()
     }
     
     func setupActions() { }
@@ -52,7 +54,16 @@ class AllListViewController: ViperViewController, AllListViewInput {
 }
 
 // MARK: - Actions
-extension AllListViewController { }
+extension AllListViewController {
+    func reloadTable(with cells: [TableCellModel]) {
+        self.rows = cells
+        print(rows.count)
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.tableVw.reloadData()
+        }
+    }
+}
 
 // MARK: - Module functions
 extension AllListViewController { }
@@ -61,6 +72,7 @@ extension AllListViewController: UITableViewDelegate, UITableViewDataSource {
     private func setupTableView() {
         self.tableVw.delegate = self
         self.tableVw.dataSource = self
+        self.tableVw.registerCellNib(PokemonTableCell.self)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -68,6 +80,10 @@ extension AllListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let model = rows[indexPath.row]
+        guard !model.cellIdentifier.isEmpty,
+              let cell = tableView.dequeueReusableCell(withIdentifier: model.cellIdentifier, for: indexPath) as? PokemonTableCell  else { return UITableViewCell() }
+        cell.model = model
+        return cell
     }
 }
