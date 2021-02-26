@@ -13,13 +13,17 @@ protocol AllListViewInput: ViperViewInput {
     func reloadTable(with cells: [TableCellModel])
 }
 
-protocol AllListViewOutput: ViperViewOutput { }
+protocol AllListViewOutput: ViperViewOutput {
+    func refreshData()
+    func showDetails(for url: String)
+}
 
 class AllListViewController: ViperViewController, AllListViewInput {
     // MARK: - Outlets
     @IBOutlet weak var tableVw: UITableView!
     
     // MARK: - Props
+    private let refreshController = UIRefreshControl()
     private var rows : [TableCellModel] = []
     
     fileprivate var output: AllListViewOutput? {
@@ -34,7 +38,7 @@ class AllListViewController: ViperViewController, AllListViewInput {
     
     // MARK: - Setup functions
     func setupComponents() {
-        self.navigationItem.title = ""
+        self.navigationItem.title = "Pokemon List"
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         self.setupTableView()
     }
@@ -72,7 +76,15 @@ extension AllListViewController: UITableViewDelegate, UITableViewDataSource {
     private func setupTableView() {
         self.tableVw.delegate = self
         self.tableVw.dataSource = self
+        self.refreshController.addTarget(self, action: #selector(refreshList), for: .valueChanged)
+        self.tableVw.refreshControl = self.refreshController
         self.tableVw.registerCellNib(PokemonTableCell.self)
+    }
+    
+    @objc
+    func refreshList() {
+        output?.refreshData()
+        self.refreshController.perform(#selector(UIRefreshControl.endRefreshing), with: nil, afterDelay: 0)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -85,5 +97,17 @@ extension AllListViewController: UITableViewDelegate, UITableViewDataSource {
               let cell = tableView.dequeueReusableCell(withIdentifier: model.cellIdentifier, for: indexPath) as? PokemonTableCell  else { return UITableViewCell() }
         cell.model = model
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let model = self.rows[indexPath.row] as? PokemonTableCellModel else { return }
+        self.output?.showDetails(for: model.url ?? "")
+    }
+    
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let action = UIContextualAction(style: .normal, title: "Save") { (action, view, completionHandler) in
+            print("DOTA")
+        }
+        return UISwipeActionsConfiguration(actions: [action])
     }
 }

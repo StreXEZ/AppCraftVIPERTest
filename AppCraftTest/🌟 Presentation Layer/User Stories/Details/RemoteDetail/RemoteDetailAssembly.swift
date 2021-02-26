@@ -16,8 +16,8 @@ enum RemoteDetailAssembly {
     }
     
     // Create and link modules with controller, return presenter input
-    static func configure(with reference: RemoteDetailViewController) -> RemoteDetailPresenterInput {
-        let presenter = RemoteDetailPresenter()
+    static func configure(with reference: RemoteDetailViewController, url: String) -> RemoteDetailPresenterInput {
+        let presenter = RemoteDetailPresenter(url: url)
         
         let router = RemoteDetailRouter()
         router._mainController = reference

@@ -27,11 +27,15 @@ class RemoteDetailPresenter: ViperPresenter, RemoteDetailPresenterInput, RemoteD
         return router
     }
     
-    var viewModel: RemoteDetailViewModel
+    private let viewModel: RemoteDetailViewModel
+    private let remoteUseCase: GetSinglePokemonUseCase
     
     // MARK: - Initialization
-    override init() {
-        self.viewModel = RemoteDetailViewModel()
+    init(url: String) {
+        self.viewModel = RemoteDetailViewModel(url: url)
+        self.remoteUseCase = GetSinglePokemonUseCase()
+        super.init()
+        remoteUseCase.subscribe(with: self)
     }
     
     // MARK: - RemoteDetailPresenterInput
@@ -39,7 +43,18 @@ class RemoteDetailPresenter: ViperPresenter, RemoteDetailPresenterInput, RemoteD
     // MARK: - RemoteDetailViewOutput
     override func viewIsReady(_ controller: UIViewController) {
         self.view?.setupInitialState(with: self.viewModel)
+        self.remoteUseCase.get(url: viewModel.url ?? "", viewModel: self.viewModel)
     }
         
     // MARK: - Module functions
+}
+
+extension RemoteDetailPresenter: GetSinglePokemonUseCaseOutput {
+    func error(useCase: GetSinglePokemonUseCase, error: Error) {
+        print(error)
+    }
+    
+    func loadPokemon(useCase: GetSinglePokemonUseCase, result: PokemonDetailModel) {
+        
+    }
 }

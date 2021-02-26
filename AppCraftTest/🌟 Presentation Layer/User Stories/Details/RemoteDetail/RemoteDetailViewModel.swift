@@ -8,4 +8,11 @@
 
 import GKViper
 
-class RemoteDetailViewModel: ViperViewModel { }
+class RemoteDetailViewModel: ViperViewModel {
+    var url: String?
+    var pokemon: PokemonDetailModel?
+    
+    init(url: String) {
+        self.url = url
+    }
+}

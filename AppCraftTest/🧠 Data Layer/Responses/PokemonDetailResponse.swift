@@ -12,7 +12,7 @@ struct PokemonDetailResponse: Codable {
     let height: Int
     let weight: Int
     let id: Int
-    let is_default: Int
+    let is_default: Bool
     let name: String
     let base_experience: Int
 }

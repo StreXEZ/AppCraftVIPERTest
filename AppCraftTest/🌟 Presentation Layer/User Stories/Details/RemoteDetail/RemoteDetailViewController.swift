@@ -13,8 +13,7 @@ protocol RemoteDetailViewInput: ViperViewInput { }
 protocol RemoteDetailViewOutput: ViperViewOutput { }
 
 class RemoteDetailViewController: ViperViewController, RemoteDetailViewInput {
-
-    // MARK: - Outlets
+    @IBOutlet weak var tableVw: UITableView!
     
     // MARK: - Props
     fileprivate var output: RemoteDetailViewOutput? {
@@ -29,7 +28,7 @@ class RemoteDetailViewController: ViperViewController, RemoteDetailViewInput {
     
     // MARK: - Setup functions
     func setupComponents() {
-        self.navigationItem.title = ""
+        self.navigationItem.title = "HAHA"
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     

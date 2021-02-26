@@ -12,7 +12,6 @@ import GKRepresentable
 protocol AllListPresenterInput: ViperPresenterInput { }
 
 class AllListPresenter: ViperPresenter, AllListPresenterInput, AllListViewOutput {
-    
     // MARK: - Props
     fileprivate var view: AllListViewInput? {
         guard let view = self._view as? AllListViewInput else {
@@ -45,7 +44,6 @@ class AllListPresenter: ViperPresenter, AllListPresenterInput, AllListViewOutput
     override func viewIsReady(_ controller: UIViewController) {
         self.view?.setupInitialState(with: self.viewModel)
         self.useCase.get(viewModel: self.viewModel)
-//        createRows()
     }
         
     // MARK: - Module functions
@@ -62,12 +60,19 @@ extension AllListPresenter: GetPokemonsUseCaseOutput {
     
     func createRows() -> [TableCellModel] {
         var rows: [TableCellModel] = []
-        print("HERE")
-//        print(viewModel.pokemons?.result.count)
         self.viewModel.pokemons?.result.map { item in
             rows.append(PokemonTableCellModel(name: item.name, url: item.url))
         }
         print(rows.count)
         return rows
+    }
+    
+    func refreshData() {
+        useCase.get(viewModel: self.viewModel)
+    }
+    
+    
+    func showDetails(for url: String) {
+        router?.showDetailPokemon(url: url)
     }
 }
