@@ -55,6 +55,6 @@ extension RemoteDetailPresenter: GetSinglePokemonUseCaseOutput {
     }
     
     func loadPokemon(useCase: GetSinglePokemonUseCase, result: PokemonDetailModel) {
-        
+        print(result.name)
     }
 }

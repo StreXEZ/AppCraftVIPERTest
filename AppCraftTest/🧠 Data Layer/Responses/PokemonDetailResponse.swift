@@ -19,7 +19,7 @@ struct PokemonDetailResponse: Codable {
 
 extension PokemonDetailResponse: RemoteMappable {
     func mapResponseToDomain() -> AnyObject? {
-        let model = PokemonDetailModel(height: height, weight: weight, id: id, is_default: is_default, name: name, base_experience: base_experience)
+        let model = PokemonDetailModel(name: name, weight: weight, id: id, is_default: is_default, height: height, base_experience: base_experience)
         return model as AnyObject
     }
 }

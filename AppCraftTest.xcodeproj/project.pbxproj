@@ -25,6 +25,7 @@
 		E711A21425E8DD7A00B6DBF1 /* PokemonTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E711A21325E8DD7A00B6DBF1 /* PokemonTableCell.xib */; };
 		E711A22125E8ED8E00B6DBF1 /* SinglePokemonRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E711A22025E8ED8E00B6DBF1 /* SinglePokemonRouter.swift */; };
 		E711A22425E8EFB300B6DBF1 /* GetSinglePokemonUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E711A22325E8EFB300B6DBF1 /* GetSinglePokemonUseCase.swift */; };
+		E711A23525E90D1900B6DBF1 /* PokemonEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E711A23325E90D1900B6DBF1 /* PokemonEntity.swift */; };
 		E722D06725E7BBC50004EA7D /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = E722D06625E7BBC50004EA7D /* Podfile */; };
 		E722D06925E7BBC50004EA7D /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = E722D06825E7BBC50004EA7D /* .swiftlint.yml */; };
 		E722D06B25E7BBC50004EA7D /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = E722D06A25E7BBC50004EA7D /* .gitignore */; };
@@ -111,6 +112,7 @@
 		E711A21325E8DD7A00B6DBF1 /* PokemonTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PokemonTableCell.xib; sourceTree = "<group>"; };
 		E711A22025E8ED8E00B6DBF1 /* SinglePokemonRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePokemonRouter.swift; sourceTree = "<group>"; };
 		E711A22325E8EFB300B6DBF1 /* GetSinglePokemonUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSinglePokemonUseCase.swift; sourceTree = "<group>"; };
+		E711A23325E90D1900B6DBF1 /* PokemonEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonEntity.swift; sourceTree = "<group>"; };
 		E722D06325E7BBC50004EA7D /* AppCraftTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppCraftTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E722D06625E7BBC50004EA7D /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		E722D06825E7BBC50004EA7D /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; name = .swiftlint.yml; path = ../.swiftlint.yml; sourceTree = "<group>"; };
@@ -137,7 +139,6 @@
 		E722D09B25E7BBC60004EA7D /* Stylable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stylable.swift; sourceTree = "<group>"; };
 		E722D09D25E7BBC60004EA7D /* StyleWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleWrapper.swift; sourceTree = "<group>"; };
 		E722D0A025E7BBC60004EA7D /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		E722D0A425E7BBC60004EA7D /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		E722D0AC25E7BBC60004EA7D /* AppCraftTest.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AppCraftTest.xcdatamodel; sourceTree = "<group>"; };
 		E722D0AE25E7BBC60004EA7D /* AppCraftTestRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCraftTestRepository.swift; sourceTree = "<group>"; };
 		E722D0B225E7BBC60004EA7D /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
@@ -400,7 +401,7 @@
 		E722D0A325E7BBC60004EA7D /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				E722D0A425E7BBC60004EA7D /* .gitkeep */,
+				E711A23325E90D1900B6DBF1 /* PokemonEntity.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -787,6 +788,7 @@
 				E722D0C625E7BBC60004EA7D /* InitialPresenter.swift in Sources */,
 				E722D14F25E7E8380004EA7D /* AllListPresenter.swift in Sources */,
 				E761031125E8102C00574581 /* PokemonShortResponse.swift in Sources */,
+				E711A23525E90D1900B6DBF1 /* PokemonEntity.swift in Sources */,
 				E722D07425E7BBC60004EA7D /* AppDelegate.swift in Sources */,
 				E722D15D25E7E8490004EA7D /* SavedListPresenter.swift in Sources */,
 				E711A1F825E8CFE700B6DBF1 /* RemoteDetailViewController.swift in Sources */,
