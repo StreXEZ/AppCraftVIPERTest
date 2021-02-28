@@ -8,9 +8,13 @@
 
 import GKViper
 
-protocol RemoteDetailViewInput: ViperViewInput { }
+protocol RemoteDetailViewInput: ViperViewInput {
+    func localPokemonState(isPokeSaved: Bool)
+}
 
-protocol RemoteDetailViewOutput: ViperViewOutput { }
+protocol RemoteDetailViewOutput: ViperViewOutput {
+    func interactWithLocalDB()
+}
 
 class RemoteDetailViewController: ViperViewController, RemoteDetailViewInput {
     @IBOutlet weak var tableVw: UITableView!
@@ -62,5 +66,24 @@ extension RemoteDetailViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return UITableViewCell()
+    }
+}
+
+extension RemoteDetailViewController {
+    func localPokemonState(isPokeSaved: Bool) {
+        if isPokeSaved {
+            DispatchQueue.main.async { [weak self] in
+                self?.navigationItem.rightBarButtonItem = UIBarButtonItem(image: AppAssets.favourite, style: .plain, target: self, action: #selector(self?.interactWithLocalDB))
+            }
+        } else {
+            DispatchQueue.main.async { [weak self] in
+                self?.navigationItem.rightBarButtonItem = UIBarButtonItem(image: AppAssets.notFavourite, style: .plain, target: self, action: #selector(self?.interactWithLocalDB))
+            }
+        }
+    }
+    
+    @objc
+    func interactWithLocalDB() {
+        self.output?.interactWithLocalDB()
     }
 }

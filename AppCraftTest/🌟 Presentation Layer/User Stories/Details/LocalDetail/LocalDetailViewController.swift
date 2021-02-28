@@ -31,6 +31,7 @@ class LocalDetailViewController: ViperViewController, LocalDetailViewInput {
     func setupComponents() {
         self.navigationItem.title = ""
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: AppAssets.favourite, style: .plain, target: self, action: #selector(deletePokemon))
     }
     
     func setupActions() { }
@@ -48,7 +49,12 @@ class LocalDetailViewController: ViperViewController, LocalDetailViewInput {
 }
 
 // MARK: - Actions
-extension LocalDetailViewController { }
+extension LocalDetailViewController {
+    @objc
+    func deletePokemon() {
+        print("DELETE")
+    }
+}
 
 // MARK: - Module functions
 extension LocalDetailViewController { }

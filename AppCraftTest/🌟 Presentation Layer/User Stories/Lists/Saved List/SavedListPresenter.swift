@@ -39,16 +39,12 @@ class SavedListPresenter: ViperPresenter, SavedListPresenterInput, SavedListView
         self.localUseCase.subscribe(with: self)
     }
     
-    // MARK: - SavedListPresenterInput
-    
-    // MARK: - SavedListViewOutput
     override func viewIsReady(_ controller: UIViewController) {
         self.view?.setupInitialState(with: self.viewModel)
         self.localUseCase.fetchSavedPokemons()
     }
-        
-    // MARK: - Module functions
 }
+
 extension SavedListPresenter {
     func refreshData() {
         self.localUseCase.fetchSavedPokemons()

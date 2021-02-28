@@ -27,4 +27,10 @@ enum AppAssets {
     static var tbLocalListActive: UIImage? {
         return UIImage(systemName: "star.fill")
     }
+    static var notFavourite: UIImage? {
+        return UIImage(systemName: "star")
+    }
+    static var favourite: UIImage? {
+        return UIImage(systemName: "star.fill")
+    }
 }
