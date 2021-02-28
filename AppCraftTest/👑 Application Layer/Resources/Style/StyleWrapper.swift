@@ -27,6 +27,13 @@ extension StyleWrapper where Element: UIView {
             view.backgroundColor = .clear
         }
     }
+    static func heightWeightViewStyle() -> StyleWrapper {
+        return .wrap { view in
+            view.layer.cornerRadius = 10
+            view.layer.borderWidth = 1
+            view.layer.borderColor = UIColor.darkGray.cgColor
+        }
+    }
     
 }
 

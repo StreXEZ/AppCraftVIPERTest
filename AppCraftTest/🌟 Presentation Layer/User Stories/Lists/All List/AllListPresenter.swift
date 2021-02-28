@@ -64,7 +64,7 @@ extension AllListPresenter: GetPokemonsUseCaseOutput {
     
     func createRows() -> [TableCellModel] {
         var rows: [TableCellModel] = []
-        self.viewModel.pokemons?.result.map { item in
+        self.viewModel.pokemons?.result.forEach { item in
             rows.append(PokemonTableCellModel(name: item.name, url: item.url))
         }
         return rows

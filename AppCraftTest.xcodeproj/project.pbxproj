@@ -91,6 +91,15 @@
 		E761032B25E81EFE00574581 /* PokemonListRourer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E761032A25E81EFE00574581 /* PokemonListRourer.swift */; };
 		E761033025E8251000574581 /* GetPokemonsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E761032F25E8251000574581 /* GetPokemonsUseCase.swift */; };
 		E77DEE4025EBF40D009589F5 /* BaseLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77DEE3F25EBF40D009589F5 /* BaseLoader.swift */; };
+		E77DEE4E25EC2821009589F5 /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77DEE4D25EC2821009589F5 /* CustomAlert.swift */; };
+		E77DEE5425EC310B009589F5 /* NoConnectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77DEE5325EC310B009589F5 /* NoConnectionView.swift */; };
+		E77DEE5825EC3129009589F5 /* NoConnectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E77DEE5725EC3129009589F5 /* NoConnectionView.xib */; };
+		E77DEE5B25EC3825009589F5 /* WeightHeightCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77DEE5A25EC3825009589F5 /* WeightHeightCell.swift */; };
+		E77DEE5F25EC3843009589F5 /* WeightHeightCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E77DEE5E25EC3843009589F5 /* WeightHeightCell.xib */; };
+		E77DEE6C25EC3B7E009589F5 /* WeightHeightCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77DEE6B25EC3B7E009589F5 /* WeightHeightCellModel.swift */; };
+		E77DEE7B25EC44FB009589F5 /* BaseExperienceCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77DEE7A25EC44FB009589F5 /* BaseExperienceCellModel.swift */; };
+		E77DEE7E25EC450B009589F5 /* BaseExperienceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77DEE7D25EC450B009589F5 /* BaseExperienceCell.swift */; };
+		E77DEE8125EC451E009589F5 /* BaseExperienceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E77DEE8025EC451E009589F5 /* BaseExperienceCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -185,6 +194,15 @@
 		E761032A25E81EFE00574581 /* PokemonListRourer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonListRourer.swift; sourceTree = "<group>"; };
 		E761032F25E8251000574581 /* GetPokemonsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPokemonsUseCase.swift; sourceTree = "<group>"; };
 		E77DEE3F25EBF40D009589F5 /* BaseLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseLoader.swift; sourceTree = "<group>"; };
+		E77DEE4D25EC2821009589F5 /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
+		E77DEE5325EC310B009589F5 /* NoConnectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoConnectionView.swift; sourceTree = "<group>"; };
+		E77DEE5725EC3129009589F5 /* NoConnectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoConnectionView.xib; sourceTree = "<group>"; };
+		E77DEE5A25EC3825009589F5 /* WeightHeightCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightHeightCell.swift; sourceTree = "<group>"; };
+		E77DEE5E25EC3843009589F5 /* WeightHeightCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeightHeightCell.xib; sourceTree = "<group>"; };
+		E77DEE6B25EC3B7E009589F5 /* WeightHeightCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightHeightCellModel.swift; sourceTree = "<group>"; };
+		E77DEE7A25EC44FB009589F5 /* BaseExperienceCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseExperienceCellModel.swift; sourceTree = "<group>"; };
+		E77DEE7D25EC450B009589F5 /* BaseExperienceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseExperienceCell.swift; sourceTree = "<group>"; };
+		E77DEE8025EC451E009589F5 /* BaseExperienceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseExperienceCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -264,6 +282,8 @@
 		E711A23A25E9128A00B6DBF1 /* PokemonDetailCells */ = {
 			isa = PBXGroup;
 			children = (
+				E77DEE7925EC4489009589F5 /* BaseExperienceCell */,
+				E77DEE5D25EC382A009589F5 /* WeightHeightCell */,
 			);
 			path = PokemonDetailCells;
 			sourceTree = "<group>";
@@ -513,7 +533,9 @@
 		E722D0BB25E7BBC60004EA7D /* Custom */ = {
 			isa = PBXGroup;
 			children = (
+				E77DEE5125EC3097009589F5 /* Views */,
 				E77DEE3F25EBF40D009589F5 /* BaseLoader.swift */,
+				E77DEE4D25EC2821009589F5 /* CustomAlert.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -631,6 +653,43 @@
 			path = "Saved List";
 			sourceTree = "<group>";
 		};
+		E77DEE5125EC3097009589F5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E77DEE5225EC30A9009589F5 /* NoConnectionView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E77DEE5225EC30A9009589F5 /* NoConnectionView */ = {
+			isa = PBXGroup;
+			children = (
+				E77DEE5325EC310B009589F5 /* NoConnectionView.swift */,
+				E77DEE5725EC3129009589F5 /* NoConnectionView.xib */,
+			);
+			path = NoConnectionView;
+			sourceTree = "<group>";
+		};
+		E77DEE5D25EC382A009589F5 /* WeightHeightCell */ = {
+			isa = PBXGroup;
+			children = (
+				E77DEE5A25EC3825009589F5 /* WeightHeightCell.swift */,
+				E77DEE6B25EC3B7E009589F5 /* WeightHeightCellModel.swift */,
+				E77DEE5E25EC3843009589F5 /* WeightHeightCell.xib */,
+			);
+			path = WeightHeightCell;
+			sourceTree = "<group>";
+		};
+		E77DEE7925EC4489009589F5 /* BaseExperienceCell */ = {
+			isa = PBXGroup;
+			children = (
+				E77DEE7D25EC450B009589F5 /* BaseExperienceCell.swift */,
+				E77DEE7A25EC44FB009589F5 /* BaseExperienceCellModel.swift */,
+				E77DEE8025EC451E009589F5 /* BaseExperienceCell.xib */,
+			);
+			path = BaseExperienceCell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -695,8 +754,11 @@
 				E722D14E25E7E8380004EA7D /* AllListViewController.xib in Resources */,
 				E722D15C25E7E8490004EA7D /* SavedListViewController.xib in Resources */,
 				E711A21425E8DD7A00B6DBF1 /* PokemonTableCell.xib in Resources */,
+				E77DEE8125EC451E009589F5 /* BaseExperienceCell.xib in Resources */,
 				E722D07D25E7BBC60004EA7D /* Localizable.strings in Resources */,
+				E77DEE5825EC3129009589F5 /* NoConnectionView.xib in Resources */,
 				E722D0CC25E7BBC60004EA7D /* InitialViewController.xib in Resources */,
+				E77DEE5F25EC3843009589F5 /* WeightHeightCell.xib in Resources */,
 				E722D06925E7BBC50004EA7D /* .swiftlint.yml in Resources */,
 				E722D13525E7DA720004EA7D /* CustomTabBarItemView.xib in Resources */,
 				E722D09225E7BBC60004EA7D /* FiraSans-SemiBold.ttf in Resources */,
@@ -790,12 +852,14 @@
 				E711A21025E8DA8500B6DBF1 /* PokemonTableCell.swift in Sources */,
 				E722D15B25E7E8490004EA7D /* SavedListRouter.swift in Sources */,
 				E711A20425E8CFF500B6DBF1 /* LocalDetailViewModel.swift in Sources */,
+				E77DEE7B25EC44FB009589F5 /* BaseExperienceCellModel.swift in Sources */,
 				E711A1F925E8CFE700B6DBF1 /* RemoteDetailAssembly.swift in Sources */,
 				E722D16425E7FA200004EA7D /* PokemonsLocalRepository.swift in Sources */,
 				E761033025E8251000574581 /* GetPokemonsUseCase.swift in Sources */,
 				E722D0C825E7BBC60004EA7D /* InitialRouter.swift in Sources */,
 				E722D15825E7E8490004EA7D /* SavedListViewModel.swift in Sources */,
 				E711A1FC25E8CFE700B6DBF1 /* RemoteDetailPresenter.swift in Sources */,
+				E77DEE5425EC310B009589F5 /* NoConnectionView.swift in Sources */,
 				E722D09425E7BBC60004EA7D /* FiraSans.swift in Sources */,
 				E761031A25E814EE00574581 /* PokemonsListModel.swift in Sources */,
 				E722D0C625E7BBC60004EA7D /* InitialPresenter.swift in Sources */,
@@ -815,8 +879,10 @@
 				E722D07025E7BBC60004EA7D /* AppManager.swift in Sources */,
 				E722D08425E7BBC60004EA7D /* AppLocalizationManager.swift in Sources */,
 				E761032B25E81EFE00574581 /* PokemonListRourer.swift in Sources */,
+				E77DEE7E25EC450B009589F5 /* BaseExperienceCell.swift in Sources */,
 				E722D08225E7BBC60004EA7D /* Localizable.swift in Sources */,
 				E722D0AF25E7BBC60004EA7D /* AppCraftTestRepository.swift in Sources */,
+				E77DEE4E25EC2821009589F5 /* CustomAlert.swift in Sources */,
 				E761031425E8103D00574581 /* PokemonDetailResponse.swift in Sources */,
 				E711A22425E8EFB300B6DBF1 /* GetSinglePokemonUseCase.swift in Sources */,
 				E711A20625E8CFF500B6DBF1 /* LocalDetailAssembly.swift in Sources */,
@@ -825,6 +891,7 @@
 				E711A20725E8CFF500B6DBF1 /* LocalDetailRouter.swift in Sources */,
 				E722D15A25E7E8490004EA7D /* SavedListAssembly.swift in Sources */,
 				E761032025E8159E00574581 /* PokemonDetailModel.swift in Sources */,
+				E77DEE6C25EC3B7E009589F5 /* WeightHeightCellModel.swift in Sources */,
 				E761030A25E80BCE00574581 /* PokemonsRemoteRepository.swift in Sources */,
 				E711A1F725E8CFE700B6DBF1 /* RemoteDetailViewModel.swift in Sources */,
 				E711A20525E8CFF500B6DBF1 /* LocalDetailViewController.swift in Sources */,
@@ -844,6 +911,7 @@
 				E722D15925E7E8490004EA7D /* SavedListViewController.swift in Sources */,
 				E722D11725E7D53A0004EA7D /* CustomTabBarItem.swift in Sources */,
 				E711A23D25E9176500B6DBF1 /* PokemonDetailsUseCase.swift in Sources */,
+				E77DEE5B25EC3825009589F5 /* WeightHeightCell.swift in Sources */,
 				E722D13B25E7E4410004EA7D /* CustomTabBarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

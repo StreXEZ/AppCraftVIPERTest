@@ -7,6 +7,7 @@
 //
 
 import GKViper
+import GKRepresentable
 
 protocol RemoteDetailPresenterInput: ViperPresenterInput {
     
@@ -79,17 +80,24 @@ extension RemoteDetailPresenter: GetSinglePokemonUseCaseOutput {
     func loadPokemon(result: PokemonDetailModel) {
         self.viewModel.pokemon = result
         self.localUseCase.checkPokemon(pokemon: result)
+        createRows()
     }
     
     func interactWithLocalDB() {
         guard let saved = viewModel.saved, let pokemon = viewModel.pokemon else { return }
         if saved {
-            localUseCase.deletePokemon(pokemon: pokemon)
+            view?.show(CustomAlerts.deleteAlert { [weak self] in
+                self?.localUseCase.deletePokemon(pokemon: pokemon)
+            },animated: true)
         } else {
             localUseCase.savePokemon(pokemon: pokemon)
         }
     }
     
+    func createRows() {
+        let rows = [WeightHeightCellModel(height: viewModel.pokemon?.height ?? 0, weight: viewModel.pokemon?.weight ?? 0), BaseExperienceCellModel(baseExp: viewModel.pokemon?.base_experience ?? 0)]
+        view?.updateInfo(with: rows)
+    }
 }
 
 extension RemoteDetailPresenter: PokemonDetailsUseCaseOutput {

@@ -61,7 +61,7 @@ extension SavedListPresenter {
         guard let pokeToRemove = viewModel.pokemons?.first(where: { (poke) -> Bool in
             poke.name == name
         }) else { return }
-        view?.show(deleteAlert(callback: { [weak self] in
+        view?.show(CustomAlerts.deleteAlert(callback: { [weak self] in
             self?.localUseCase.deletePokemon(pokemon: pokeToRemove)
         }), animated: true)
     }

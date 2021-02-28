@@ -7,9 +7,11 @@
 //
 
 import GKViper
+import GKRepresentable
 
 protocol RemoteDetailViewInput: ViperViewInput {
     func localPokemonState(isPokeSaved: Bool)
+    func updateInfo(with models: [TableCellModel])
 }
 
 protocol RemoteDetailViewOutput: ViperViewOutput {
@@ -20,6 +22,8 @@ class RemoteDetailViewController: ViperViewController, RemoteDetailViewInput {
     @IBOutlet weak var tableVw: UITableView!
     
     // MARK: - Props
+    var rows: [TableCellModel] = []
+    
     fileprivate var output: RemoteDetailViewOutput? {
         guard let output = self._output as? RemoteDetailViewOutput else { return nil }
         return output
@@ -34,6 +38,8 @@ class RemoteDetailViewController: ViperViewController, RemoteDetailViewInput {
     func setupComponents() {
         self.navigationItem.title = "HAHA"
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        setupTableView()
+        tableVw.separatorStyle = .none
     }
     
     func setupActions() { }
@@ -58,14 +64,32 @@ extension RemoteDetailViewController: UITableViewDelegate, UITableViewDataSource
     private func setupTableView() {
         self.tableVw.delegate = self
         self.tableVw.dataSource = self
+        self.tableVw.registerCellNib(WeightHeightCell.self)
+        self.tableVw.registerCellNib(BaseExperienceCell.self)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return rows.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let model = rows[indexPath.row]
+        
+        if model is WeightHeightCellModel {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: model.cellIdentifier) as? WeightHeightCell else { return UITableViewCell() }
+            cell.model = model
+            return cell
+        }
+        if model is BaseExperienceCellModel {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: model.cellIdentifier) as? BaseExperienceCell else { return UITableViewCell() }
+            cell.model = model
+            return cell
+        }
         return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
 }
 
@@ -86,4 +110,13 @@ extension RemoteDetailViewController {
     func interactWithLocalDB() {
         self.output?.interactWithLocalDB()
     }
+    
+    func updateInfo(with models: [TableCellModel]) {
+        self.rows = models
+        print(rows.count)
+        DispatchQueue.main.async { [weak self] in
+            self?.tableVw.reloadData()
+        }
+    }
+    
 }
