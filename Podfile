@@ -15,6 +15,7 @@ target 'AppCraftTest' do
   
   # UI
   pod 'ESTabBarController-swift'
+  pod 'SVProgressHUD'
 
 
 

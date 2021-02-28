@@ -26,6 +26,7 @@
 		E711A22125E8ED8E00B6DBF1 /* SinglePokemonRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E711A22025E8ED8E00B6DBF1 /* SinglePokemonRouter.swift */; };
 		E711A22425E8EFB300B6DBF1 /* GetSinglePokemonUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E711A22325E8EFB300B6DBF1 /* GetSinglePokemonUseCase.swift */; };
 		E711A23525E90D1900B6DBF1 /* PokemonEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E711A23325E90D1900B6DBF1 /* PokemonEntity.swift */; };
+		E711A23D25E9176500B6DBF1 /* PokemonDetailsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E711A23C25E9176500B6DBF1 /* PokemonDetailsUseCase.swift */; };
 		E722D06725E7BBC50004EA7D /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = E722D06625E7BBC50004EA7D /* Podfile */; };
 		E722D06925E7BBC50004EA7D /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = E722D06825E7BBC50004EA7D /* .swiftlint.yml */; };
 		E722D06B25E7BBC50004EA7D /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = E722D06A25E7BBC50004EA7D /* .gitignore */; };
@@ -89,6 +90,7 @@
 		E761032025E8159E00574581 /* PokemonDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E761031F25E8159E00574581 /* PokemonDetailModel.swift */; };
 		E761032B25E81EFE00574581 /* PokemonListRourer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E761032A25E81EFE00574581 /* PokemonListRourer.swift */; };
 		E761033025E8251000574581 /* GetPokemonsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E761032F25E8251000574581 /* GetPokemonsUseCase.swift */; };
+		E77DEE4025EBF40D009589F5 /* BaseLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77DEE3F25EBF40D009589F5 /* BaseLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -113,6 +115,7 @@
 		E711A22025E8ED8E00B6DBF1 /* SinglePokemonRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePokemonRouter.swift; sourceTree = "<group>"; };
 		E711A22325E8EFB300B6DBF1 /* GetSinglePokemonUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSinglePokemonUseCase.swift; sourceTree = "<group>"; };
 		E711A23325E90D1900B6DBF1 /* PokemonEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonEntity.swift; sourceTree = "<group>"; };
+		E711A23C25E9176500B6DBF1 /* PokemonDetailsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDetailsUseCase.swift; sourceTree = "<group>"; };
 		E722D06325E7BBC50004EA7D /* AppCraftTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppCraftTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E722D06625E7BBC50004EA7D /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		E722D06825E7BBC50004EA7D /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; name = .swiftlint.yml; path = ../.swiftlint.yml; sourceTree = "<group>"; };
@@ -142,7 +145,6 @@
 		E722D0AC25E7BBC60004EA7D /* AppCraftTest.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AppCraftTest.xcdatamodel; sourceTree = "<group>"; };
 		E722D0AE25E7BBC60004EA7D /* AppCraftTestRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCraftTestRepository.swift; sourceTree = "<group>"; };
 		E722D0B225E7BBC60004EA7D /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
-		E722D0BC25E7BBC60004EA7D /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		E722D0BF25E7BBC60004EA7D /* BasicNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicNavigationController.swift; sourceTree = "<group>"; };
 		E722D0C325E7BBC60004EA7D /* InitialAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialAssembly.swift; sourceTree = "<group>"; };
 		E722D0C525E7BBC60004EA7D /* InitialPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialPresenter.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 		E761031F25E8159E00574581 /* PokemonDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDetailModel.swift; sourceTree = "<group>"; };
 		E761032A25E81EFE00574581 /* PokemonListRourer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonListRourer.swift; sourceTree = "<group>"; };
 		E761032F25E8251000574581 /* GetPokemonsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPokemonsUseCase.swift; sourceTree = "<group>"; };
+		E77DEE3F25EBF40D009589F5 /* BaseLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -256,6 +259,13 @@
 				E711A21325E8DD7A00B6DBF1 /* PokemonTableCell.xib */,
 			);
 			path = PokemonCell;
+			sourceTree = "<group>";
+		};
+		E711A23A25E9128A00B6DBF1 /* PokemonDetailCells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = PokemonDetailCells;
 			sourceTree = "<group>";
 		};
 		E722D05925E7BBC50004EA7D = {
@@ -467,6 +477,7 @@
 			children = (
 				E761032F25E8251000574581 /* GetPokemonsUseCase.swift */,
 				E711A22325E8EFB300B6DBF1 /* GetSinglePokemonUseCase.swift */,
+				E711A23C25E9176500B6DBF1 /* PokemonDetailsUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -493,6 +504,7 @@
 		E722D0B925E7BBC60004EA7D /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				E711A23A25E9128A00B6DBF1 /* PokemonDetailCells */,
 				E711A21225E8DD5B00B6DBF1 /* PokemonCell */,
 			);
 			path = Cells;
@@ -501,7 +513,7 @@
 		E722D0BB25E7BBC60004EA7D /* Custom */ = {
 			isa = PBXGroup;
 			children = (
-				E722D0BC25E7BBC60004EA7D /* .gitkeep */,
+				E77DEE3F25EBF40D009589F5 /* BaseLoader.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -609,12 +621,12 @@
 		E722D14025E7E5AA0004EA7D /* Saved List */ = {
 			isa = PBXGroup;
 			children = (
-				E722D15225E7E8490004EA7D /* SavedListViewModel.swift */,
-				E722D15325E7E8490004EA7D /* SavedListViewController.swift */,
 				E722D15425E7E8490004EA7D /* SavedListAssembly.swift */,
-				E722D15525E7E8490004EA7D /* SavedListRouter.swift */,
-				E722D15625E7E8490004EA7D /* SavedListViewController.xib */,
 				E722D15725E7E8490004EA7D /* SavedListPresenter.swift */,
+				E722D15525E7E8490004EA7D /* SavedListRouter.swift */,
+				E722D15325E7E8490004EA7D /* SavedListViewController.swift */,
+				E722D15625E7E8490004EA7D /* SavedListViewController.xib */,
+				E722D15225E7E8490004EA7D /* SavedListViewModel.swift */,
 			);
 			path = "Saved List";
 			sourceTree = "<group>";
@@ -770,6 +782,7 @@
 			files = (
 				E722D0C025E7BBC60004EA7D /* BasicNavigationController.swift in Sources */,
 				E722D0AD25E7BBC60004EA7D /* AppCraftTest.xcdatamodeld in Sources */,
+				E77DEE4025EBF40D009589F5 /* BaseLoader.swift in Sources */,
 				E722D08025E7BBC60004EA7D /* AppLocalization.swift in Sources */,
 				E722D0C425E7BBC60004EA7D /* InitialAssembly.swift in Sources */,
 				E761030D25E80EB300574581 /* PokemonsListResponse.swift in Sources */,
@@ -830,6 +843,7 @@
 				E722D14225E7E6D40004EA7D /* StyleWrapper+UITabBar.swift in Sources */,
 				E722D15925E7E8490004EA7D /* SavedListViewController.swift in Sources */,
 				E722D11725E7D53A0004EA7D /* CustomTabBarItem.swift in Sources */,
+				E711A23D25E9176500B6DBF1 /* PokemonDetailsUseCase.swift in Sources */,
 				E722D13B25E7E4410004EA7D /* CustomTabBarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

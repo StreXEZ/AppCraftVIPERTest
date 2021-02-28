@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SavedListViewController" customModule="AppCraftTest" customModuleProvider="target">
             <connections>
+                <outlet property="tableVw" destination="FEa-oF-scQ" id="ZMy-LJ-xO4"/>
                 <outlet property="view" destination="iN0-l3-epB" id="Rz8-f9-Cv3"/>
             </connections>
         </placeholder>

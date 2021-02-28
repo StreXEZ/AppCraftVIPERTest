@@ -9,12 +9,12 @@ import Foundation
 import GKUseCase
 
 protocol GetSinglePokemonUseCaseInput: UseCaseInput {
-    func get(url: String, viewModel: RemoteDetailViewModel)
+    func get(url: String)
 }
 
 protocol GetSinglePokemonUseCaseOutput: UseCaseOutput {
-    func error(useCase: GetSinglePokemonUseCase, error: Error)
-    func loadPokemon(useCase: GetSinglePokemonUseCase, result: PokemonDetailModel)
+    func error(error: Error)
+    func loadPokemon(result: PokemonDetailModel)
 }
 
 class GetSinglePokemonUseCase: UseCase, GetSinglePokemonUseCaseInput {
@@ -30,15 +30,13 @@ class GetSinglePokemonUseCase: UseCase, GetSinglePokemonUseCaseInput {
         self.pokemonListRepository = PokemonRemoteRepository()
     }
     
-    func get(url: String, viewModel: RemoteDetailViewModel) {
+    func get(url: String) {
         pokemonListRepository.getSinglePokemon(url: url) {(result) in
             switch result {
             case .success(let pokemon):
-                viewModel.pokemon = pokemon
-                self.output?.loadPokemon(useCase: self, result: pokemon)
+                self.output?.loadPokemon(result: pokemon)
             case .failure(let err):
-                print("ERROR")
-                self.output?.error(useCase: self, error: err)
+                self.output?.error(error: err)
             }
         }
     }

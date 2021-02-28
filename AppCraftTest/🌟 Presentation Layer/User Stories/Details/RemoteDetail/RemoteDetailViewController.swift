@@ -50,4 +50,17 @@ class RemoteDetailViewController: ViperViewController, RemoteDetailViewInput {
 extension RemoteDetailViewController { }
 
 // MARK: - Module functions
-extension RemoteDetailViewController { }
+extension RemoteDetailViewController: UITableViewDelegate, UITableViewDataSource {
+    private func setupTableView() {
+        self.tableVw.delegate = self
+        self.tableVw.dataSource = self
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
+    }
+}

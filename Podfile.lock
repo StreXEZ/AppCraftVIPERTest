@@ -13,12 +13,14 @@ PODS:
     - GKNetwork (~> 1.1.0)
   - GKViper (1.0.0):
     - GKExtensions (~> 1.1.0)
+  - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
   - ESTabBarController-swift
   - GKRepresentable (~> 1.0.1)
   - GKUseCase (~> 1.0.1)
   - GKViper (~> 1.0.0)
+  - SVProgressHUD
 
 SPEC REPOS:
   trunk:
@@ -29,6 +31,7 @@ SPEC REPOS:
     - GKRepresentable
     - GKUseCase
     - GKViper
+    - SVProgressHUD
 
 SPEC CHECKSUMS:
   ESTabBarController-swift: 05593a6ad64700b03c0eb60ff625916370aa4136
@@ -38,7 +41,8 @@ SPEC CHECKSUMS:
   GKRepresentable: 6dcaa093a142604c5f2caa24a3839512331aa2eb
   GKUseCase: bd50df4ff25a454fdbefff54a7367b799d699c4c
   GKViper: 1ffe86f32753c4fc834c1325ee1892806c9ff1aa
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 90940fffbcbdb48546d2d2130b3346ff5bafa524
+PODFILE CHECKSUM: 08dbad6d13890488e9bcf33d51dd9c6fe4553a48
 
 COCOAPODS: 1.10.1

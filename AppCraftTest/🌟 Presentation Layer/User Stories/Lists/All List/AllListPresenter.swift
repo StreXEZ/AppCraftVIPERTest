@@ -28,6 +28,8 @@ class AllListPresenter: ViperPresenter, AllListPresenterInput, AllListViewOutput
     }
     
     private let useCase: GetPokemonsUseCaseInput
+    private lazy var localUseCase: PokemonDetailsUseCaseInput = PokemonDetailsUseCase()
+    private lazy var singlePokemonUseCase: GetSinglePokemonUseCaseInput = GetSinglePokemonUseCase()
     private let viewModel: AllListViewModel
     
     // MARK: - Initialization
@@ -36,6 +38,8 @@ class AllListPresenter: ViperPresenter, AllListPresenterInput, AllListViewOutput
         self.useCase = GetPokemonsUseCase()
         super.init()
         self.useCase.subscribe(with: self)
+        localUseCase.subscribe(with: self)
+        singlePokemonUseCase.subscribe(with: self)
     }
     
     // MARK: - AllListPresenterInput
@@ -63,7 +67,6 @@ extension AllListPresenter: GetPokemonsUseCaseOutput {
         self.viewModel.pokemons?.result.map { item in
             rows.append(PokemonTableCellModel(name: item.name, url: item.url))
         }
-        print(rows.count)
         return rows
     }
     
@@ -71,8 +74,37 @@ extension AllListPresenter: GetPokemonsUseCaseOutput {
         useCase.get(viewModel: self.viewModel)
     }
     
-    
     func showDetails(for url: String) {
         router?.showDetailPokemon(url: url)
     }
+    
+    func savePokemon(from url: String) {
+        self.singlePokemonUseCase.get(url: url)
+    }
+}
+
+extension AllListPresenter: GetSinglePokemonUseCaseOutput {
+    func error(error: Error) {
+        print(error)
+    }
+    
+    func loadPokemon(result: PokemonDetailModel) {
+        self.localUseCase.savePokemon(pokemon: result)
+    }
+}
+
+extension AllListPresenter: PokemonDetailsUseCaseOutput {
+    func pokemonExistance(doesExist: Bool) {
+        if doesExist {
+            view?.show(title: "Покемон уже сохранен", message: nil, animated: true)
+        }
+    }
+
+    func provideSave() {
+        
+    }
+    
+    func loadPokemons(result: [PokemonDetailModel]) { }
+    
+    func provideDelete() { }
 }

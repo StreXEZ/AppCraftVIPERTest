@@ -8,4 +8,6 @@
 
 import GKViper
 
-class SavedListViewModel: ViperViewModel { }
+class SavedListViewModel: ViperViewModel {
+    var pokemons: [PokemonDetailModel]?
+}

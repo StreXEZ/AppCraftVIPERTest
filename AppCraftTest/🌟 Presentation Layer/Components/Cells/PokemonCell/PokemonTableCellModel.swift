@@ -12,8 +12,8 @@ class PokemonTableCellModel: TableCellModel {
     override var cellIdentifier: String {
         return PokemonTableCell.identifier
     }
-    var name: String?
-    var url: String?
+    var name: String
+    var url: String
     
     init(name: String, url: String) {
         self.name = name

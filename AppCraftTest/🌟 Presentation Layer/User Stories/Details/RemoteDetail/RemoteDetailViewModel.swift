@@ -11,6 +11,7 @@ import GKViper
 class RemoteDetailViewModel: ViperViewModel {
     var url: String?
     var pokemon: PokemonDetailModel?
+    var saved: Bool?
     
     init(url: String) {
         self.url = url

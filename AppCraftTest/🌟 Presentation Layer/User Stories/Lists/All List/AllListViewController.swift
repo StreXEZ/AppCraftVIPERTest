@@ -16,6 +16,7 @@ protocol AllListViewInput: ViperViewInput {
 protocol AllListViewOutput: ViperViewOutput {
     func refreshData()
     func showDetails(for url: String)
+    func savePokemon(from url: String)
 }
 
 class AllListViewController: ViperViewController, AllListViewInput {
@@ -50,7 +51,8 @@ class AllListViewController: ViperViewController, AllListViewInput {
     // MARK: - AllListViewInput
     override func setupInitialState(with viewModel: ViperViewModel) {
         super.setupInitialState(with: viewModel)
-        
+//        self.navigationController?.navigationBar.prefersLargeTitles = true
+//        self.navigationItem.largeTitleDisplayMode = .always
         self.setupComponents()
         self.setupActions()
     }
@@ -61,7 +63,6 @@ class AllListViewController: ViperViewController, AllListViewInput {
 extension AllListViewController {
     func reloadTable(with cells: [TableCellModel]) {
         self.rows = cells
-        print(rows.count)
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
             self.tableVw.reloadData()
@@ -101,12 +102,14 @@ extension AllListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let model = self.rows[indexPath.row] as? PokemonTableCellModel else { return }
-        self.output?.showDetails(for: model.url ?? "")
+        self.output?.showDetails(for: model.url)
     }
     
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let action = UIContextualAction(style: .normal, title: "Save") { (action, view, completionHandler) in
-            print("DOTA")
+            guard let model = self.rows[indexPath.row] as? PokemonTableCellModel else { return }
+            self.output?.savePokemon(from: model.url)
+            completionHandler(true)
         }
         return UISwipeActionsConfiguration(actions: [action])
     }

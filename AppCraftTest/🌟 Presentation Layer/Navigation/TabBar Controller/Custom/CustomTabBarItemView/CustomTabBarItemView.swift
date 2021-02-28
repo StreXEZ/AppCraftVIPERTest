@@ -21,7 +21,7 @@ class CustomTabBarItemView: UIView {
         super.awakeFromNib()
     }
     
-    public func addTo(parent view: UIView?, size: CGSize = CGSize(width: 40.0, height: 40.0)) {
+    public func addTo(parent view: UIView?, size: CGSize = CGSize(width: 30.0, height: 30.0)) {
         guard let view = view else { return }
         view.addSubview(self)
         self.translatesAutoresizingMaskIntoConstraints = false
@@ -38,7 +38,7 @@ class CustomTabBarItemView: UIView {
         self.imageView.image = itemType.image
     }
     
-    private var size = CGSize(width: 40.0, height: 40.0)
+    private var size = CGSize(width: 30.0, height: 30.0)
     private var itemType: CustomTabBarItemPresentable?
 }
 
