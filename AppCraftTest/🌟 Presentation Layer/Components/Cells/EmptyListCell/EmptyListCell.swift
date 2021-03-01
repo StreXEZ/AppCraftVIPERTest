@@ -14,9 +14,7 @@ class EmptyListCell: TableCell {
     override func setupView() {
         self.contentVw.apply(.customInfoCellStyle())
         
-        
-        self.messageLabel.numberOfLines = 0
-        self.messageLabel.textColor = .darkGray
+        self.messageLabel.apply(.thinMessageStyle())
     }
     
     override func updateViews() {

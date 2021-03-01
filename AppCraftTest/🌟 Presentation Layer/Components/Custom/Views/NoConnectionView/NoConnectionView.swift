@@ -30,6 +30,7 @@ class NoConnectionView: UIView {
         textLabel.text = AppLocalization.InfoMessages.noConnection.localized
         refreshButton.setTitle(AppLocalization.General.refresh.localized, for: .normal)
         refreshButton.apply(.refreshButton())
+        textLabel.apply(.header2TitleStyle())
         refreshButton.addTarget(self, action: #selector(tapButton(_:)), for: .touchUpInside)
     }
     

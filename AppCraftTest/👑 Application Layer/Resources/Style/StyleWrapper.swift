@@ -85,6 +85,14 @@ extension StyleWrapper where Element: UILabel {
             label.numberOfLines = 0
         }
     }
+    
+    static func thinMessageStyle() -> StyleWrapper {
+        return .wrap { label in
+            label.numberOfLines = 0
+            label.textColor = .darkGray
+            label.font = UIFont.systemFont(ofSize: 16, weight: .thin)
+        }
+    }
 }
 
 // MARK: - UITabBar
@@ -92,11 +100,7 @@ extension StyleWrapper where Element: UITabBar {
     static var tabBarDefault: StyleWrapper {
         return .wrap { tabBar in
             tabBar.isTranslucent = false
-//            tabBar.barTintColor = .white
-//            tabBar.unselectedItemTintColor = .white
             tabBar.tintColor = .black
-//            tabBar.backgroundImage = UIImage()
-//            tabBar.shadowImage = UIImage()
         }
     }
 }
@@ -108,6 +112,7 @@ extension StyleWrapper where Element: UIButton {
             button.setTitleColor(.white, for: .normal)
             button.backgroundColor = .systemBlue
             button.layer.cornerRadius = 15
+            button.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         }
     }
 }

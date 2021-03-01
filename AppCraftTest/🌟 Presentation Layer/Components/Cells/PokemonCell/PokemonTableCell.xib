@@ -20,7 +20,7 @@
                         <rect key="frame" x="10" y="5" width="394" height="34"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0lR-1f-kwa">
-                                <rect key="frame" x="10" y="10" width="374" height="14"/>
+                                <rect key="frame" x="15" y="10" width="369" height="14"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -29,7 +29,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="0lR-1f-kwa" secondAttribute="bottom" constant="10" id="8pc-Yt-QnD"/>
-                            <constraint firstItem="0lR-1f-kwa" firstAttribute="leading" secondItem="5RK-vD-ok7" secondAttribute="leading" constant="10" id="EXX-Fc-Doj"/>
+                            <constraint firstItem="0lR-1f-kwa" firstAttribute="leading" secondItem="5RK-vD-ok7" secondAttribute="leading" constant="15" id="EXX-Fc-Doj"/>
                             <constraint firstAttribute="trailing" secondItem="0lR-1f-kwa" secondAttribute="trailing" constant="10" id="Y5b-1p-VSR"/>
                             <constraint firstItem="0lR-1f-kwa" firstAttribute="top" secondItem="5RK-vD-ok7" secondAttribute="top" constant="10" id="nom-pX-GSW"/>
                         </constraints>

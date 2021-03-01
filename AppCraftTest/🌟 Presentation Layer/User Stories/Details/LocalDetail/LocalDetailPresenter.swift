@@ -41,7 +41,6 @@ class LocalDetailPresenter: ViperPresenter, LocalDetailPresenterInput, LocalDeta
         self.output = output
         super.init()
         localUseCase.subscribe(with: self)
-        self.beginLoading()
     }
     
     // MARK: - LocalDetailPresenterInput
@@ -50,19 +49,6 @@ class LocalDetailPresenter: ViperPresenter, LocalDetailPresenterInput, LocalDeta
     override func viewIsReady(_ controller: UIViewController) {
         self.view?.setupInitialState(with: self.viewModel)
         self.createRows()
-        self.finishLoading(with: nil)
-    }
-    
-    override func beginLoading() {
-        DispatchQueue.main.async {
-            BaseLoader().show()
-        }
-    }
-    
-    override func finishLoading(with error: Error?) {
-        DispatchQueue.main.async {
-            BaseLoader().hide()
-        }
     }
     
     func createRows() {
