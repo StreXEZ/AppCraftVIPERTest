@@ -100,3 +100,14 @@ extension StyleWrapper where Element: UITabBar {
         }
     }
 }
+
+// MARK: - Button
+extension StyleWrapper where Element: UIButton {
+    static func refreshButton() -> StyleWrapper {
+        return .wrap { button in
+            button.setTitleColor(.white, for: .normal)
+            button.backgroundColor = .systemBlue
+            button.layer.cornerRadius = 15
+        }
+    }
+}

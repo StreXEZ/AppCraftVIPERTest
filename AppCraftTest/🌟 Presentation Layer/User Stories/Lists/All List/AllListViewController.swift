@@ -11,6 +11,7 @@ import GKRepresentable
 
 protocol AllListViewInput: ViperViewInput {
     func reloadTable(with cells: [TableCellModel])
+    func noConnection()
 }
 
 protocol AllListViewOutput: ViperViewOutput {
@@ -26,6 +27,7 @@ class AllListViewController: ViperViewController {
     // MARK: - Props
     private let refreshController = UIRefreshControl()
     private var rows : [TableCellModel] = []
+    var noConnectionView: NoConnectionView?
     
     fileprivate var output: AllListViewOutput? {
         guard let output = self._output as? AllListViewOutput else { return nil }
@@ -66,6 +68,25 @@ extension AllListViewController: AllListViewInput {
             guard let self = self else { return }
             self.tableVw.reloadData()
         }
+    }
+    
+    func noConnection() {
+        self.noConnectionView = NoConnectionView.loadNib()
+        guard let noConnectionView = self.noConnectionView else { return }
+        var model = NoConnectionViewModel()
+        model.didAction = { [weak self] (v,_) in
+            v.removeFromSuperview()
+            self?.noConnectionView = nil
+            self?.output?.refreshData()
+        }
+        noConnectionView.setup(model: model)
+        view.addSubview(noConnectionView)
+        noConnectionView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([noConnectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+                                     noConnectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+                                     noConnectionView.topAnchor.constraint(equalTo: view.topAnchor),
+                                     noConnectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)])
+        
     }
 }
 

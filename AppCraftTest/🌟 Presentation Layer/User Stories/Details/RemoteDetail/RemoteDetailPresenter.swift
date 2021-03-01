@@ -72,11 +72,12 @@ class RemoteDetailPresenter: ViperPresenter, RemoteDetailPresenterInput {
 
 // MARK: - GetSinglePokemonUseCaseOutput
 extension RemoteDetailPresenter: GetSinglePokemonUseCaseOutput {
-    func error(error: Error) {
-        print(error)
+    func error(usecase: GetSinglePokemonUseCase, error: Error) {
+        guard let error = error as? APIError, error == APIError.noConnection else { return }
+        self.router?.goBack(animated: true)
     }
     
-    func loadPokemon(result: PokemonDetailModel) {
+    func loadPokemon(usecase: GetSinglePokemonUseCase, result: PokemonDetailModel) {
         self.viewModel.pokemon = result
         self.localUseCase.checkPokemon(pokemon: result)
         self.createRows()
@@ -98,6 +99,10 @@ extension RemoteDetailPresenter: RemoteDetailViewOutput {
 
 // MARK: - PokemonDetailsUseCaseOutput
 extension RemoteDetailPresenter: PokemonDetailsUseCaseOutput {
+    func error(error: Error) {
+        print(error)
+    }
+    
     func pokemonExistance(doesExist: Bool) {
         self.viewModel.saved = doesExist
         view?.localPokemonState(isPokeSaved: doesExist)

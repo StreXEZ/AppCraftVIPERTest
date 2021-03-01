@@ -21,7 +21,12 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VlB-Rf-0gC">
-                    <rect key="frame" x="50" y="491" width="314" height="30"/>
+                    <rect key="frame" x="157" y="491" width="100" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="37V-Yi-FPU"/>
+                        <constraint firstAttribute="height" constant="40" id="5pe-yR-ENz"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="iF0-Ke-vig"/>
+                    </constraints>
                     <state key="normal" title="Button"/>
                 </button>
             </subviews>
@@ -29,12 +34,11 @@
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="V8n-yo-161" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="CFl-mc-JKs"/>
+                <constraint firstItem="VlB-Rf-0gC" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="EYD-tv-Ozf"/>
                 <constraint firstItem="VlB-Rf-0gC" firstAttribute="top" secondItem="V8n-yo-161" secondAttribute="bottom" constant="50" id="UJX-Y9-H6L"/>
                 <constraint firstItem="V8n-yo-161" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="YAv-6P-Xfy"/>
                 <constraint firstItem="V8n-yo-161" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="e1B-rT-0Ow"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="V8n-yo-161" secondAttribute="trailing" constant="30" id="laS-Fh-Shr"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="VlB-Rf-0gC" secondAttribute="trailing" constant="50" id="nIG-ba-7JK"/>
-                <constraint firstItem="VlB-Rf-0gC" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="50" id="w7B-FK-vYk"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>

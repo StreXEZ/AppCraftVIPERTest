@@ -13,8 +13,8 @@ protocol GetSinglePokemonUseCaseInput: UseCaseInput {
 }
 
 protocol GetSinglePokemonUseCaseOutput: UseCaseOutput {
-    func error(error: Error)
-    func loadPokemon(result: PokemonDetailModel)
+    func error(usecase: GetSinglePokemonUseCase, error: Error)
+    func loadPokemon(usecase: GetSinglePokemonUseCase, result: PokemonDetailModel)
 }
 
 class GetSinglePokemonUseCase: UseCase, GetSinglePokemonUseCaseInput {
@@ -34,9 +34,9 @@ class GetSinglePokemonUseCase: UseCase, GetSinglePokemonUseCaseInput {
         pokemonListRepository.getSinglePokemon(url: url) {(result) in
             switch result {
             case .success(let pokemon):
-                self.output?.loadPokemon(result: pokemon)
+                self.output?.loadPokemon(usecase: self, result: pokemon)
             case .failure(let err):
-                self.output?.error(error: err)
+                self.output?.error(usecase: self, error: err)
             }
         }
     }

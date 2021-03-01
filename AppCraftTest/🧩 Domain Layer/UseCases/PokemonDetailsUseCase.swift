@@ -42,10 +42,8 @@ class PokemonDetailsUseCase: UseCase, PokemonDetailsUseCaseInput {
         self.localRepository.fetchSavedPokemons { (result) in
             switch result {
             case .success(let pokemons):
-                print(pokemons.count)
                 self.output?.loadPokemons(result: pokemons)
             case .failure(let err):
-                print("FAILED")
                 self.output?.error(error: err)
             }
         }
@@ -56,7 +54,7 @@ class PokemonDetailsUseCase: UseCase, PokemonDetailsUseCaseInput {
             if success {
                 self.output?.provideDelete()
             } else {
-                self.output?.error(error: APIError.placeholder)
+                self.output?.error(error: CoreDataError.dbInteractionError)
             }
         }
     }

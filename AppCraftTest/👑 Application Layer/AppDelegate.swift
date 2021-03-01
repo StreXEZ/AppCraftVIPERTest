@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func setup(_ window: UIWindow) {
         let vc = InitialAssembly.create()
         _ = InitialAssembly.configure(with: vc)
-
+        
         self.window = window
         self.window?.rootViewController = vc
         self.window?.makeKeyAndVisible()

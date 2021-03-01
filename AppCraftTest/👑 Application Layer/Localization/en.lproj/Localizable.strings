@@ -32,7 +32,7 @@
 
 // MARK: - Messages
 "EmptyListMessage"      = "There is no pokemons in this list yet.";
-"NoConnectionMessage"   = "Can't connect to the internet. Please check connection and refresh this page";
+"NoConnectionMessage"   = "Can't connect to the internet.\nPlease check connection and refresh this page";
 
 // MARK: - Alerts
 "DeleteAlertTitle"  = "Are you sure?";

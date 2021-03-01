@@ -13,6 +13,7 @@ PODS:
     - GKNetwork (~> 1.1.0)
   - GKViper (1.0.0):
     - GKExtensions (~> 1.1.0)
+  - ReachabilitySwift (5.0.0)
   - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
@@ -20,6 +21,7 @@ DEPENDENCIES:
   - GKRepresentable (~> 1.0.1)
   - GKUseCase (~> 1.0.1)
   - GKViper (~> 1.0.0)
+  - ReachabilitySwift
   - SVProgressHUD
 
 SPEC REPOS:
@@ -31,6 +33,7 @@ SPEC REPOS:
     - GKRepresentable
     - GKUseCase
     - GKViper
+    - ReachabilitySwift
     - SVProgressHUD
 
 SPEC CHECKSUMS:
@@ -41,8 +44,9 @@ SPEC CHECKSUMS:
   GKRepresentable: 6dcaa093a142604c5f2caa24a3839512331aa2eb
   GKUseCase: bd50df4ff25a454fdbefff54a7367b799d699c4c
   GKViper: 1ffe86f32753c4fc834c1325ee1892806c9ff1aa
+  ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 08dbad6d13890488e9bcf33d51dd9c6fe4553a48
+PODFILE CHECKSUM: 8aa6d72cf6c06bf5915d6414f568e881860c9def
 
 COCOAPODS: 1.10.1

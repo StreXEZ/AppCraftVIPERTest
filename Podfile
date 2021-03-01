@@ -16,6 +16,9 @@ target 'AppCraftTest' do
   # UI
   pod 'ESTabBarController-swift'
   pod 'SVProgressHUD'
+  
+  # Internet connection
+  pod 'ReachabilitySwift'
 
 
 

@@ -45,11 +45,11 @@ class AllListPresenter: ViperPresenter, AllListPresenterInput, AllListViewOutput
     // MARK: - AllListViewOutput
     override func viewIsReady(_ controller: UIViewController) {
         self.view?.setupInitialState(with: self.viewModel)
-        self.useCase.get(viewModel: self.viewModel)
+        self.useCase.get()
     }
     
     func refreshData() {
-        useCase.get(viewModel: self.viewModel)
+        useCase.get()
     }
     
     func showDetails(for url: String) {
@@ -69,27 +69,36 @@ class AllListPresenter: ViperPresenter, AllListPresenterInput, AllListViewOutput
     }
 }
 
+// MARK: - GetPokemonsUseCaseOutput
 extension AllListPresenter: GetPokemonsUseCaseOutput {
     func error(useCase: GetPokemonsUseCase, error: Error) {
-        print(error.localizedDescription)
+        guard let error = error as? APIError, error == APIError.noConnection else { return }
+        view?.noConnection()
     }
     
     func loadList(useCase: GetPokemonsUseCase, result: PokemonsListModel) {
+        self.viewModel.pokemons = result
         view?.reloadTable(with: createRows())
     }
 }
 
+// MARK: - GetSinglePokemonUseCaseOutput
 extension AllListPresenter: GetSinglePokemonUseCaseOutput {
-    func error(error: Error) {
+    func error(usecase: GetSinglePokemonUseCase, error: Error) {
         print(error)
     }
     
-    func loadPokemon(result: PokemonDetailModel) {
+    func loadPokemon(usecase: GetSinglePokemonUseCase, result: PokemonDetailModel) {
         self.localUseCase.savePokemon(pokemon: result)
     }
 }
 
+// MARK: - PokemonDetailsUseCaseOutput
 extension AllListPresenter: PokemonDetailsUseCaseOutput {
+    func error(error: Error) {
+        print(error)
+    }
+    
     func pokemonExistance(doesExist: Bool) {
         if doesExist {
             view?.show(title: AppLocalization.Alerts.alreadySavedTitle.localized, message: AppLocalization.Alerts.alreadtSavedBody.localized, animated: true)

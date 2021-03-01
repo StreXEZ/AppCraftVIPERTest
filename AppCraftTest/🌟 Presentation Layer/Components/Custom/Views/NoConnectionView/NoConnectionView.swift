@@ -19,11 +19,26 @@ class NoConnectionView: UIView {
         self.loadFromNibIfEmbeddedInDifferentNib()
     }
     
+    private var model: NoConnectionViewModel?
     
-    func setupComponents(title: String, buttonText: String) {
-//        refreshButton.backgroundColor = .systemBlue
-//        refreshButton.layer.cornerRadius = 5
-        textLabel.text = title
-        refreshButton.setTitle(buttonText, for: .normal)
+    public func setup(model: NoConnectionViewModel) {
+        self.model = model
+        setupComponents()
+    }
+
+    func setupComponents() {
+        textLabel.text = AppLocalization.InfoMessages.noConnection.localized
+        refreshButton.setTitle(AppLocalization.General.refresh.localized, for: .normal)
+        refreshButton.apply(.refreshButton())
+        refreshButton.addTarget(self, action: #selector(tapButton(_:)), for: .touchUpInside)
+    }
+    
+    deinit {
+        print("DINITED")
+    }
+    
+    @objc
+    private func tapButton(_ button: UIButton) {
+        model?.didAction(self, .tapRefresh)
     }
 }
