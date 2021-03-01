@@ -13,8 +13,9 @@ class BaseExperienceCell: TableCell {
     @IBOutlet weak var expLabel: UILabel!
     
     override func setupView() {
-        self.titleLabel.text = "Base Experience"
-//        circleView.backgroundColor = .red
+        self.titleLabel.text = "Base Experience:"
+        self.expLabel.apply(.headerTitleStyle())
+        self.titleLabel.apply(.header2TitleStyle())
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -26,8 +27,6 @@ class BaseExperienceCell: TableCell {
         expLabel.text = String(model.baseExp)
         let shapeLayer = CAShapeLayer()
         let lowerLayer = CAShapeLayer()
-        
-//        shapeLayer.bounds = circleView.bounds
         
         let circularPath = UIBezierPath(arcCenter: CGPoint(x: circleView.frame.width / 2, y: circleView.frame.height / 2), radius: 60, startAngle: -CGFloat.pi / 2, endAngle: 2*CGFloat.pi, clockwise: true)
         

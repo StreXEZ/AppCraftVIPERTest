@@ -24,10 +24,9 @@ class SavedListRouter: ViperRouter, SavedListRouterInput {
     
     // MARK: - SavedListRouterInput
     func showDetailPokemon(pokemon: PokemonDetailModel) {
-        print(pokemon.name)
-//        let vc = LocalDetail.create()
-//        let _ = RemoteDetailAssembly.configure(with: vc, url: url)
-//        self.push(to: vc, animated: true)
+        let vc = LocalDetailAssembly.create()
+        let _ = LocalDetailAssembly.configure(with: vc, pokemon: pokemon)
+        self.push(to: vc, animated: true)
     }
     
     // MARK: - Module functions

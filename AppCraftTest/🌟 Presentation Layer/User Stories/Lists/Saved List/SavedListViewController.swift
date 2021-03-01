@@ -58,7 +58,7 @@ class SavedListViewController: ViperViewController, SavedListViewInput {
     
 }
 
-// MARK: - Actions
+// MARK: - SavedListViewInput
 extension SavedListViewController {
     func reloadTable(with cells: [TableCellModel]) {
         self.rows = cells
@@ -77,21 +77,29 @@ extension SavedListViewController {
     }
 }
 
-// MARK: - Module functions
-extension SavedListViewController: UITableViewDelegate, UITableViewDataSource {
-    private func setupTableView() {
-        self.tableVw.delegate = self
-        self.tableVw.dataSource = self
-        self.refreshController.addTarget(self, action: #selector(refreshList), for: .valueChanged)
-        self.tableVw.refreshControl = self.refreshController
-        self.tableVw.registerCellNib(PokemonTableCell.self)
-    }
-    
+// MARK: - Actions
+extension SavedListViewController {
     @objc
     func refreshList() {
         output?.refreshData()
         self.refreshController.perform(#selector(UIRefreshControl.endRefreshing), with: nil, afterDelay: 0)
     }
+}
+
+extension SavedListViewController: UITableViewDelegate, UITableViewDataSource {
+    private func setupTableView() {
+        self.tableVw.delegate = self
+        self.tableVw.dataSource = self
+        self.tableVw.separatorStyle = .none
+        self.tableVw.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
+        
+        self.refreshController.addTarget(self, action: #selector(refreshList), for: .valueChanged)
+        self.tableVw.refreshControl = self.refreshController
+        
+        self.tableVw.registerCellNib(PokemonTableCell.self)
+        self.tableVw.registerCellNib(EmptyListCell.self)
+    }
+
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -100,18 +108,31 @@ extension SavedListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let model = rows[indexPath.row]
-        guard !model.cellIdentifier.isEmpty,
-              let cell = tableView.dequeueReusableCell(withIdentifier: model.cellIdentifier, for: indexPath) as? PokemonTableCell  else { return UITableViewCell() }
-        cell.model = model
-        return cell
+        if model is PokemonTableCellModel {
+            guard !model.cellIdentifier.isEmpty,
+                  let cell = tableView.dequeueReusableCell(withIdentifier: model.cellIdentifier, for: indexPath) as? PokemonTableCell  else { return UITableViewCell() }
+            cell.model = model
+            return cell
+        }
+        if model is EmptyListCellModel {
+            guard !model.cellIdentifier.isEmpty,
+                  let cell = tableView.dequeueReusableCell(withIdentifier: model.cellIdentifier, for: indexPath) as? EmptyListCell  else { return UITableViewCell() }
+            cell.model = model
+            return cell
+        }
+        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let action = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completionHandler) in
-            guard let model = self.rows[indexPath.row] as? PokemonTableCellModel else { return }
-            self.output?.deletePokemon(by: model.name)
+        let model = rows[indexPath.row]
+        if model is PokemonTableCellModel {
+            let action = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completionHandler) in
+                guard let model = self.rows[indexPath.row] as? PokemonTableCellModel else { return }
+                self.output?.deletePokemon(by: model.name)
+            }
+            return UISwipeActionsConfiguration(actions: [action])
         }
-        return UISwipeActionsConfiguration(actions: [action])
+        return nil
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

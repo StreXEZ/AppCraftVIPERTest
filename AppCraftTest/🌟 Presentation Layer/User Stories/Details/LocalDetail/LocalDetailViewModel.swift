@@ -8,4 +8,10 @@
 
 import GKViper
 
-class LocalDetailViewModel: ViperViewModel { }
+class LocalDetailViewModel: ViperViewModel {
+    var pokemon: PokemonDetailModel
+    
+    init(pokemon: PokemonDetailModel) {
+        self.pokemon = pokemon
+    }
+}

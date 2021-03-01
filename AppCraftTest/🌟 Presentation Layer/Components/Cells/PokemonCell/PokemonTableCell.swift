@@ -10,9 +10,10 @@ import GKRepresentable
 
 class PokemonTableCell: TableCell {
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var contentVw: UIView!
     
     override func setupView() {
-        
+        self.contentVw.apply(.pokemonCellStyle())
     }
     
     override func updateViews() {

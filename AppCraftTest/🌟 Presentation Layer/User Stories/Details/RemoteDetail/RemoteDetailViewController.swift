@@ -18,7 +18,7 @@ protocol RemoteDetailViewOutput: ViperViewOutput {
     func interactWithLocalDB()
 }
 
-class RemoteDetailViewController: ViperViewController, RemoteDetailViewInput {
+class RemoteDetailViewController: ViperViewController {
     @IBOutlet weak var tableVw: UITableView!
     
     // MARK: - Props
@@ -36,7 +36,7 @@ class RemoteDetailViewController: ViperViewController, RemoteDetailViewInput {
     
     // MARK: - Setup functions
     func setupComponents() {
-        self.navigationItem.title = "HAHA"
+        self.navigationItem.title = "Pokemon Details"
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         setupTableView()
         tableVw.separatorStyle = .none
@@ -66,6 +66,8 @@ extension RemoteDetailViewController: UITableViewDelegate, UITableViewDataSource
         self.tableVw.dataSource = self
         self.tableVw.registerCellNib(WeightHeightCell.self)
         self.tableVw.registerCellNib(BaseExperienceCell.self)
+        self.tableVw.registerCellNib(PokemonNameCell.self)
+        self.tableVw.registerCellNib(PokemonTypeCell.self)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -85,6 +87,19 @@ extension RemoteDetailViewController: UITableViewDelegate, UITableViewDataSource
             cell.model = model
             return cell
         }
+        
+        if model is PokemonNameCellModel {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: model.cellIdentifier) as? PokemonNameCell else { return UITableViewCell() }
+            cell.model = model
+            return cell
+        }
+        
+        if model is PokemonTypeCellModel {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: model.cellIdentifier) as? PokemonTypeCell else { return UITableViewCell() }
+            cell.model = model
+            return cell
+        }
+        
         return UITableViewCell()
     }
     
@@ -93,7 +108,8 @@ extension RemoteDetailViewController: UITableViewDelegate, UITableViewDataSource
     }
 }
 
-extension RemoteDetailViewController {
+// MARK: - RemoteDetailViewInput & RemoteDetailViewOutput
+extension RemoteDetailViewController: RemoteDetailViewInput {
     func localPokemonState(isPokeSaved: Bool) {
         if isPokeSaved {
             DispatchQueue.main.async { [weak self] in
@@ -118,5 +134,4 @@ extension RemoteDetailViewController {
             self?.tableVw.reloadData()
         }
     }
-    
 }

@@ -11,7 +11,7 @@ import GKRepresentable
 
 protocol SavedListPresenterInput: ViperPresenterInput { }
 
-class SavedListPresenter: ViperPresenter, SavedListPresenterInput, SavedListViewOutput {
+class SavedListPresenter: ViperPresenter, SavedListPresenterInput {
     
     // MARK: - Props
     fileprivate var view: SavedListViewInput? {
@@ -43,9 +43,24 @@ class SavedListPresenter: ViperPresenter, SavedListPresenterInput, SavedListView
         self.view?.setupInitialState(with: self.viewModel)
         self.localUseCase.fetchSavedPokemons()
     }
+    
+    func createRows() -> [TableCellModel] {
+        var rows: [TableCellModel] = []
+        
+        if viewModel.pokemons?.count == 0 {
+            rows.append(EmptyListCellModel(title: "Вы пока не добавили покемонов в этот список"))
+            return rows
+        }
+        
+        viewModel.pokemons?.forEach { item in
+            rows.append(PokemonTableCellModel(name: item.name, url: ""))
+        }
+        return rows
+    }
 }
 
-extension SavedListPresenter {
+// MARK: - SavedListViewOutput
+extension SavedListPresenter: SavedListViewOutput {
     func refreshData() {
         self.localUseCase.fetchSavedPokemons()
     }
@@ -65,32 +80,13 @@ extension SavedListPresenter {
             self?.localUseCase.deletePokemon(pokemon: pokeToRemove)
         }), animated: true)
     }
-    
-    private func deleteAlert(callback: @escaping () -> Void) -> UIAlertController {
-        let alertController = UIAlertController(title: "Вы уверены?", message: "Если вы удалите покемона, то его данные сотрутся с вашего устройства", preferredStyle: .alert)
-        let deleteAction = UIAlertAction(title: "Удалить", style: .destructive) { action in
-            callback()
-        }
-        let dismissAction = UIAlertAction(title: "Отмена", style: .cancel)
-        alertController.addAction(deleteAction)
-        alertController.addAction(dismissAction)
-        return alertController
-    }
 }
 
+// MARK: - PokemonDetailsUseCaseOutput
 extension SavedListPresenter: PokemonDetailsUseCaseOutput {
     func loadPokemons(result: [PokemonDetailModel]) {
         viewModel.pokemons = result
-        view?.reloadTable(with: createRows())
-    }
-    
-    func createRows() -> [TableCellModel] {
-        var rows: [TableCellModel] = []
-        viewModel.pokemons?.forEach { item in
-            rows.append(PokemonTableCellModel(name: item.name, url: ""))
-        }
-        print(rows.count)
-        return rows
+            view?.reloadTable(with: createRows())
     }
     
     func provideDelete() {

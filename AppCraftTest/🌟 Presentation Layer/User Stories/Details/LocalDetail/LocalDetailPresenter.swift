@@ -8,10 +8,11 @@
 
 import GKViper
 
-protocol LocalDetailPresenterInput: ViperPresenterInput { }
+protocol LocalDetailPresenterInput: ViperPresenterInput {
+    
+}
 
 class LocalDetailPresenter: ViperPresenter, LocalDetailPresenterInput, LocalDetailViewOutput {
-    
     // MARK: - Props
     fileprivate var view: LocalDetailViewInput? {
         guard let view = self._view as? LocalDetailViewInput else {
@@ -28,10 +29,15 @@ class LocalDetailPresenter: ViperPresenter, LocalDetailPresenterInput, LocalDeta
     }
     
     var viewModel: LocalDetailViewModel
+    private let localUseCase: PokemonDetailsUseCaseInput
     
     // MARK: - Initialization
-    override init() {
-        self.viewModel = LocalDetailViewModel()
+    init(pokemon: PokemonDetailModel) {
+        self.viewModel = LocalDetailViewModel(pokemon: pokemon)
+        localUseCase = PokemonDetailsUseCase()
+        super.init()
+        localUseCase.subscribe(with: self)
+        self.beginLoading()
     }
     
     // MARK: - LocalDetailPresenterInput
@@ -39,7 +45,55 @@ class LocalDetailPresenter: ViperPresenter, LocalDetailPresenterInput, LocalDeta
     // MARK: - LocalDetailViewOutput
     override func viewIsReady(_ controller: UIViewController) {
         self.view?.setupInitialState(with: self.viewModel)
+        self.createRows()
+        self.finishLoading(with: nil)
+    }
+    
+    override func beginLoading() {
+        DispatchQueue.main.async {
+            BaseLoader().show()
+        }
+    }
+    
+    override func finishLoading(with error: Error?) {
+        DispatchQueue.main.async {
+            BaseLoader().hide()
+        }
+    }
+    
+    func createRows() {
+        let rows = [
+            PokemonNameCellModel(name: viewModel.pokemon.name),
+            PokemonTypeCellModel(isDefault: viewModel.pokemon.is_default),
+            BaseExperienceCellModel(baseExp: viewModel.pokemon.base_experience),
+            WeightHeightCellModel(height: viewModel.pokemon.height, weight: viewModel.pokemon.weight)]
+        view?.updateInfo(with: rows)
+        
     }
         
     // MARK: - Module functions
+}
+
+extension LocalDetailPresenter {
+    func deletePokemon() {
+        view?.show(CustomAlerts.deleteAlert { [weak self] in
+            guard let self = self else { return }
+            self.localUseCase.deletePokemon(pokemon: self.viewModel.pokemon)
+        }, animated: true)
+    }
+}
+
+extension LocalDetailPresenter: PokemonDetailsUseCaseOutput {
+    
+    func provideDelete() {
+        self.router?.goBack(animated: true)
+    }
+    
+    func provideSave() { }
+    
+    func loadPokemons(result: [PokemonDetailModel]) { }
+    
+    func pokemonExistance(doesExist: Bool) { }
+    
+    func error(error: Error) { }
 }

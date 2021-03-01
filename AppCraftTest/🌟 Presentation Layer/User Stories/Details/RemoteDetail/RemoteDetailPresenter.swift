@@ -9,11 +9,9 @@
 import GKViper
 import GKRepresentable
 
-protocol RemoteDetailPresenterInput: ViperPresenterInput {
-    
-}
+protocol RemoteDetailPresenterInput: ViperPresenterInput { }
 
-class RemoteDetailPresenter: ViperPresenter, RemoteDetailPresenterInput, RemoteDetailViewOutput {
+class RemoteDetailPresenter: ViperPresenter, RemoteDetailPresenterInput {
     // MARK: - Props
     fileprivate var view: RemoteDetailViewInput? {
         guard let view = self._view as? RemoteDetailViewInput else {
@@ -56,22 +54,23 @@ class RemoteDetailPresenter: ViperPresenter, RemoteDetailPresenterInput, RemoteD
         }
     }
     
-    override func reloadData() {
-        
-    }
-    
-    // MARK: - RemoteDetailPresenterInput
-    
-    // MARK: - RemoteDetailViewOutput
     override func viewIsReady(_ controller: UIViewController) {
         self.view?.setupInitialState(with: self.viewModel)
         self.remoteUseCase.get(url: viewModel.url ?? "")
         finishLoading(with: nil)
     }
-        
-    // MARK: - Module functions
+    
+    
+    func createRows() {
+        let rows = [PokemonNameCellModel(name: viewModel.pokemon?.name ?? "Name"),
+                    PokemonTypeCellModel(isDefault: viewModel.pokemon?.is_default ?? false),
+                    BaseExperienceCellModel(baseExp: viewModel.pokemon?.base_experience ?? 0),
+                    WeightHeightCellModel(height: viewModel.pokemon?.height ?? 0, weight: viewModel.pokemon?.weight ?? 0),]
+        view?.updateInfo(with: rows)
+    }
 }
 
+// MARK: - GetSinglePokemonUseCaseOutput
 extension RemoteDetailPresenter: GetSinglePokemonUseCaseOutput {
     func error(error: Error) {
         print(error)
@@ -80,9 +79,11 @@ extension RemoteDetailPresenter: GetSinglePokemonUseCaseOutput {
     func loadPokemon(result: PokemonDetailModel) {
         self.viewModel.pokemon = result
         self.localUseCase.checkPokemon(pokemon: result)
-        createRows()
+        self.createRows()
     }
-    
+}
+
+extension RemoteDetailPresenter: RemoteDetailViewOutput {
     func interactWithLocalDB() {
         guard let saved = viewModel.saved, let pokemon = viewModel.pokemon else { return }
         if saved {
@@ -93,13 +94,9 @@ extension RemoteDetailPresenter: GetSinglePokemonUseCaseOutput {
             localUseCase.savePokemon(pokemon: pokemon)
         }
     }
-    
-    func createRows() {
-        let rows = [WeightHeightCellModel(height: viewModel.pokemon?.height ?? 0, weight: viewModel.pokemon?.weight ?? 0), BaseExperienceCellModel(baseExp: viewModel.pokemon?.base_experience ?? 0)]
-        view?.updateInfo(with: rows)
-    }
 }
 
+// MARK: - PokemonDetailsUseCaseOutput
 extension RemoteDetailPresenter: PokemonDetailsUseCaseOutput {
     func pokemonExistance(doesExist: Bool) {
         self.viewModel.saved = doesExist

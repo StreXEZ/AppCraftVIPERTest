@@ -19,7 +19,7 @@ protocol AllListViewOutput: ViperViewOutput {
     func savePokemon(from url: String)
 }
 
-class AllListViewController: ViperViewController, AllListViewInput {
+class AllListViewController: ViperViewController {
     // MARK: - Outlets
     @IBOutlet weak var tableVw: UITableView!
     
@@ -51,16 +51,15 @@ class AllListViewController: ViperViewController, AllListViewInput {
     // MARK: - AllListViewInput
     override func setupInitialState(with viewModel: ViperViewModel) {
         super.setupInitialState(with: viewModel)
-//        self.navigationController?.navigationBar.prefersLargeTitles = true
-//        self.navigationItem.largeTitleDisplayMode = .always
+        
         self.setupComponents()
         self.setupActions()
     }
     
 }
 
-// MARK: - Actions
-extension AllListViewController {
+// MARK: - AllListViewInput
+extension AllListViewController: AllListViewInput {
     func reloadTable(with cells: [TableCellModel]) {
         self.rows = cells
         DispatchQueue.main.async { [weak self] in
@@ -70,22 +69,25 @@ extension AllListViewController {
     }
 }
 
-// MARK: - Module functions
-extension AllListViewController { }
+// MARK: - Actions
+extension AllListViewController {
+    @objc
+    func refreshList() {
+        output?.refreshData()
+        self.refreshController.perform(#selector(UIRefreshControl.endRefreshing), with: nil, afterDelay: 0)
+    }
+}
+
 
 extension AllListViewController: UITableViewDelegate, UITableViewDataSource {
     private func setupTableView() {
         self.tableVw.delegate = self
         self.tableVw.dataSource = self
+        self.tableVw.separatorStyle = .none
+        self.tableVw.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
         self.refreshController.addTarget(self, action: #selector(refreshList), for: .valueChanged)
         self.tableVw.refreshControl = self.refreshController
         self.tableVw.registerCellNib(PokemonTableCell.self)
-    }
-    
-    @objc
-    func refreshList() {
-        output?.refreshData()
-        self.refreshController.perform(#selector(UIRefreshControl.endRefreshing), with: nil, afterDelay: 0)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

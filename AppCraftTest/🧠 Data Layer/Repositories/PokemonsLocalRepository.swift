@@ -32,7 +32,6 @@ class PokemonsLocalRepository: AppCraftTestRepository, PokemonsLocalRepositoryIn
                 completion(.success([]))
             }
         }
-        
     }
     
     func savePokemon(pokemon: PokemonDetailModel, completion: ((Bool) -> Void)?) {

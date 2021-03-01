@@ -38,36 +38,14 @@ class AllListPresenter: ViperPresenter, AllListPresenterInput, AllListViewOutput
         self.useCase = GetPokemonsUseCase()
         super.init()
         self.useCase.subscribe(with: self)
-        localUseCase.subscribe(with: self)
+        self.localUseCase.subscribe(with: self)
         singlePokemonUseCase.subscribe(with: self)
     }
-    
-    // MARK: - AllListPresenterInput
     
     // MARK: - AllListViewOutput
     override func viewIsReady(_ controller: UIViewController) {
         self.view?.setupInitialState(with: self.viewModel)
         self.useCase.get(viewModel: self.viewModel)
-    }
-        
-    // MARK: - Module functions
-}
-
-extension AllListPresenter: GetPokemonsUseCaseOutput {
-    func error(useCase: GetPokemonsUseCase, error: Error) {
-        print(error.localizedDescription)
-    }
-    
-    func loadList(useCase: GetPokemonsUseCase, result: PokemonsListModel) {
-        view?.reloadTable(with: createRows())
-    }
-    
-    func createRows() -> [TableCellModel] {
-        var rows: [TableCellModel] = []
-        self.viewModel.pokemons?.result.forEach { item in
-            rows.append(PokemonTableCellModel(name: item.name, url: item.url))
-        }
-        return rows
     }
     
     func refreshData() {
@@ -80,6 +58,24 @@ extension AllListPresenter: GetPokemonsUseCaseOutput {
     
     func savePokemon(from url: String) {
         self.singlePokemonUseCase.get(url: url)
+    }
+    
+    func createRows() -> [TableCellModel] {
+        var rows: [TableCellModel] = []
+        self.viewModel.pokemons?.result.forEach { item in
+            rows.append(PokemonTableCellModel(name: item.name, url: item.url))
+        }
+        return rows
+    }
+}
+
+extension AllListPresenter: GetPokemonsUseCaseOutput {
+    func error(useCase: GetPokemonsUseCase, error: Error) {
+        print(error.localizedDescription)
+    }
+    
+    func loadList(useCase: GetPokemonsUseCase, result: PokemonsListModel) {
+        view?.reloadTable(with: createRows())
     }
 }
 
@@ -101,7 +97,7 @@ extension AllListPresenter: PokemonDetailsUseCaseOutput {
     }
 
     func provideSave() {
-        
+        print("Saved")
     }
     
     func loadPokemons(result: [PokemonDetailModel]) { }
