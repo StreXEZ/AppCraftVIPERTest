@@ -9,7 +9,7 @@
 import GKViper
 
 protocol SavedListRouterInput: ViperRouterInput {
-    func showDetailPokemon(pokemon: PokemonDetailModel)
+    func showDetailPokemon(pokemon: PokemonDetailModel,  output: LocalDetailOutput)
 }
 
 class SavedListRouter: ViperRouter, SavedListRouterInput {
@@ -23,9 +23,9 @@ class SavedListRouter: ViperRouter, SavedListRouterInput {
     }
     
     // MARK: - SavedListRouterInput
-    func showDetailPokemon(pokemon: PokemonDetailModel) {
+    func showDetailPokemon(pokemon: PokemonDetailModel, output: LocalDetailOutput) {
         let vc = LocalDetailAssembly.create()
-        let _ = LocalDetailAssembly.configure(with: vc, pokemon: pokemon)
+        let _ = LocalDetailAssembly.configure(with: vc, pokemon: pokemon, output: output)
         self.push(to: vc, animated: true)
     }
     

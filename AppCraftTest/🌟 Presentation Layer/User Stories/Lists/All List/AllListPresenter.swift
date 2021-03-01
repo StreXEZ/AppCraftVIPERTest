@@ -109,7 +109,5 @@ extension AllListPresenter: PokemonDetailsUseCaseOutput {
         print("Saved")
     }
     
-    func loadPokemons(result: [PokemonDetailModel]) { }
-    
     func provideDelete() { }
 }

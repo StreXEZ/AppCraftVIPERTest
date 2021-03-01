@@ -16,8 +16,8 @@ enum LocalDetailAssembly {
     }
     
     // Create and link modules with controller, return presenter input
-    static func configure(with reference: LocalDetailViewController, pokemon: PokemonDetailModel) -> LocalDetailPresenterInput {
-        let presenter = LocalDetailPresenter(pokemon: pokemon)
+    static func configure(with reference: LocalDetailViewController, pokemon: PokemonDetailModel, output: LocalDetailOutput) -> LocalDetailPresenterInput {
+        let presenter = LocalDetailPresenter(pokemon: pokemon, output: output)
         
         let router = LocalDetailRouter()
         router._mainController = reference

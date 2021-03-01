@@ -8,8 +8,10 @@
 
 import GKViper
 
-protocol LocalDetailPresenterInput: ViperPresenterInput {
-    
+protocol LocalDetailPresenterInput: ViperPresenterInput { }
+
+protocol LocalDetailOutput {
+    func didDeletePoke()
 }
 
 class LocalDetailPresenter: ViperPresenter, LocalDetailPresenterInput, LocalDetailViewOutput {
@@ -28,13 +30,15 @@ class LocalDetailPresenter: ViperPresenter, LocalDetailPresenterInput, LocalDeta
         return router
     }
     
+    let output: LocalDetailOutput
     var viewModel: LocalDetailViewModel
     private let localUseCase: PokemonDetailsUseCaseInput
     
     // MARK: - Initialization
-    init(pokemon: PokemonDetailModel) {
+    init(pokemon: PokemonDetailModel, output: LocalDetailOutput) {
         self.viewModel = LocalDetailViewModel(pokemon: pokemon)
-        localUseCase = PokemonDetailsUseCase()
+        self.localUseCase = PokemonDetailsUseCase()
+        self.output = output
         super.init()
         localUseCase.subscribe(with: self)
         self.beginLoading()
@@ -87,13 +91,16 @@ extension LocalDetailPresenter: PokemonDetailsUseCaseOutput {
     
     func provideDelete() {
         self.router?.goBack(animated: true)
+        self.output.didDeletePoke()
+    }
+    
+    func error(error: Error) {
+        print(error)
     }
     
     func provideSave() { }
     
-    func loadPokemons(result: [PokemonDetailModel]) { }
-    
     func pokemonExistance(doesExist: Bool) { }
     
-    func error(error: Error) { }
+
 }

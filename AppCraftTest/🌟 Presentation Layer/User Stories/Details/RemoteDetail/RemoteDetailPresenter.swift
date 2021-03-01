@@ -117,6 +117,4 @@ extension RemoteDetailPresenter: PokemonDetailsUseCaseOutput {
         guard let pokemon = self.viewModel.pokemon else { return }
         self.localUseCase.checkPokemon(pokemon: pokemon)
     }
-    
-    func loadPokemons(result: [PokemonDetailModel]) { }
 }

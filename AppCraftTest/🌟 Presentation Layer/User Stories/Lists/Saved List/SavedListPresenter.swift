@@ -30,18 +30,21 @@ class SavedListPresenter: ViperPresenter, SavedListPresenterInput {
     
     var viewModel: SavedListViewModel
     private let localUseCase: PokemonDetailsUseCaseInput
+    private let fetchPokesUseCase: GetLocalPokemonsUseCaseInput
     
     // MARK: - Initialization
     override init() {
         self.viewModel = SavedListViewModel()
         self.localUseCase = PokemonDetailsUseCase()
+        self.fetchPokesUseCase = GetLocalPokemonsUseCase()
         super.init()
         self.localUseCase.subscribe(with: self)
+        self.fetchPokesUseCase.subscribe(with: self)
     }
     
     override func viewIsReady(_ controller: UIViewController) {
         self.view?.setupInitialState(with: self.viewModel)
-        self.localUseCase.fetchSavedPokemons()
+        self.fetchPokesUseCase.fetchSavedPokemons()
     }
     
     func createRows() -> [TableCellModel] {
@@ -62,14 +65,14 @@ class SavedListPresenter: ViperPresenter, SavedListPresenterInput {
 // MARK: - SavedListViewOutput
 extension SavedListPresenter: SavedListViewOutput {
     func refreshData() {
-        self.localUseCase.fetchSavedPokemons()
+        self.fetchPokesUseCase.fetchSavedPokemons()
     }
     
     func showDetails(by name: String) {
         guard let pokeToShow = viewModel.pokemons?.first(where: { (poke) -> Bool in
             poke.name == name
         }) else { return }
-        self.router?.showDetailPokemon(pokemon: pokeToShow)
+        self.router?.showDetailPokemon(pokemon: pokeToShow, output: self)
     }
     
     func deletePokemon(by name: String) {
@@ -82,8 +85,14 @@ extension SavedListPresenter: SavedListViewOutput {
     }
 }
 
+extension SavedListPresenter: LocalDetailOutput {
+    func didDeletePoke() {
+        self.fetchPokesUseCase.fetchSavedPokemons()
+    }
+}
+
 // MARK: - PokemonDetailsUseCaseOutput
-extension SavedListPresenter: PokemonDetailsUseCaseOutput {
+extension SavedListPresenter: PokemonDetailsUseCaseOutput, GetLocalPokemonsUseCaseOutput {
     func loadPokemons(result: [PokemonDetailModel]) {
         viewModel.pokemons = result
             view?.reloadTable(with: createRows())
