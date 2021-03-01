@@ -39,7 +39,7 @@ class AllListViewController: ViperViewController {
     
     // MARK: - Setup functions
     func setupComponents() {
-        self.navigationItem.title = "Pokemon List"
+        self.navigationItem.title = AppLocalization.Titles.remoteList.localized
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         self.setupTableView()
     }

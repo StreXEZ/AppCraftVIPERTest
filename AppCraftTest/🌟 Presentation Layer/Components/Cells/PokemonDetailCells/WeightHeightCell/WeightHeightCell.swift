@@ -25,8 +25,8 @@ class WeightHeightCell: TableCell {
     
     override func updateViews() {
         guard let model = self.model as? WeightHeightCellModel else { return }
-        self.heightLabel.text = "Height: \(model.height)"
-        self.weightLabel.text = "Weight: \(model.weight)"
+        self.heightLabel.text = AppLocalization.PokemonDetails.height.localized + String(model.height)
+        self.weightLabel.text = AppLocalization.PokemonDetails.weight.localized + String(model.weight)
     }
 
 }

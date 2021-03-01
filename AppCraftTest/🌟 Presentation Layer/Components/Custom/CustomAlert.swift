@@ -9,11 +9,11 @@ import UIKit
 
 class CustomAlerts {
     static func deleteAlert(callback: @escaping () -> Void) -> UIAlertController {
-        let alertController = UIAlertController(title: "Вы уверены?", message: "Если вы удалите покемона, то его данные сотрутся с вашего устройства", preferredStyle: .alert)
-        let deleteAction = UIAlertAction(title: "Удалить", style: .destructive) { action in
+        let alertController = UIAlertController(title: AppLocalization.Alerts.deleteAlertTitle.localized, message: AppLocalization.Alerts.deleteAlertBody.localized, preferredStyle: .alert)
+        let deleteAction = UIAlertAction(title: AppLocalization.General.delete.localized, style: .destructive) { action in
             callback()
         }
-        let dismissAction = UIAlertAction(title: "Отмена", style: .cancel)
+        let dismissAction = UIAlertAction(title: AppLocalization.General.cancel.localized, style: .cancel)
         alertController.addAction(deleteAction)
         alertController.addAction(dismissAction)
         return alertController

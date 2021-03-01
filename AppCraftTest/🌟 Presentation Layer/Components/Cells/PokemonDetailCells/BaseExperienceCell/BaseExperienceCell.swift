@@ -13,7 +13,7 @@ class BaseExperienceCell: TableCell {
     @IBOutlet weak var expLabel: UILabel!
     
     override func setupView() {
-        self.titleLabel.text = "Base Experience:"
+        self.titleLabel.text = AppLocalization.PokemonDetails.base_experience.localized
         self.expLabel.apply(.headerTitleStyle())
         self.titleLabel.apply(.header2TitleStyle())
     }

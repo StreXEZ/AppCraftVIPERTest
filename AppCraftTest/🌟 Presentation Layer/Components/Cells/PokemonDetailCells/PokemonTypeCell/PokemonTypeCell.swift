@@ -13,11 +13,11 @@ class PokemonTypeCell: TableCell {
     
     override func setupView() {
         self.titleLabel.apply(.header2TitleStyle())
-        self.titleLabel.text = "Type:"
+        self.titleLabel.text = AppLocalization.PokemonDetails.typeLabel.localized
     }
     
     override func updateViews() {
         guard let model = model as? PokemonTypeCellModel else { return }
-        self.typeLabel.text = model.type
+        self.typeLabel.text = model.type == "Default" ? AppLocalization.PokemonDetails.def.localized : AppLocalization.PokemonDetails.nondef.localized
     }
 }

@@ -23,6 +23,23 @@
 "CONTINUE"      = "Continue";
 "SEARCH"        = "Search";
 "NEXT"          = "Next";
+"DELETE"        = "Delete";
+
+// MARK: - Titles
+"RemoteListTitle"       = "Pokemon List";
+"LocalListTitle"        = "Saved Pokemons";
+"PokemonDetailsTitle"   = "Pokemon Details";
+
+// MARK: - Messages
+"EmptyListMessage"      = "There is no pokemons in this list yet.";
+"NoConnectionMessage"   = "Can't connect to the internet. Please check connection and refresh this page";
+
+// MARK: - Alerts
+"DeleteAlertTitle"  = "Are you sure?";
+"DeleteAlertBody"   = "If you remove pokemon, it's data will be removed from your device";
+
+"AlreadtSavedTitle" = "Pokemon is already saved";
+"AlreadtSavedBody"  = "Go to 'Saved pokemons' page to view it's information";
 
 // MARK: - Themes and languages
 "APP_THEME_LIGHT"   = "Light";
@@ -32,3 +49,11 @@
 
 // MARK: - Initial
 "INITIAL_TITLE" = "";
+
+// MARK: - Pokemon Details
+"PokemonTypeLabel"      = "Type:";
+"PokemonDefaultType"    = "Default";
+"PokemonNonDefaultType" = "Non-Default";
+"PokemonBaseExperience" = "Base Experience:";
+"PokemonHeight"         = "Height: ";
+"PokemonWeight"         = "Weight: ";

@@ -36,7 +36,7 @@ class RemoteDetailViewController: ViperViewController {
     
     // MARK: - Setup functions
     func setupComponents() {
-        self.navigationItem.title = "Pokemon Details"
+        self.navigationItem.title = AppLocalization.Titles.pokemonDetails.localized
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         setupTableView()
         tableVw.separatorStyle = .none

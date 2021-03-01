@@ -17,12 +17,9 @@ class EmptyListCell: TableCell {
         
         self.messageLabel.numberOfLines = 0
         self.messageLabel.textColor = .darkGray
-        print("SETUPING")
     }
     
     override func updateViews() {
-        guard let model = self.model as? EmptyListCellModel else { return }
-        self.messageLabel.text = model.title
-        print("UPDATING")
+        self.messageLabel.text = AppLocalization.InfoMessages.emptyList.localized
     }
 }

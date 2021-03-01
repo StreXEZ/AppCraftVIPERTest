@@ -23,6 +23,23 @@
 "CONTINUE"      = "Продолжить";
 "SEARCH"        = "Поиск";
 "NEXT"          = "Далее";
+"DELETE"        = "Удалить";
+
+// MARK: - Title
+"RemoteListTitle"       = "Список покемонов";
+"LocalListTitle"        = "Сохраненные покемоны";
+"PokemonDetailsTitle"   = "Информация о окемоне";
+
+// MARK: - Messages
+"EmptyListMessage"      = "В этом списке пока что нет покемонов";
+"NoConnectionMessage"   = "Не получается подключиться к интернету. Пожалуйста, проверьте подключение и обновите страницу";
+
+// MARK: - Alerts
+"DeleteAlertTitle"  = "Вы уверены?";
+"DeleteAlertBody"   = "Если Вы удалите покемона, то его данные будут удалены с вашего устройства";
+
+"AlreadtSavedTitle" = "Покемон уже сохранен";
+"AlreadtSavedBody"  = "Перейдите в 'Сохраненные покемоны', чтобы посмотреть информацию о нем";
 
 // MARK: - Themes and languages
 "APP_THEME_LIGHT"   = "Светлая";
@@ -32,3 +49,11 @@
 
 // MARK: - Initial
 "INITIAL_TITLE" = "";
+
+// MARK: - Pokemon Details
+"PokemonTypeLabel"      = "Тип:";
+"PokemonDefaultType"    = "Дефолтный";
+"PokemonNonDefaultType" = "Не дефолтный";
+"PokemonBaseExperience" = "Базовый опыт:";
+"PokemonHeight"         = "Рост: ";
+"PokemonWeight"         = "Вес: ";

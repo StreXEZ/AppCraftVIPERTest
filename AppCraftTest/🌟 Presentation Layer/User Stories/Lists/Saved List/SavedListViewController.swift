@@ -40,7 +40,7 @@ class SavedListViewController: ViperViewController, SavedListViewInput {
     
     // MARK: - Setup functions
     func setupComponents() {
-        self.navigationItem.title = "Saved Pokemons"
+        self.navigationItem.title = AppLocalization.Titles.localList.localized
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     

@@ -92,7 +92,7 @@ extension AllListPresenter: GetSinglePokemonUseCaseOutput {
 extension AllListPresenter: PokemonDetailsUseCaseOutput {
     func pokemonExistance(doesExist: Bool) {
         if doesExist {
-            view?.show(title: "Покемон уже сохранен", message: nil, animated: true)
+            view?.show(title: AppLocalization.Alerts.alreadySavedTitle.localized, message: AppLocalization.Alerts.alreadtSavedBody.localized, animated: true)
         }
     }
 

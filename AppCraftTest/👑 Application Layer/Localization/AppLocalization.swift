@@ -27,6 +27,35 @@ enum AppLocalization {
         case cont       = "CONTINUE"
         case search     = "SEARCH"
         case next       = "NEXT"
+        case delete     = "DELETE"
+    }
+    
+    enum Titles: String, Localizable {
+        case remoteList     = "RemoteListTitle"
+        case localList      = "LocalListTitle"
+        case pokemonDetails = "PokemonDetailsTitle"
+    }
+    
+    enum Alerts: String, Localizable {
+        case deleteAlertTitle   = "DeleteAlertTitle"
+        case deleteAlertBody    = "DeleteAlertBody"
+        
+        case alreadySavedTitle  = "AlreadtSavedTitle"
+        case alreadtSavedBody   = "AlreadtSavedBody"
+    }
+    
+    enum PokemonDetails: String, Localizable {
+        case typeLabel       = "PokemonTypeLabel"
+        case def             = "PokemonDefaultType"
+        case nondef          = "PokemonNonDefaultType"
+        case base_experience = "PokemonBaseExperience"
+        case height          = "PokemonHeight"
+        case weight          = "PokemonWeight"
+    }
+    
+    enum InfoMessages: String, Localizable {
+        case emptyList      = "EmptyListMessage"
+        case noConnection   = "NoConnectionMessage"
     }
     
     enum Theme: String, Localizable {

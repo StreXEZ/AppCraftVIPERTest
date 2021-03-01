@@ -48,7 +48,7 @@ class SavedListPresenter: ViperPresenter, SavedListPresenterInput {
         var rows: [TableCellModel] = []
         
         if viewModel.pokemons?.count == 0 {
-            rows.append(EmptyListCellModel(title: "Вы пока не добавили покемонов в этот список"))
+            rows.append(EmptyListCellModel())
             return rows
         }
         
