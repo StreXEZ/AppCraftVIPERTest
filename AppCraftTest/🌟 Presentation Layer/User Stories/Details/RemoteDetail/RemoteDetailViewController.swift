@@ -129,7 +129,6 @@ extension RemoteDetailViewController: RemoteDetailViewInput {
     
     func updateInfo(with models: [TableCellModel]) {
         self.rows = models
-        print(rows.count)
         DispatchQueue.main.async { [weak self] in
             self?.tableVw.reloadData()
         }

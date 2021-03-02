@@ -12,9 +12,9 @@ class PokemonTypeCellModel: TableCellModel {
         return PokemonTypeCell.identifier
     }
     
-    var type: String
+    var isDefault: Bool
     
     init(isDefault: Bool) {
-        self.type = isDefault ? "Default" : "Non-Default"
+        self.isDefault = isDefault
     }
 }

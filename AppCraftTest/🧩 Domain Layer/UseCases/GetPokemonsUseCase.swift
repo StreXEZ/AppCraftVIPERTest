@@ -9,7 +9,7 @@ import Foundation
 import GKUseCase
 
 protocol GetPokemonsUseCaseInput: UseCaseInput {
-    func get()
+    func getPokemons()
 }
 
 protocol GetPokemonsUseCaseOutput: UseCaseOutput {
@@ -29,7 +29,7 @@ class GetPokemonsUseCase: UseCase, GetPokemonsUseCaseInput {
         self.pokemonListRepository = PokemonRemoteRepository()
     }
     
-    func get() {
+    func getPokemons() {
         pokemonListRepository.getPokemons { (result) in
             switch result {
             case .success(let pokemons):

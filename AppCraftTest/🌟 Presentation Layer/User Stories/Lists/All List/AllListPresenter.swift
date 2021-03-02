@@ -45,11 +45,11 @@ class AllListPresenter: ViperPresenter, AllListPresenterInput, AllListViewOutput
     // MARK: - AllListViewOutput
     override func viewIsReady(_ controller: UIViewController) {
         self.view?.setupInitialState(with: self.viewModel)
-        self.useCase.get()
+        self.useCase.getPokemons()
     }
     
     func refreshData() {
-        useCase.get()
+        useCase.getPokemons()
     }
     
     func showDetails(for url: String) {

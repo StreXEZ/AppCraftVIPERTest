@@ -39,8 +39,8 @@ class PokemonsLocalRepository: AppCraftTestRepository, PokemonsLocalRepositoryIn
             if exist {
                 completion?(false)
             } else {
-                self.update(pokemon) { (result, _) in
-                    if result != nil {
+                self.update(pokemon) { (result, err) in
+                    if result != nil, err == nil {
                         completion?(true)
                     } else {
                         completion?(false)
@@ -52,8 +52,8 @@ class PokemonsLocalRepository: AppCraftTestRepository, PokemonsLocalRepositoryIn
     
     func deletePokemon(pokemon: PokemonDetailModel, completion: ((Bool) -> Void)?) {
         let request = SinglePokemonRouter.Local.pokemon(id: pokemon.id).request
-        self.delete(request) { (success, _) in
-            if success {
+        self.delete(request) { (success, err) in
+            if success, err == nil {
                 completion?(true)
             } else {
                 completion?(false)

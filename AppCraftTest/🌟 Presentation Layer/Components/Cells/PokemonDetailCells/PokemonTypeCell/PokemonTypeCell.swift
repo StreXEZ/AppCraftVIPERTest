@@ -18,6 +18,6 @@ class PokemonTypeCell: TableCell {
     
     override func updateViews() {
         guard let model = model as? PokemonTypeCellModel else { return }
-        self.typeLabel.text = model.type == "Default" ? AppLocalization.PokemonDetails.def.localized : AppLocalization.PokemonDetails.nondef.localized
+        self.typeLabel.text = model.isDefault ? AppLocalization.PokemonDetails.def.localized : AppLocalization.PokemonDetails.nondef.localized
     }
 }

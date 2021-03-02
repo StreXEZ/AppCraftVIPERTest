@@ -12,8 +12,11 @@ class BaseExperienceCell: TableCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var expLabel: UILabel!
     
+    var shapeLayer = CAShapeLayer()
+    
     override func setupView() {
         self.titleLabel.text = AppLocalization.PokemonDetails.base_experience.localized
+        setupCircleView()
         self.expLabel.apply(.headerTitleStyle())
         self.titleLabel.apply(.header2TitleStyle())
     }
@@ -25,7 +28,16 @@ class BaseExperienceCell: TableCell {
     override func updateViews() {
         guard let model = self.model as? BaseExperienceCellModel else { return }
         expLabel.text = String(model.baseExp)
-        let shapeLayer = CAShapeLayer()
+        
+        let animation = CABasicAnimation(keyPath: "strokeEnd")
+        animation.toValue = Double(model.baseExp) / 700
+        animation.duration = 1
+        animation.fillMode = CAMediaTimingFillMode.forwards
+        animation.isRemovedOnCompletion = false
+        shapeLayer.add(animation, forKey: "filling")
+    }
+    
+    private func setupCircleView() {
         let lowerLayer = CAShapeLayer()
         
         let circularPath = UIBezierPath(arcCenter: CGPoint(x: circleView.frame.width / 2, y: circleView.frame.height / 2), radius: 60, startAngle: -CGFloat.pi / 2, endAngle: 2*CGFloat.pi, clockwise: true)
@@ -46,12 +58,5 @@ class BaseExperienceCell: TableCell {
         shapeLayer.lineCap = CAShapeLayerLineCap.round
         
         self.circleView.layer.addSublayer(shapeLayer)
-        
-        let animation = CABasicAnimation(keyPath: "strokeEnd")
-        animation.toValue = Double(model.baseExp) / 700
-        animation.duration = 1
-        animation.fillMode = CAMediaTimingFillMode.forwards
-        animation.isRemovedOnCompletion = false
-        shapeLayer.add(animation, forKey: "filling")
     }
 }
