@@ -24,7 +24,7 @@ class AllListRouter: ViperRouter, AllListRouterInput {
     
     func showDetailPokemon(url: String) {
         let vc = RemoteDetailAssembly.create()
-        let _ = RemoteDetailAssembly.configure(with: vc, url: url)
+        _ = RemoteDetailAssembly.configure(with: vc, url: url)
         self.push(to: vc, animated: true)
     }
 }

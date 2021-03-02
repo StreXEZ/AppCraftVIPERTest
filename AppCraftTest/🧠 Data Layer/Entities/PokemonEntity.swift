@@ -25,7 +25,7 @@ extension PokemonEntity: LocalMappable {
         self.id = NSNumber(value: pokemon.id)
         self.height = NSNumber(value: pokemon.height)
         self.name = pokemon.name
-        self.weight = NSNumber(value:pokemon.weight)
+        self.weight = NSNumber(value: pokemon.weight)
         self.baseExperience = NSNumber(value: pokemon.baseExperience)
         self.isDefault = pokemon.isDefault
     }

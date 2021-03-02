@@ -10,7 +10,9 @@ import GKViper
 
 protocol InitialViewInput: ViperViewInput { }
 
-protocol InitialViewOutput: ViperViewOutput { }
+protocol InitialViewOutput: ViperViewOutput {
+    func viewWillAppear()
+}
 
 class InitialViewController: ViperViewController, InitialViewInput {
 
@@ -23,6 +25,11 @@ class InitialViewController: ViperViewController, InitialViewInput {
     }
     
     // MARK: - Lifecycle
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.output?.viewWillAppear()
+    }
+    
     override func viewDidLayoutSubviews() {
         self.applyStyles()
     }

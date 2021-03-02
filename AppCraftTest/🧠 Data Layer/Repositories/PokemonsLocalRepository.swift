@@ -35,17 +35,11 @@ class PokemonsLocalRepository: AppCraftTestRepository, PokemonsLocalRepositoryIn
     }
     
     func savePokemon(pokemon: PokemonDetailModel, completion: ((Bool) -> Void)?) {
-        checkPokemon(pokemon: pokemon) { exist in
-            if exist {
-                completion?(false)
+        self.update(pokemon) { (result, err) in
+            if result != nil, err == nil {
+                completion?(true)
             } else {
-                self.update(pokemon) { (result, err) in
-                    if result != nil, err == nil {
-                        completion?(true)
-                    } else {
-                        completion?(false)
-                    }
-                }
+                completion?(false)
             }
         }
     }

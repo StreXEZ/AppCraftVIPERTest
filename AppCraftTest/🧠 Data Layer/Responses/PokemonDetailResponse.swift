@@ -9,12 +9,12 @@ import Foundation
 import GKNetwork
 
 struct PokemonDetailResponse: Codable {
-    let height: Int
-    let weight: Int
-    let id: Int
-    let isDefault: Bool
-    let name: String
-    let baseExperience: Int
+    let height: Int?
+    let weight: Int?
+    let id: Int?
+    let isDefault: Bool?
+    let name: String?
+    let baseExperience: Int?
     
     enum CodingKeys: String, CodingKey {
         case height         = "height"
@@ -28,6 +28,13 @@ struct PokemonDetailResponse: Codable {
 
 extension PokemonDetailResponse: RemoteMappable {
     func mapResponseToDomain() -> AnyObject? {
+        guard let height = self.height else { return nil }
+        guard let weight = self.weight else { return nil }
+        guard let id = self.id else { return nil }
+        guard let isDefault = self.isDefault else { return nil }
+        guard let name = self.name else { return nil }
+        guard let baseExperience = self.baseExperience else { return nil }
+        
         let model = PokemonDetailModel(name: name, weight: weight, id: id, isDefault: isDefault, height: height, baseExperience: baseExperience)
         return model as AnyObject
     }

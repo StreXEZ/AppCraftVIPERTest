@@ -9,5 +9,5 @@
 import GKViper
 
 class AllListViewModel: ViperViewModel {
-    var pokemons: PokemonsListModel?
+    var pokemons: PokemonsListModel = PokemonsListModel(result: [])
 }

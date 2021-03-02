@@ -10,7 +10,7 @@ import GKViper
 import GKRepresentable
 
 protocol AllListViewInput: ViperViewInput {
-    func reloadTable(with cells: [TableCellModel])
+    func updateSections(with sections: [TableSectionModel])
     func noConnection()
 }
 
@@ -26,7 +26,7 @@ class AllListViewController: ViperViewController {
     
     // MARK: - Props
     private let refreshController = UIRefreshControl()
-    private var rows : [TableCellModel] = []
+    private var sections : [TableSectionModel] = []
     var noConnectionView: NoConnectionView?
     
     fileprivate var output: AllListViewOutput? {
@@ -62,8 +62,8 @@ class AllListViewController: ViperViewController {
 
 // MARK: - AllListViewInput
 extension AllListViewController: AllListViewInput {
-    func reloadTable(with cells: [TableCellModel]) {
-        self.rows = cells
+    func updateSections(with sections: [TableSectionModel]) {
+        self.sections = sections
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
             self.tableVw.reloadData()
@@ -94,7 +94,7 @@ extension AllListViewController: AllListViewInput {
 extension AllListViewController {
     @objc
     func refreshList() {
-        output?.refreshData()
+        self.output?.refreshData()
         self.refreshController.perform(#selector(UIRefreshControl.endRefreshing), with: nil, afterDelay: 0)
     }
 }
@@ -111,12 +111,16 @@ extension AllListViewController: UITableViewDelegate, UITableViewDataSource {
         self.tableVw.registerCellNib(PokemonTableCell.self)
     }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return self.sections.count
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return rows.count
+        return self.sections[section].rows.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let model = rows[indexPath.row]
+        let model = self.sections[indexPath.section].rows[indexPath.row]
         guard !model.cellIdentifier.isEmpty,
               let cell = tableView.dequeueReusableCell(withIdentifier: model.cellIdentifier, for: indexPath) as? PokemonTableCell  else { return UITableViewCell() }
         cell.model = model
@@ -124,13 +128,13 @@ extension AllListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let model = self.rows[indexPath.row] as? PokemonTableCellModel else { return }
+        guard let model = self.sections[indexPath.section].rows[indexPath.row] as? PokemonTableCellModel else { return }
         self.output?.showDetails(for: model.url)
     }
     
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let action = UIContextualAction(style: .normal, title: "Save") { (action, view, completionHandler) in
-            guard let model = self.rows[indexPath.row] as? PokemonTableCellModel else { return }
+            guard let model = self.sections[indexPath.section].rows[indexPath.row] as? PokemonTableCellModel else { return }
             self.output?.savePokemon(from: model.url)
             completionHandler(true)
         }

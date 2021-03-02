@@ -28,9 +28,10 @@ class AllListPresenter: ViperPresenter, AllListPresenterInput, AllListViewOutput
     }
     
     private let useCase: GetPokemonsUseCaseInput
-    private lazy var localUseCase: PokemonDetailsUseCaseInput = PokemonDetailsUseCase()
-    private lazy var singlePokemonUseCase: GetSinglePokemonUseCaseInput = GetSinglePokemonUseCase()
+    private let localUseCase: PokemonDetailsUseCaseInput = PokemonDetailsUseCase()
+    private let singlePokemonUseCase: GetSinglePokemonUseCaseInput = GetSinglePokemonUseCase()
     private let viewModel: AllListViewModel
+    private let limit = 100
     
     // MARK: - Initialization
     override init() {
@@ -39,33 +40,35 @@ class AllListPresenter: ViperPresenter, AllListPresenterInput, AllListViewOutput
         super.init()
         self.useCase.subscribe(with: self)
         self.localUseCase.subscribe(with: self)
-        singlePokemonUseCase.subscribe(with: self)
+        self.singlePokemonUseCase.subscribe(with: self)
     }
     
     // MARK: - AllListViewOutput
     override func viewIsReady(_ controller: UIViewController) {
         self.view?.setupInitialState(with: self.viewModel)
-        self.useCase.getPokemons()
+        self.useCase.getPokemons(limit: limit)
     }
     
     func refreshData() {
-        useCase.getPokemons()
+        self.useCase.getPokemons(limit: limit)
     }
     
     func showDetails(for url: String) {
-        router?.showDetailPokemon(url: url)
+        self.router?.showDetailPokemon(url: url)
     }
     
     func savePokemon(from url: String) {
         self.singlePokemonUseCase.get(url: url)
     }
     
-    func createRows() -> [TableCellModel] {
-        var rows: [TableCellModel] = []
-        self.viewModel.pokemons?.result.forEach { item in
-            rows.append(PokemonTableCellModel(name: item.name, url: item.url))
+    func makeSections() {
+        let mainSection = TableSectionModel()
+        
+        self.viewModel.pokemons.result.forEach { item in
+            mainSection.rows.append(PokemonTableCellModel(name: item.name, url: item.url))
         }
-        return rows
+        
+        self.view?.updateSections(with: [mainSection])
     }
 }
 
@@ -73,12 +76,12 @@ class AllListPresenter: ViperPresenter, AllListPresenterInput, AllListViewOutput
 extension AllListPresenter: GetPokemonsUseCaseOutput {
     func error(useCase: GetPokemonsUseCase, error: Error) {
         guard let error = error as? APIError, error == APIError.noConnection else { return }
-        view?.noConnection()
+        self.view?.noConnection()
     }
     
     func loadList(useCase: GetPokemonsUseCase, result: PokemonsListModel) {
         self.viewModel.pokemons = result
-        view?.reloadTable(with: createRows())
+        self.makeSections()
     }
 }
 
@@ -101,7 +104,7 @@ extension AllListPresenter: PokemonDetailsUseCaseOutput {
     
     func pokemonExistance(doesExist: Bool) {
         if doesExist {
-            view?.show(title: AppLocalization.Alerts.alreadySavedTitle.localized, message: AppLocalization.Alerts.alreadtSavedBody.localized, animated: true)
+            self.view?.show(title: AppLocalization.Alerts.alreadySavedTitle.localized, message: AppLocalization.Alerts.alreadtSavedBody.localized, animated: true)
         }
     }
 

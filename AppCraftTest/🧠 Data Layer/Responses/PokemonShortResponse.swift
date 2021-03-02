@@ -9,8 +9,8 @@ import Foundation
 import GKNetwork
 
 struct PokemonShortResponse: Codable {
-    let name: String
-    let url: String
+    let name: String?
+    let url: String?
     
     enum CondingKeys: String, CodingKey {
         case name   = "name"
@@ -20,7 +20,11 @@ struct PokemonShortResponse: Codable {
 
 extension PokemonShortResponse: RemoteMappable {
     func mapResponseToDomain() -> AnyObject? {
-        let model = PokemonShortModel(name: self.name, url: self.url)
+        guard let name = self.name else { return nil }
+        guard let url = self.url else { return nil }
+        
+        let model = PokemonShortModel(name: name, url: url)
+        
         return model as AnyObject
     }
 }

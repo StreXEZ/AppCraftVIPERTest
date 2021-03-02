@@ -47,9 +47,17 @@ class PokemonDetailsUseCase: UseCase, PokemonDetailsUseCaseInput {
     }
     
     func savePokemon(pokemon: PokemonDetailModel) {
-        self.localRepository.savePokemon(pokemon: pokemon) { success in
-            if success {
-                self.output?.provideSave()
+        self.localRepository.checkPokemon(pokemon: pokemon) { exist in
+            if !exist {
+                
+                self.localRepository.savePokemon(pokemon: pokemon) { success in
+                    if success {
+                        self.output?.provideSave()
+                    } else {
+                        self.output?.error(error: CoreDataError.dbInteractionError)
+                    }
+                }
+                
             } else {
                 self.output?.pokemonExistance(doesExist: true)
             }

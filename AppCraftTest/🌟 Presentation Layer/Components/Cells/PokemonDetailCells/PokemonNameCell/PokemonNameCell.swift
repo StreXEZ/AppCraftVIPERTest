@@ -16,6 +16,6 @@ class PokemonNameCell: TableCell {
     
     override func updateViews() {
         guard let model = self.model as? PokemonNameCellModel else { return }
-        nameLabel.text = model.name
+        self.nameLabel.text = model.name
     }
 }

@@ -38,8 +38,8 @@ class RemoteDetailViewController: ViperViewController {
     func setupComponents() {
         self.navigationItem.title = AppLocalization.Titles.pokemonDetails.localized
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        setupTableView()
-        tableVw.separatorStyle = .none
+        self.setupTableView()
+        self.tableVw.separatorStyle = .none
     }
     
     func setupActions() { }
@@ -71,7 +71,7 @@ extension RemoteDetailViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return rows.count
+        return self.rows.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

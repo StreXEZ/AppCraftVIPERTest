@@ -30,8 +30,8 @@ class LocalDetailPresenter: ViperPresenter, LocalDetailPresenterInput, LocalDeta
         return router
     }
     
-    let output: LocalDetailOutput
-    var viewModel: LocalDetailViewModel
+    private let output: LocalDetailOutput
+    private var viewModel: LocalDetailViewModel
     private let localUseCase: PokemonDetailsUseCaseInput
     
     // MARK: - Initialization
@@ -40,7 +40,7 @@ class LocalDetailPresenter: ViperPresenter, LocalDetailPresenterInput, LocalDeta
         self.localUseCase = PokemonDetailsUseCase()
         self.output = output
         super.init()
-        localUseCase.subscribe(with: self)
+        self.localUseCase.subscribe(with: self)
     }
     
     // MARK: - LocalDetailPresenterInput
@@ -57,7 +57,7 @@ class LocalDetailPresenter: ViperPresenter, LocalDetailPresenterInput, LocalDeta
             PokemonTypeCellModel(isDefault: viewModel.pokemon.isDefault),
             BaseExperienceCellModel(baseExp: viewModel.pokemon.baseExperience),
             WeightHeightCellModel(height: viewModel.pokemon.height, weight: viewModel.pokemon.weight)]
-        view?.updateInfo(with: rows)
+        self.view?.updateInfo(with: rows)
         
     }
         
@@ -66,7 +66,7 @@ class LocalDetailPresenter: ViperPresenter, LocalDetailPresenterInput, LocalDeta
 
 extension LocalDetailPresenter {
     func deletePokemon() {
-        view?.show(CustomAlerts.deleteAlert { [weak self] in
+        self.view?.show(CustomAlerts.deleteAlert { [weak self] in
             guard let self = self else { return }
             self.localUseCase.deletePokemon(pokemon: self.viewModel.pokemon)
         }, animated: true)

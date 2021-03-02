@@ -13,7 +13,6 @@ class EmptyListCell: TableCell {
     
     override func setupView() {
         self.contentVw.apply(.customInfoCellStyle())
-        
         self.messageLabel.apply(.thinMessageStyle())
     }
     

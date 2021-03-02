@@ -27,7 +27,7 @@ class BaseExperienceCell: TableCell {
     
     override func updateViews() {
         guard let model = self.model as? BaseExperienceCellModel else { return }
-        expLabel.text = String(model.baseExp)
+        self.expLabel.text = String(model.baseExp)
         
         let animation = CABasicAnimation(keyPath: "strokeEnd")
         animation.toValue = Double(model.baseExp) / 700
@@ -40,7 +40,7 @@ class BaseExperienceCell: TableCell {
     private func setupCircleView() {
         let lowerLayer = CAShapeLayer()
         
-        let circularPath = UIBezierPath(arcCenter: CGPoint(x: circleView.frame.width / 2, y: circleView.frame.height / 2), radius: 60, startAngle: -CGFloat.pi / 2, endAngle: 2*CGFloat.pi, clockwise: true)
+        let circularPath = UIBezierPath(arcCenter: CGPoint(x: circleView.frame.width / 2, y: circleView.frame.height / 2), radius: 60, startAngle: -CGFloat.pi / 2, endAngle: 2 * CGFloat.pi, clockwise: true)
         
         lowerLayer.path = circularPath.cgPath
         lowerLayer.strokeColor = UIColor.lightGray.cgColor

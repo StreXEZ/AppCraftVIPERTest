@@ -10,7 +10,7 @@ import GKNetwork
 
 enum PokemonListRouter {
     enum Remote {
-        case getPokemons
+        case getPokemons(limit: Int)
         
         var method: HTTPMethod {
             switch self {
@@ -21,8 +21,8 @@ enum PokemonListRouter {
         
         var path: String {
             switch self {
-            case .getPokemons:
-                return "\(AppConfiguration.serverApi)/pokemon?limit=100"
+            case let .getPokemons(limit):
+                return "\(AppConfiguration.serverApi)/pokemon?limit=\(limit)"
             }
         }
         

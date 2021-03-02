@@ -23,15 +23,15 @@ class NoConnectionView: UIView {
     
     public func setup(model: NoConnectionViewModel) {
         self.model = model
-        setupComponents()
+        self.setupComponents()
     }
 
     func setupComponents() {
-        textLabel.text = AppLocalization.InfoMessages.noConnection.localized
-        refreshButton.setTitle(AppLocalization.General.refresh.localized, for: .normal)
-        refreshButton.apply(.refreshButton())
-        textLabel.apply(.header2TitleStyle())
-        refreshButton.addTarget(self, action: #selector(tapButton(_:)), for: .touchUpInside)
+        self.textLabel.text = AppLocalization.InfoMessages.noConnection.localized
+        self.refreshButton.setTitle(AppLocalization.General.refresh.localized, for: .normal)
+        self.refreshButton.apply(.refreshButton())
+        self.textLabel.apply(.header2TitleStyle())
+        self.refreshButton.addTarget(self, action: #selector(tapButton(_:)), for: .touchUpInside)
     }
     
     deinit {
@@ -40,6 +40,6 @@ class NoConnectionView: UIView {
     
     @objc
     private func tapButton(_ button: UIButton) {
-        model?.didAction(self, .tapRefresh)
+        self.model?.didAction(self, .tapRefresh)
     }
 }

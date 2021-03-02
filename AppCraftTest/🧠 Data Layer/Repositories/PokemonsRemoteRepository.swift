@@ -14,21 +14,21 @@ typealias PokemonRemoteListHandler = (Result<PokemonsListModel, Error>) -> Void
 typealias SinglePokemonHandler = (Result<PokemonDetailModel, Error>) -> Void
 
 protocol PokemonRemoteRepositoryInterface: RepositoryInterface {
-    func getPokemons(completion: @escaping PokemonRemoteListHandler)
+    func getPokemons(limit: Int, completion: @escaping PokemonRemoteListHandler)
     func getSinglePokemon(url: String, completion: @escaping SinglePokemonHandler)
 }
 
 class PokemonRemoteRepository: AppCraftTestRepository, PokemonRemoteRepositoryInterface {
-    func getPokemons(completion: @escaping PokemonRemoteListHandler) {
+    func getPokemons(limit: Int, completion: @escaping PokemonRemoteListHandler) {
         guard (try? Reachability().connection != Reachability.Connection.unavailable) ?? false else {
             completion(.failure(APIError.noConnection))
             return
         }
-        guard let request = PokemonListRouter.Remote.getPokemons.request else {
+        guard let request = PokemonListRouter.Remote.getPokemons(limit: limit).request else {
             completion(.failure(APIError.cannotCreateRequest))
             return
         }
-        self.execute(request, response: PokemonsListResponse.self) { (result, _, error) in
+        self.execute(request, response: PokemonsResponse.self) { (result, _, error) in
             if let mappedResult = result as? PokemonsListModel, error == nil {
                 completion(.success(mappedResult))
             } else {

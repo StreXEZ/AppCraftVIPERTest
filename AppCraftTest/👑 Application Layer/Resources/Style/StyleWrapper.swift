@@ -32,21 +32,21 @@ extension StyleWrapper where Element: UIView {
         return .wrap { view in
             view.layer.cornerRadius = 10
             view.layer.borderWidth = 1
-            view.layer.borderColor = UIColor.darkGray.cgColor
+            view.layer.borderColor = AppTheme.accentBorderViewColor.cgColor
         }
     }
     
     static func pokemonCellStyle() -> StyleWrapper {
         return .wrap { view in
             view.layer.cornerRadius = 10
-            view.backgroundColor = UIColor(hex: "F0F0F0")
+            view.backgroundColor = AppTheme.defaultCellColor
         }
     }
     
     static func customInfoCellStyle() -> StyleWrapper {
         return .wrap { view in
             view.layer.cornerRadius = 15
-            view.backgroundColor = UIColor(hex: "E8E8E8")
+            view.backgroundColor = AppTheme.infoCellColor
         }
     }
 }

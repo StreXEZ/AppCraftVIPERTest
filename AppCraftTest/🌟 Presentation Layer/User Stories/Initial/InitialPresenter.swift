@@ -39,7 +39,10 @@ class InitialPresenter: ViperPresenter, InitialPresenterInput, InitialViewOutput
     // MARK: - InitialViewOutput
     override func viewIsReady(_ controller: UIViewController) {
         self.view?.setupInitialState(with: self.viewModel)
-        router?.presentMain()
+    }
+    
+    func viewWillAppear() {
+        self.router?.presentMain()
     }
     
     // MARK: - Module functions

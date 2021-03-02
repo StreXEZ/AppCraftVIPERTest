@@ -36,7 +36,6 @@
 		E71EB4CF25ECF92700269E26 /* PokemonTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71EB4CE25ECF92700269E26 /* PokemonTypeCell.swift */; };
 		E71EB4D325ECF93100269E26 /* PokemonTypeCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71EB4D225ECF93100269E26 /* PokemonTypeCellModel.swift */; };
 		E71EB4D625ECF93D00269E26 /* PokemonTypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E71EB4D525ECF93D00269E26 /* PokemonTypeCell.xib */; };
-		E71EB4E425ED1ADF00269E26 /* ConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71EB4E325ED1ADF00269E26 /* ConnectionManager.swift */; };
 		E71EB4F325ED1CC300269E26 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71EB4F225ED1CC300269E26 /* APIError.swift */; };
 		E71EB4F725ED1FDF00269E26 /* CoreDataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71EB4F625ED1FDF00269E26 /* CoreDataError.swift */; };
 		E71EB50925ED2ED100269E26 /* NoConnectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71EB50825ED2ED100269E26 /* NoConnectionViewModel.swift */; };
@@ -147,7 +146,6 @@
 		E71EB4CE25ECF92700269E26 /* PokemonTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonTypeCell.swift; sourceTree = "<group>"; };
 		E71EB4D225ECF93100269E26 /* PokemonTypeCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonTypeCellModel.swift; sourceTree = "<group>"; };
 		E71EB4D525ECF93D00269E26 /* PokemonTypeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PokemonTypeCell.xib; sourceTree = "<group>"; };
-		E71EB4E325ED1ADF00269E26 /* ConnectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionManager.swift; sourceTree = "<group>"; };
 		E71EB4F225ED1CC300269E26 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		E71EB4F625ED1FDF00269E26 /* CoreDataError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataError.swift; sourceTree = "<group>"; };
 		E71EB50825ED2ED100269E26 /* NoConnectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoConnectionViewModel.swift; sourceTree = "<group>"; };
@@ -270,8 +268,8 @@
 			isa = PBXGroup;
 			children = (
 				E711A1F325E8CFE700B6DBF1 /* RemoteDetailAssembly.swift */,
-				E711A1F625E8CFE700B6DBF1 /* RemoteDetailPresenter.swift */,
 				E711A1F425E8CFE700B6DBF1 /* RemoteDetailRouter.swift */,
+				E711A1F625E8CFE700B6DBF1 /* RemoteDetailPresenter.swift */,
 				E711A1F225E8CFE700B6DBF1 /* RemoteDetailViewController.swift */,
 				E711A1F525E8CFE700B6DBF1 /* RemoteDetailViewController.xib */,
 				E711A1F125E8CFE700B6DBF1 /* RemoteDetailViewModel.swift */,
@@ -316,9 +314,9 @@
 		E71EB4AE25ECDEFA00269E26 /* EmptyListCell */ = {
 			isa = PBXGroup;
 			children = (
-				E71EB4AF25ECDF1400269E26 /* EmptyListCell.xib */,
 				E71EB4B225ECDFFB00269E26 /* EmptyListCellModel.swift */,
 				E71EB4B525ECE00600269E26 /* EmptyListCell.swift */,
+				E71EB4AF25ECDF1400269E26 /* EmptyListCell.xib */,
 			);
 			path = EmptyListCell;
 			sourceTree = "<group>";
@@ -639,7 +637,6 @@
 		E722D0CF25E7BBC60004EA7D /* 🤖 Service Layer */ = {
 			isa = PBXGroup;
 			children = (
-				E71EB4E325ED1ADF00269E26 /* ConnectionManager.swift */,
 			);
 			path = "🤖 Service Layer";
 			sourceTree = "<group>";
@@ -668,8 +665,8 @@
 		E722D13325E7D8EB0004EA7D /* CustomTabBarItemView */ = {
 			isa = PBXGroup;
 			children = (
-				E722D13425E7DA720004EA7D /* CustomTabBarItemView.xib */,
 				E722D13725E7DD980004EA7D /* CustomTabBarItemView.swift */,
+				E722D13425E7DA720004EA7D /* CustomTabBarItemView.xib */,
 			);
 			path = CustomTabBarItemView;
 			sourceTree = "<group>";
@@ -687,8 +684,8 @@
 			isa = PBXGroup;
 			children = (
 				E722D14625E7E8380004EA7D /* AllListAssembly.swift */,
-				E722D14925E7E8380004EA7D /* AllListPresenter.swift */,
 				E722D14725E7E8380004EA7D /* AllListRouter.swift */,
+				E722D14925E7E8380004EA7D /* AllListPresenter.swift */,
 				E722D14525E7E8380004EA7D /* AllListViewController.swift */,
 				E722D14825E7E8380004EA7D /* AllListViewController.xib */,
 				E722D14425E7E8380004EA7D /* AllListViewModel.swift */,
@@ -700,8 +697,8 @@
 			isa = PBXGroup;
 			children = (
 				E722D15425E7E8490004EA7D /* SavedListAssembly.swift */,
-				E722D15725E7E8490004EA7D /* SavedListPresenter.swift */,
 				E722D15525E7E8490004EA7D /* SavedListRouter.swift */,
+				E722D15725E7E8490004EA7D /* SavedListPresenter.swift */,
 				E722D15325E7E8490004EA7D /* SavedListViewController.swift */,
 				E722D15625E7E8490004EA7D /* SavedListViewController.xib */,
 				E722D15225E7E8490004EA7D /* SavedListViewModel.swift */,
@@ -721,8 +718,8 @@
 			isa = PBXGroup;
 			children = (
 				E77DEE5325EC310B009589F5 /* NoConnectionView.swift */,
-				E77DEE5725EC3129009589F5 /* NoConnectionView.xib */,
 				E71EB50825ED2ED100269E26 /* NoConnectionViewModel.swift */,
+				E77DEE5725EC3129009589F5 /* NoConnectionView.xib */,
 			);
 			path = NoConnectionView;
 			sourceTree = "<group>";
@@ -934,7 +931,6 @@
 				E722D07425E7BBC60004EA7D /* AppDelegate.swift in Sources */,
 				E722D15D25E7E8490004EA7D /* SavedListPresenter.swift in Sources */,
 				E711A1F825E8CFE700B6DBF1 /* RemoteDetailViewController.swift in Sources */,
-				E71EB4E425ED1ADF00269E26 /* ConnectionManager.swift in Sources */,
 				E722D0CE25E7BBC60004EA7D /* InitialViewModel.swift in Sources */,
 				E711A20925E8CFF500B6DBF1 /* LocalDetailPresenter.swift in Sources */,
 				E71EB4D325ECF93100269E26 /* PokemonTypeCellModel.swift in Sources */,

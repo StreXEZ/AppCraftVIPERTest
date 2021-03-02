@@ -42,4 +42,29 @@ enum AppTheme {
         }
     }
     
+    // MARK: - Components colors
+    /// Dark Grey
+    public static var accentBorderViewColor: UIColor {
+        switch AppThemeManager.current.type {
+        default:
+                return UIColor.darkGray
+        }
+    }
+    
+    // MARK: - Cell content colors
+    /// hex: F0F0F0, alpha: 1
+    public static var defaultCellColor: UIColor {
+        switch AppThemeManager.current.type {
+        default:
+                return UIColor(hex: "F0F0F0", alpha: 1.0)
+        }
+    }
+    
+    /// hex: E8E8E8, alpha: 1
+    public static var infoCellColor: UIColor {
+        switch AppThemeManager.current.type {
+        default:
+            return UIColor(hex: "E8E8E8", alpha: 1.0)
+        }
+    }
 }

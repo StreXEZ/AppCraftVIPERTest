@@ -37,9 +37,9 @@ class RemoteDetailPresenter: ViperPresenter, RemoteDetailPresenterInput {
         self.remoteUseCase = GetSinglePokemonUseCase()
         self.localUseCase = PokemonDetailsUseCase()
         super.init()
-        beginLoading()
-        remoteUseCase.subscribe(with: self)
-        localUseCase.subscribe(with: self)
+        self.beginLoading()
+        self.remoteUseCase.subscribe(with: self)
+        self.localUseCase.subscribe(with: self)
     }
     
     override func beginLoading() {
@@ -57,7 +57,7 @@ class RemoteDetailPresenter: ViperPresenter, RemoteDetailPresenterInput {
     override func viewIsReady(_ controller: UIViewController) {
         self.view?.setupInitialState(with: self.viewModel)
         self.remoteUseCase.get(url: viewModel.url ?? "")
-        finishLoading(with: nil)
+        self.finishLoading(with: nil)
     }
     
     
@@ -65,8 +65,8 @@ class RemoteDetailPresenter: ViperPresenter, RemoteDetailPresenterInput {
         let rows = [PokemonNameCellModel(name: viewModel.pokemon?.name ?? "Name"),
                     PokemonTypeCellModel(isDefault: viewModel.pokemon?.isDefault ?? false),
                     BaseExperienceCellModel(baseExp: viewModel.pokemon?.baseExperience ?? 0),
-                    WeightHeightCellModel(height: viewModel.pokemon?.height ?? 0, weight: viewModel.pokemon?.weight ?? 0),]
-        view?.updateInfo(with: rows)
+                    WeightHeightCellModel(height: viewModel.pokemon?.height ?? 0, weight: viewModel.pokemon?.weight ?? 0)]
+        self.view?.updateInfo(with: rows)
     }
 }
 
@@ -88,11 +88,11 @@ extension RemoteDetailPresenter: RemoteDetailViewOutput {
     func interactWithLocalDB() {
         guard let saved = viewModel.saved, let pokemon = viewModel.pokemon else { return }
         if saved {
-            view?.show(CustomAlerts.deleteAlert { [weak self] in
+            self.view?.show(CustomAlerts.deleteAlert { [weak self] in
                 self?.localUseCase.deletePokemon(pokemon: pokemon)
-            },animated: true)
+            }, animated: true)
         } else {
-            localUseCase.savePokemon(pokemon: pokemon)
+            self.localUseCase.savePokemon(pokemon: pokemon)
         }
     }
 }
@@ -105,7 +105,7 @@ extension RemoteDetailPresenter: PokemonDetailsUseCaseOutput {
     
     func pokemonExistance(doesExist: Bool) {
         self.viewModel.saved = doesExist
-        view?.localPokemonState(isPokeSaved: doesExist)
+        self.view?.localPokemonState(isPokeSaved: doesExist)
     }
     
     func provideDelete() {

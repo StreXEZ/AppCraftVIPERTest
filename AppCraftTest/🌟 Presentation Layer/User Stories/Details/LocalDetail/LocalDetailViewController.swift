@@ -40,7 +40,7 @@ class LocalDetailViewController: ViperViewController {
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: AppAssets.favourite, style: .plain, target: self, action: #selector(deletePokemon))
         self.navigationItem.largeTitleDisplayMode = .always
-        setupTableView()
+        self.setupTableView()
     }
     
     func setupActions() { }
@@ -70,7 +70,7 @@ extension LocalDetailViewController: LocalDetailViewInput {
 extension LocalDetailViewController {
     @objc
     func deletePokemon() {
-        output?.deletePokemon()
+        self.output?.deletePokemon()
     }
 }
 
@@ -87,7 +87,7 @@ extension LocalDetailViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return rows.count
+        return self.rows.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

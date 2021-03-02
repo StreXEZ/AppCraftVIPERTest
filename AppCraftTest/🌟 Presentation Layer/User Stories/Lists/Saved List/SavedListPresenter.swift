@@ -47,15 +47,30 @@ class SavedListPresenter: ViperPresenter, SavedListPresenterInput {
         self.fetchPokesUseCase.fetchSavedPokemons()
     }
     
+    func makeSections() {
+        let mainSection = TableSectionModel()
+        
+        if self.viewModel.pokemons.isEmpty {
+            mainSection.rows.append(EmptyListCellModel())
+            self.view?.updateSections(with: [mainSection])
+            return
+        }
+        
+        self.viewModel.pokemons.forEach { item in
+            mainSection.rows.append(PokemonTableCellModel(name: item.name, url: ""))
+        }
+        self.view?.updateSections(with: [mainSection])
+    }
+    
     func createRows() -> [TableCellModel] {
         var rows: [TableCellModel] = []
         
-        if viewModel.pokemons.isEmpty {
+        if self.viewModel.pokemons.isEmpty {
             rows.append(EmptyListCellModel())
             return rows
         }
         
-        viewModel.pokemons.forEach { item in
+        self.viewModel.pokemons.forEach { item in
             rows.append(PokemonTableCellModel(name: item.name, url: ""))
         }
         return rows
@@ -79,7 +94,7 @@ extension SavedListPresenter: SavedListViewOutput {
         guard let pokeToRemove = viewModel.pokemons.first(where: { (poke) -> Bool in
             poke.name == name
         }) else { return }
-        view?.show(CustomAlerts.deleteAlert(callback: { [weak self] in
+        self.view?.show(CustomAlerts.deleteAlert(callback: { [weak self] in
             self?.localUseCase.deletePokemon(pokemon: pokeToRemove)
         }), animated: true)
     }
@@ -94,8 +109,8 @@ extension SavedListPresenter: LocalDetailOutput {
 // MARK: - PokemonDetailsUseCaseOutput
 extension SavedListPresenter: PokemonDetailsUseCaseOutput, GetLocalPokemonsUseCaseOutput {
     func loadPokemons(result: [PokemonDetailModel]) {
-        viewModel.pokemons = result
-        view?.reloadTable(with: createRows())
+        self.viewModel.pokemons = result
+        self.makeSections()
     }
     
     func provideDelete() {

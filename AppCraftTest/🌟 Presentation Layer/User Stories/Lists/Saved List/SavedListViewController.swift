@@ -10,7 +10,7 @@ import GKViper
 import GKRepresentable
 
 protocol SavedListViewInput: ViperViewInput {
-    func reloadTable(with cells: [TableCellModel])
+    func updateSections(with sections: [TableSectionModel])
     func reloadTable()
 }
 
@@ -26,7 +26,7 @@ class SavedListViewController: ViperViewController, SavedListViewInput {
     
     // MARK: - Props
     private let refreshController = UIRefreshControl()
-    private var rows : [TableCellModel] = []
+    private var sections : [TableSectionModel] = []
     
     fileprivate var output: SavedListViewOutput? {
         guard let output = self._output as? SavedListViewOutput else { return nil }
@@ -51,7 +51,7 @@ class SavedListViewController: ViperViewController, SavedListViewInput {
     // MARK: - SavedListViewInput
     override func setupInitialState(with viewModel: ViperViewModel) {
         super.setupInitialState(with: viewModel)
-        setupTableView()
+        self.setupTableView()
         self.setupComponents()
         self.setupActions()
     }
@@ -60,9 +60,8 @@ class SavedListViewController: ViperViewController, SavedListViewInput {
 
 // MARK: - SavedListViewInput
 extension SavedListViewController {
-    func reloadTable(with cells: [TableCellModel]) {
-        self.rows = cells
-        print(self.rows.count)
+    func updateSections(with sections: [TableSectionModel]) {
+        self.sections = sections
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
             self.tableVw.reloadData()
@@ -81,7 +80,7 @@ extension SavedListViewController {
 extension SavedListViewController {
     @objc
     func refreshList() {
-        output?.refreshData()
+        self.output?.refreshData()
         self.refreshController.perform(#selector(UIRefreshControl.endRefreshing), with: nil, afterDelay: 0)
     }
 }
@@ -100,14 +99,16 @@ extension SavedListViewController: UITableViewDelegate, UITableViewDataSource {
         self.tableVw.registerCellNib(EmptyListCell.self)
     }
 
-    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return self.sections.count
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return rows.count
+        return self.sections[section].rows.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let model = rows[indexPath.row]
+        let model = self.sections[indexPath.section].rows[indexPath.row]
         if model is PokemonTableCellModel {
             guard !model.cellIdentifier.isEmpty,
                   let cell = tableView.dequeueReusableCell(withIdentifier: model.cellIdentifier, for: indexPath) as? PokemonTableCell  else { return UITableViewCell() }
@@ -124,10 +125,10 @@ extension SavedListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let model = rows[indexPath.row]
+        let model = self.sections[indexPath.row].rows[indexPath.row]
         if model is PokemonTableCellModel {
             let action = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completionHandler) in
-                guard let model = self.rows[indexPath.row] as? PokemonTableCellModel else { return }
+                guard let model = self.sections[indexPath.section].rows[indexPath.row] as? PokemonTableCellModel else { return }
                 self.output?.deletePokemon(by: model.name)
             }
             return UISwipeActionsConfiguration(actions: [action])
@@ -136,7 +137,7 @@ extension SavedListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let model = self.rows[indexPath.row] as? PokemonTableCellModel else { return }
+        guard let model = self.sections[indexPath.section].rows[indexPath.row] as? PokemonTableCellModel else { return }
         self.output?.showDetails(by: model.name)
     }
 }
