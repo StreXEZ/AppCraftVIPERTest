@@ -10,8 +10,8 @@ import UIKit
 
 class CustomTabBarItemView: UIView {
     
-    @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet private weak var containerView: UIView!
+    @IBOutlet private weak var imageView: UIImageView!
 
     override func awakeAfter(using coder: NSCoder) -> Any? {
         return self.loadFromNibIfEmbeddedInDifferentNib()

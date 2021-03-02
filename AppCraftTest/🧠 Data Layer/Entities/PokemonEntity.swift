@@ -15,8 +15,8 @@ public class PokemonEntity: NSManagedObject {
     @NSManaged public var height: NSNumber
     @NSManaged public var weight: NSNumber
     @NSManaged public var name: String
-    @NSManaged public var is_default: Bool
-    @NSManaged public var base_experience: NSNumber
+    @NSManaged public var isDefault: Bool
+    @NSManaged public var baseExperience: NSNumber
 }
 
 extension PokemonEntity: LocalMappable {
@@ -26,8 +26,8 @@ extension PokemonEntity: LocalMappable {
         self.height = NSNumber(value: pokemon.height)
         self.name = pokemon.name
         self.weight = NSNumber(value:pokemon.weight)
-        self.base_experience = NSNumber(value: pokemon.base_experience)
-        self.is_default = pokemon.is_default
+        self.baseExperience = NSNumber(value: pokemon.baseExperience)
+        self.isDefault = pokemon.isDefault
     }
     
     public func mapEntityToDomain() -> AnyObject {
@@ -35,9 +35,9 @@ extension PokemonEntity: LocalMappable {
         pokemon.id = self.id.intValue
         pokemon.height = self.height.intValue
         pokemon.weight = self.weight.intValue
-        pokemon.base_experience = self.base_experience.intValue
+        pokemon.baseExperience = self.baseExperience.intValue
         pokemon.name = self.name
-        pokemon.is_default = self.is_default
+        pokemon.isDefault = self.isDefault
         return pokemon
     }
 }

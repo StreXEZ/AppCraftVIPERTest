@@ -50,12 +50,12 @@ class SavedListPresenter: ViperPresenter, SavedListPresenterInput {
     func createRows() -> [TableCellModel] {
         var rows: [TableCellModel] = []
         
-        if viewModel.pokemons?.count == 0 {
+        if viewModel.pokemons.isEmpty {
             rows.append(EmptyListCellModel())
             return rows
         }
         
-        viewModel.pokemons?.forEach { item in
+        viewModel.pokemons.forEach { item in
             rows.append(PokemonTableCellModel(name: item.name, url: ""))
         }
         return rows
@@ -69,14 +69,14 @@ extension SavedListPresenter: SavedListViewOutput {
     }
     
     func showDetails(by name: String) {
-        guard let pokeToShow = viewModel.pokemons?.first(where: { (poke) -> Bool in
+        guard let pokeToShow = viewModel.pokemons.first(where: { (poke) -> Bool in
             poke.name == name
         }) else { return }
         self.router?.showDetailPokemon(pokemon: pokeToShow, output: self)
     }
     
     func deletePokemon(by name: String) {
-        guard let pokeToRemove = viewModel.pokemons?.first(where: { (poke) -> Bool in
+        guard let pokeToRemove = viewModel.pokemons.first(where: { (poke) -> Bool in
             poke.name == name
         }) else { return }
         view?.show(CustomAlerts.deleteAlert(callback: { [weak self] in
@@ -95,7 +95,7 @@ extension SavedListPresenter: LocalDetailOutput {
 extension SavedListPresenter: PokemonDetailsUseCaseOutput, GetLocalPokemonsUseCaseOutput {
     func loadPokemons(result: [PokemonDetailModel]) {
         viewModel.pokemons = result
-            view?.reloadTable(with: createRows())
+        view?.reloadTable(with: createRows())
     }
     
     func provideDelete() {

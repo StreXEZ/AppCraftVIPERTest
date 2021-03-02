@@ -22,7 +22,7 @@ protocol AllListViewOutput: ViperViewOutput {
 
 class AllListViewController: ViperViewController {
     // MARK: - Outlets
-    @IBOutlet weak var tableVw: UITableView!
+    @IBOutlet private weak var tableVw: UITableView!
     
     // MARK: - Props
     private let refreshController = UIRefreshControl()
@@ -74,8 +74,8 @@ extension AllListViewController: AllListViewInput {
         self.noConnectionView = NoConnectionView.loadNib()
         guard let noConnectionView = self.noConnectionView else { return }
         var model = NoConnectionViewModel()
-        model.didAction = { [weak self] (v,_) in
-            v.removeFromSuperview()
+        model.didAction = { [weak self] (innerView, _) in
+            innerView.removeFromSuperview()
             self?.noConnectionView = nil
             self?.output?.refreshData()
         }

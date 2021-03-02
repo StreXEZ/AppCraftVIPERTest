@@ -19,7 +19,7 @@ protocol LocalDetailViewOutput: ViperViewOutput {
 
 class LocalDetailViewController: ViperViewController {
     // MARK: - Outlets
-    @IBOutlet weak var tableVw: UITableView!
+    @IBOutlet private weak var tableVw: UITableView!
     
     // MARK: - Props
     var rows: [TableCellModel] = []

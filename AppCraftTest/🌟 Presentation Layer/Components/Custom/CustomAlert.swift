@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CustomAlerts {
+enum CustomAlerts {
     static func deleteAlert(callback: @escaping () -> Void) -> UIAlertController {
         let alertController = UIAlertController(title: AppLocalization.Alerts.deleteAlertTitle.localized, message: AppLocalization.Alerts.deleteAlertBody.localized, preferredStyle: .alert)
         let deleteAction = UIAlertAction(title: AppLocalization.General.delete.localized, style: .destructive) { action in

@@ -15,7 +15,7 @@ typealias SinglePokemonHandler = (Result<PokemonDetailModel, Error>) -> Void
 
 protocol PokemonRemoteRepositoryInterface: RepositoryInterface {
     func getPokemons(completion: @escaping PokemonRemoteListHandler)
-    func getSinglePokemon(url: String ,completion: @escaping SinglePokemonHandler)
+    func getSinglePokemon(url: String, completion: @escaping SinglePokemonHandler)
 }
 
 class PokemonRemoteRepository: AppCraftTestRepository, PokemonRemoteRepositoryInterface {

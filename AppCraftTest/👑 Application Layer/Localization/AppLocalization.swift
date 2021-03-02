@@ -48,7 +48,7 @@ enum AppLocalization {
         case typeLabel       = "PokemonTypeLabel"
         case def             = "PokemonDefaultType"
         case nondef          = "PokemonNonDefaultType"
-        case base_experience = "PokemonBaseExperience"
+        case baseExperience = "PokemonBaseExperience"
         case height          = "PokemonHeight"
         case weight          = "PokemonWeight"
     }

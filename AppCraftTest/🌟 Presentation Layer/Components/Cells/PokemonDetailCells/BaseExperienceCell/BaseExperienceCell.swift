@@ -8,14 +8,14 @@
 import GKRepresentable
 
 class BaseExperienceCell: TableCell {
-    @IBOutlet weak var circleView: UIView!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var expLabel: UILabel!
+    @IBOutlet private weak var circleView: UIView!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var expLabel: UILabel!
     
     var shapeLayer = CAShapeLayer()
     
     override func setupView() {
-        self.titleLabel.text = AppLocalization.PokemonDetails.base_experience.localized
+        self.titleLabel.text = AppLocalization.PokemonDetails.baseExperience.localized
         setupCircleView()
         self.expLabel.apply(.headerTitleStyle())
         self.titleLabel.apply(.header2TitleStyle())

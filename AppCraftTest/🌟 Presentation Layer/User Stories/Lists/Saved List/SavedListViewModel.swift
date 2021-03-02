@@ -9,5 +9,5 @@
 import GKViper
 
 class SavedListViewModel: ViperViewModel {
-    var pokemons: [PokemonDetailModel]?
+    var pokemons: [PokemonDetailModel] = []
 }

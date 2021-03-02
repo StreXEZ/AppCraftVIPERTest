@@ -7,20 +7,20 @@
 
 import Foundation
 
-class PokemonDetailModel  {
+class PokemonDetailModel {
     var height: Int
     var weight: Int
     var id: Int
-    var is_default: Bool
+    var isDefault: Bool
     var name: String
-    var base_experience: Int
+    var baseExperience: Int
     
-    init(name: String = "", weight: Int = 0, id: Int = 0, is_default: Bool = false, height: Int = 0, base_experience: Int = 0) {
+    init(name: String = "", weight: Int = 0, id: Int = 0, isDefault: Bool = false, height: Int = 0, baseExperience: Int = 0) {
         self.height = height
         self.weight = weight
         self.id = id
-        self.is_default = is_default
-        self.base_experience = base_experience
+        self.isDefault = isDefault
+        self.baseExperience = baseExperience
         self.name = name
     }
 }

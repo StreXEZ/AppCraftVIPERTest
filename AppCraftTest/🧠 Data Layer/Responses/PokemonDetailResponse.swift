@@ -12,14 +12,23 @@ struct PokemonDetailResponse: Codable {
     let height: Int
     let weight: Int
     let id: Int
-    let is_default: Bool
+    let isDefault: Bool
     let name: String
-    let base_experience: Int
+    let baseExperience: Int
+    
+    enum CodingKeys: String, CodingKey {
+        case height         = "height"
+        case weight         = "weight"
+        case id             = "id"
+        case isDefault      = "is_default"
+        case name           = "name"
+        case baseExperience = "base_experience"
+    }
 }
 
 extension PokemonDetailResponse: RemoteMappable {
     func mapResponseToDomain() -> AnyObject? {
-        let model = PokemonDetailModel(name: name, weight: weight, id: id, is_default: is_default, height: height, base_experience: base_experience)
+        let model = PokemonDetailModel(name: name, weight: weight, id: id, isDefault: isDefault, height: height, baseExperience: baseExperience)
         return model as AnyObject
     }
 }

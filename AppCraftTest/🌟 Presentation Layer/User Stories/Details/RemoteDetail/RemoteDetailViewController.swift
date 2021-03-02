@@ -19,7 +19,7 @@ protocol RemoteDetailViewOutput: ViperViewOutput {
 }
 
 class RemoteDetailViewController: ViperViewController {
-    @IBOutlet weak var tableVw: UITableView!
+    @IBOutlet private weak var tableVw: UITableView!
     
     // MARK: - Props
     var rows: [TableCellModel] = []

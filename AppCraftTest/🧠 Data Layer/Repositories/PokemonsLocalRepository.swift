@@ -15,7 +15,7 @@ protocol PokemonsLocalRepositoryInterface: RepositoryInterface {
     func fetchSavedPokemons(completion: @escaping SavedPokemonsHandler)
     func savePokemon(pokemon: PokemonDetailModel, completion: ((Bool) -> Void)?)
     func deletePokemon(pokemon: PokemonDetailModel, completion: ((Bool) -> Void)?)
-    func checkPokemon(pokemon: PokemonDetailModel, completion: ((Bool) ->Void)?)
+    func checkPokemon(pokemon: PokemonDetailModel, completion: ((Bool) -> Void)?)
 }
 
 class PokemonsLocalRepository: AppCraftTestRepository, PokemonsLocalRepositoryInterface {
@@ -61,10 +61,11 @@ class PokemonsLocalRepository: AppCraftTestRepository, PokemonsLocalRepositoryIn
         }
     }
     
-    func checkPokemon(pokemon: PokemonDetailModel, completion: ((Bool) ->Void)?) {
+    func checkPokemon(pokemon: PokemonDetailModel, completion: ((Bool) -> Void)?) {
         let request = SinglePokemonRouter.Local.pokemon(id: pokemon.id).request
-        self.select(request) { (result, err) in
-            if result?.count == 0 {
+        self.select(request) { (result, _) in
+            guard let result = result else { return }
+            if result.isEmpty {
                 completion?(false)
             } else {
                 completion?(true)

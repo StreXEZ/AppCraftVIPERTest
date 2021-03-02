@@ -29,6 +29,7 @@ class BasicNavigationController: UINavigationController {
     
     private func setupUI() {
         self.navigationBar.isTranslucent = true
+        self.navigationBar.tintColor = .black
         
         if #available(iOS 11.0, *) {
             self.navigationBar.prefersLargeTitles = false

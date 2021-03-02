@@ -9,8 +9,8 @@ import GKViper
 import GKRepresentable
 
 class PokemonTableCell: TableCell {
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var contentVw: UIView!
+    @IBOutlet private weak var nameLabel: UILabel!
+    @IBOutlet private weak var contentVw: UIView!
     
     override func setupView() {
         self.contentVw.apply(.pokemonCellStyle())

@@ -11,6 +11,11 @@ import GKNetwork
 struct PokemonShortResponse: Codable {
     let name: String
     let url: String
+    
+    enum CondingKeys: String, CodingKey {
+        case name   = "name"
+        case url    = "url"
+    }
 }
 
 extension PokemonShortResponse: RemoteMappable {

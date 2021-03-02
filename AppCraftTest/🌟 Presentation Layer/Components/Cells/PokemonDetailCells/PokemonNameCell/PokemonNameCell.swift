@@ -8,7 +8,7 @@
 import GKRepresentable
 
 class PokemonNameCell: TableCell {
-    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet private weak var nameLabel: UILabel!
     
     override func setupView() {
         self.nameLabel.apply(.headerTitleStyle())

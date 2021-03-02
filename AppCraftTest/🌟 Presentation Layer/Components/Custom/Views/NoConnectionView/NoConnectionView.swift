@@ -8,8 +8,8 @@
 import UIKit
 
 class NoConnectionView: UIView {
-    @IBOutlet weak var textLabel: UILabel!
-    @IBOutlet weak var refreshButton: UIButton!
+    @IBOutlet private weak var textLabel: UILabel!
+    @IBOutlet private weak var refreshButton: UIButton!
     
     override class func awakeFromNib() {
         super.awakeFromNib()

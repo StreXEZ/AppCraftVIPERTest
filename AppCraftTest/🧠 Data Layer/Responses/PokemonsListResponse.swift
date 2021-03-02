@@ -9,6 +9,10 @@ import Foundation
 
 struct PokemonsListResponse: Codable {
     let results: [PokemonShortResponse]
+    
+    enum CodingKeys: String, CodingKey {
+        case results = "results"
+    }
 }
 
 extension PokemonsListResponse: RemoteMappable {

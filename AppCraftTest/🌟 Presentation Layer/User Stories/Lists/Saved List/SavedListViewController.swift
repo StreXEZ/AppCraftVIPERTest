@@ -22,7 +22,7 @@ protocol SavedListViewOutput: ViperViewOutput {
 
 class SavedListViewController: ViperViewController, SavedListViewInput {
     // MARK: - Outlets
-    @IBOutlet weak var tableVw: UITableView!
+    @IBOutlet private weak var tableVw: UITableView!
     
     // MARK: - Props
     private let refreshController = UIRefreshControl()

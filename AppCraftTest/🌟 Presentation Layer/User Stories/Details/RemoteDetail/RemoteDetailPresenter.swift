@@ -63,8 +63,8 @@ class RemoteDetailPresenter: ViperPresenter, RemoteDetailPresenterInput {
     
     func createRows() {
         let rows = [PokemonNameCellModel(name: viewModel.pokemon?.name ?? "Name"),
-                    PokemonTypeCellModel(isDefault: viewModel.pokemon?.is_default ?? false),
-                    BaseExperienceCellModel(baseExp: viewModel.pokemon?.base_experience ?? 0),
+                    PokemonTypeCellModel(isDefault: viewModel.pokemon?.isDefault ?? false),
+                    BaseExperienceCellModel(baseExp: viewModel.pokemon?.baseExperience ?? 0),
                     WeightHeightCellModel(height: viewModel.pokemon?.height ?? 0, weight: viewModel.pokemon?.weight ?? 0),]
         view?.updateInfo(with: rows)
     }

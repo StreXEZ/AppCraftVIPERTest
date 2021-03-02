@@ -54,8 +54,8 @@ class LocalDetailPresenter: ViperPresenter, LocalDetailPresenterInput, LocalDeta
     func createRows() {
         let rows = [
             PokemonNameCellModel(name: viewModel.pokemon.name),
-            PokemonTypeCellModel(isDefault: viewModel.pokemon.is_default),
-            BaseExperienceCellModel(baseExp: viewModel.pokemon.base_experience),
+            PokemonTypeCellModel(isDefault: viewModel.pokemon.isDefault),
+            BaseExperienceCellModel(baseExp: viewModel.pokemon.baseExperience),
             WeightHeightCellModel(height: viewModel.pokemon.height, weight: viewModel.pokemon.weight)]
         view?.updateInfo(with: rows)
         

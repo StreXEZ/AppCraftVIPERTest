@@ -9,10 +9,10 @@ import UIKit
 import GKRepresentable
 
 class WeightHeightCell: TableCell {
-    @IBOutlet weak var heightContainer: UIView!
-    @IBOutlet weak var weightContainer: UIView!
-    @IBOutlet weak var heightLabel: UILabel!
-    @IBOutlet weak var weightLabel: UILabel!
+    @IBOutlet private weak var heightContainer: UIView!
+    @IBOutlet private weak var weightContainer: UIView!
+    @IBOutlet private weak var heightLabel: UILabel!
+    @IBOutlet private weak var weightLabel: UILabel!
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         return

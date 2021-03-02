@@ -8,8 +8,8 @@
 import GKRepresentable
 
 class EmptyListCell: TableCell {
-    @IBOutlet weak var messageLabel: UILabel!
-    @IBOutlet weak var contentVw: UIView!
+    @IBOutlet private weak var messageLabel: UILabel!
+    @IBOutlet private weak var contentVw: UIView!
     
     override func setupView() {
         self.contentVw.apply(.customInfoCellStyle())
