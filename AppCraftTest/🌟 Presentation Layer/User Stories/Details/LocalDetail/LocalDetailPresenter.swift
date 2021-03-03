@@ -7,6 +7,7 @@
 //
 
 import GKViper
+import GKRepresentable
 
 protocol LocalDetailPresenterInput: ViperPresenterInput { }
 
@@ -48,17 +49,16 @@ class LocalDetailPresenter: ViperPresenter, LocalDetailPresenterInput, LocalDeta
     // MARK: - LocalDetailViewOutput
     override func viewIsReady(_ controller: UIViewController) {
         self.view?.setupInitialState(with: self.viewModel)
-        self.createRows()
+        self.makeSection()
     }
     
-    func createRows() {
-        let rows = [
-            PokemonNameCellModel(name: viewModel.pokemon.name),
-            PokemonTypeCellModel(isDefault: viewModel.pokemon.isDefault),
-            BaseExperienceCellModel(baseExp: viewModel.pokemon.baseExperience),
-            WeightHeightCellModel(height: viewModel.pokemon.height, weight: viewModel.pokemon.weight)]
-        self.view?.updateInfo(with: rows)
-        
+    func makeSection() {
+        let mainSection = TableSectionModel()
+        mainSection.rows.append(PokemonNameCellModel(name: viewModel.pokemon.name))
+        mainSection.rows.append(PokemonTypeCellModel(isDefault: viewModel.pokemon.isDefault))
+        mainSection.rows.append(BaseExperienceCellModel(baseExp: viewModel.pokemon.baseExperience))
+        mainSection.rows.append(WeightHeightCellModel(height: viewModel.pokemon.height, weight: viewModel.pokemon.weight))
+        self.view?.updateSections(with: [mainSection])
     }
         
     // MARK: - Module functions

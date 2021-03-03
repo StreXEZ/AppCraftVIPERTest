@@ -61,12 +61,13 @@ class RemoteDetailPresenter: ViperPresenter, RemoteDetailPresenterInput {
     }
     
     
-    func createRows() {
-        let rows = [PokemonNameCellModel(name: viewModel.pokemon?.name ?? "Name"),
-                    PokemonTypeCellModel(isDefault: viewModel.pokemon?.isDefault ?? false),
-                    BaseExperienceCellModel(baseExp: viewModel.pokemon?.baseExperience ?? 0),
-                    WeightHeightCellModel(height: viewModel.pokemon?.height ?? 0, weight: viewModel.pokemon?.weight ?? 0)]
-        self.view?.updateInfo(with: rows)
+    func makeSection() {
+        let mainSection = TableSectionModel()
+        mainSection.rows.append(PokemonNameCellModel(name: viewModel.pokemon?.name ?? ""))
+        mainSection.rows.append(PokemonTypeCellModel(isDefault: viewModel.pokemon?.isDefault ?? false))
+        mainSection.rows.append(BaseExperienceCellModel(baseExp: viewModel.pokemon?.baseExperience ?? 0))
+        mainSection.rows.append(WeightHeightCellModel(height: viewModel.pokemon?.height ?? 0, weight: viewModel.pokemon?.weight ?? 0))
+        self.view?.updateSections(with: [mainSection])
     }
 }
 
@@ -80,7 +81,7 @@ extension RemoteDetailPresenter: GetSinglePokemonUseCaseOutput {
     func loadPokemon(usecase: GetSinglePokemonUseCase, result: PokemonDetailModel) {
         self.viewModel.pokemon = result
         self.localUseCase.checkPokemon(pokemon: result)
-        self.createRows()
+        self.makeSection()
     }
 }
 

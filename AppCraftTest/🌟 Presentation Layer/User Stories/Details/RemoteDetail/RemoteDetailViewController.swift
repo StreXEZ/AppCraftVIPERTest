@@ -11,7 +11,7 @@ import GKRepresentable
 
 protocol RemoteDetailViewInput: ViperViewInput {
     func localPokemonState(isPokeSaved: Bool)
-    func updateInfo(with models: [TableCellModel])
+    func updateSections(with sections: [TableSectionModel])
 }
 
 protocol RemoteDetailViewOutput: ViperViewOutput {
@@ -22,7 +22,7 @@ class RemoteDetailViewController: ViperViewController {
     @IBOutlet private weak var tableVw: UITableView!
     
     // MARK: - Props
-    var rows: [TableCellModel] = []
+    var sections: [TableSectionModel] = []
     
     fileprivate var output: RemoteDetailViewOutput? {
         guard let output = self._output as? RemoteDetailViewOutput else { return nil }
@@ -70,12 +70,16 @@ extension RemoteDetailViewController: UITableViewDelegate, UITableViewDataSource
         self.tableVw.registerCellNib(PokemonTypeCell.self)
     }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return self.sections.count
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.rows.count
+        return self.sections[section].rows.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let model = rows[indexPath.row]
+        let model = self.sections[indexPath.section].rows[indexPath.row]
         
         if model is WeightHeightCellModel {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: model.cellIdentifier) as? WeightHeightCell else { return UITableViewCell() }
@@ -127,8 +131,8 @@ extension RemoteDetailViewController: RemoteDetailViewInput {
         self.output?.interactWithLocalDB()
     }
     
-    func updateInfo(with models: [TableCellModel]) {
-        self.rows = models
+    func updateSections(with sections: [TableSectionModel]) {
+        self.sections = sections
         DispatchQueue.main.async { [weak self] in
             self?.tableVw.reloadData()
         }

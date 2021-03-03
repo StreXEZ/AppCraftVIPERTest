@@ -10,7 +10,7 @@ import GKViper
 import GKRepresentable
 
 protocol LocalDetailViewInput: ViperViewInput {
-    func updateInfo(with cells: [TableCellModel])
+    func updateSections(with sections: [TableSectionModel])
 }
 
 protocol LocalDetailViewOutput: ViperViewOutput {
@@ -22,7 +22,7 @@ class LocalDetailViewController: ViperViewController {
     @IBOutlet private weak var tableVw: UITableView!
     
     // MARK: - Props
-    var rows: [TableCellModel] = []
+    var sections: [TableSectionModel] = []
     
     fileprivate var output: LocalDetailViewOutput? {
         guard let output = self._output as? LocalDetailViewOutput else { return nil }
@@ -58,8 +58,8 @@ class LocalDetailViewController: ViperViewController {
 
 // MARK: - Input
 extension LocalDetailViewController: LocalDetailViewInput {
-    func updateInfo(with cells: [TableCellModel]) {
-        self.rows = cells
+    func updateSections(with sections: [TableSectionModel]) {
+        self.sections = sections
         DispatchQueue.main.async { [weak self] in
             self?.tableVw.reloadData()
         }
@@ -86,12 +86,16 @@ extension LocalDetailViewController: UITableViewDelegate, UITableViewDataSource 
         self.tableVw.registerCellNib(PokemonTypeCell.self)
     }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return self.sections.count
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.rows.count
+        return self.sections[section].rows.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let model = rows[indexPath.row]
+        let model = self.sections[indexPath.section].rows[indexPath.row]
         
         if model is WeightHeightCellModel {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: model.cellIdentifier) as? WeightHeightCell else { return UITableViewCell() }
