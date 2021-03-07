@@ -8,6 +8,7 @@
 import Foundation
 
 struct PokemonShortModel {
-    let name: String
-    let url: String
+    var name: String
+    var url: String
+    var isSaved: Bool?
 }

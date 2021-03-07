@@ -34,6 +34,10 @@ class RemoteDetailViewController: ViperViewController {
         self.applyStyles()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+    }
+    
     // MARK: - Setup functions
     func setupComponents() {
         self.navigationItem.title = AppLocalization.Titles.pokemonDetails.localized
@@ -137,4 +141,5 @@ extension RemoteDetailViewController: RemoteDetailViewInput {
             self?.tableVw.reloadData()
         }
     }
+    
 }

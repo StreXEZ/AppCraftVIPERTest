@@ -9,7 +9,7 @@
 import GKViper
 
 protocol AllListRouterInput: ViperRouterInput {
-    func showDetailPokemon(url: String)
+    func showDetailPokemon(url: String, state: Bool, output: RemoteDetailOutput)
 }
 
 class AllListRouter: ViperRouter, AllListRouterInput {
@@ -22,9 +22,9 @@ class AllListRouter: ViperRouter, AllListRouterInput {
         return mainController
     }
     
-    func showDetailPokemon(url: String) {
+    func showDetailPokemon(url: String, state: Bool, output: RemoteDetailOutput) {
         let vc = RemoteDetailAssembly.create()
-        _ = RemoteDetailAssembly.configure(with: vc, url: url)
+        _ = RemoteDetailAssembly.configure(with: vc, url: url, state: state, output: output)
         self.push(to: vc, animated: true)
     }
 }

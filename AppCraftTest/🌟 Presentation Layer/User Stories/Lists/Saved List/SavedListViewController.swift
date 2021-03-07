@@ -124,18 +124,6 @@ extension SavedListViewController: UITableViewDelegate, UITableViewDataSource {
         return UITableViewCell()
     }
     
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let model = self.sections[indexPath.row].rows[indexPath.row]
-        if model is PokemonTableCellModel {
-            let action = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completionHandler) in
-                guard let model = self.sections[indexPath.section].rows[indexPath.row] as? PokemonTableCellModel else { return }
-                self.output?.deletePokemon(by: model.name)
-            }
-            return UISwipeActionsConfiguration(actions: [action])
-        }
-        return nil
-    }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let model = self.sections[indexPath.section].rows[indexPath.row] as? PokemonTableCellModel else { return }
         self.output?.showDetails(by: model.name)

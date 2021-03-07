@@ -14,9 +14,15 @@ class PokemonTableCellModel: TableCellModel {
     }
     var name: String
     var url: String
+    var isSaved: Bool
     
-    init(name: String, url: String) {
+    typealias ActionHandler = () -> Void
+    
+    var actionCallback: ActionHandler?
+    
+    init(name: String, url: String, isSaved: Bool = false) {
         self.name = name
         self.url = url
+        self.isSaved = isSaved
     }
 }

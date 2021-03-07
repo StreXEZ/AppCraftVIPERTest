@@ -50,31 +50,21 @@ class SavedListPresenter: ViperPresenter, SavedListPresenterInput {
     func makeSections() {
         let mainSection = TableSectionModel()
         
-        if self.viewModel.pokemons.isEmpty {
-            mainSection.rows.append(EmptyListCellModel())
-            self.view?.updateSections(with: [mainSection])
-            return
-        }
-        
         self.viewModel.pokemons.forEach { item in
-            mainSection.rows.append(PokemonTableCellModel(name: item.name, url: ""))
+            let model = PokemonTableCellModel(name: item.name, url: "", isSaved: true)
+            model.actionCallback = { [weak self, weak model] in
+                guard let self = self else { return }
+                if model?.isSaved ?? false {
+                    print("Deleted")
+                    self.deletePokemon(by: item.name)
+                }
+            }
+            mainSection.rows.append(model)
         }
+        self.finishLoading(with: nil)
         self.view?.updateSections(with: [mainSection])
     }
-    
-    func createRows() -> [TableCellModel] {
-        var rows: [TableCellModel] = []
-        
-        if self.viewModel.pokemons.isEmpty {
-            rows.append(EmptyListCellModel())
-            return rows
-        }
-        
-        self.viewModel.pokemons.forEach { item in
-            rows.append(PokemonTableCellModel(name: item.name, url: ""))
-        }
-        return rows
-    }
+
 }
 
 // MARK: - SavedListViewOutput
@@ -95,7 +85,7 @@ extension SavedListPresenter: SavedListViewOutput {
             poke.name == name
         }) else { return }
         self.view?.show(CustomAlerts.deleteAlert(callback: { [weak self] in
-            self?.localUseCase.deletePokemon(pokemon: pokeToRemove)
+            self?.localUseCase.deletePokemon(pokemon: pokeToRemove.name)
         }), animated: true)
     }
 }
@@ -108,19 +98,17 @@ extension SavedListPresenter: LocalDetailOutput {
 
 // MARK: - PokemonDetailsUseCaseOutput
 extension SavedListPresenter: PokemonDetailsUseCaseOutput, GetLocalPokemonsUseCaseOutput {
+    func provideDelete(for name: String) {
+        self.refreshData()
+    }
+    
     func loadPokemons(result: [PokemonDetailModel]) {
         self.viewModel.pokemons = result
         self.makeSections()
     }
     
-    func provideDelete() {
-        self.refreshData()
-    }
-    
-    func provideSave() { }
-    
-    func pokemonExistance(doesExist: Bool) { }
-    
-    func error(error: Error) { }
+    func provideSave(for name: String) {}
+    func pokemonExistance(doesExist: Bool) {}
+    func error(error: Error) {}
     
 }

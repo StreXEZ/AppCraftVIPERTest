@@ -11,6 +11,10 @@ import GKRepresentable
 
 protocol RemoteDetailPresenterInput: ViperPresenterInput { }
 
+protocol RemoteDetailOutput {
+    func didInteractWithDB(didChangeState: Bool)
+}
+
 class RemoteDetailPresenter: ViperPresenter, RemoteDetailPresenterInput {
     // MARK: - Props
     fileprivate var view: RemoteDetailViewInput? {
@@ -27,19 +31,28 @@ class RemoteDetailPresenter: ViperPresenter, RemoteDetailPresenterInput {
         return router
     }
     
+    private let output: RemoteDetailOutput
     private let viewModel: RemoteDetailViewModel
     private let remoteUseCase: GetSinglePokemonUseCaseInput
     private let localUseCase: PokemonDetailsUseCaseInput
     
     // MARK: - Initialization
-    init(url: String) {
-        self.viewModel = RemoteDetailViewModel(url: url)
+    init(url: String, state: Bool, output: RemoteDetailOutput) {
+        self.viewModel = RemoteDetailViewModel(url: url, initialState: state)
         self.remoteUseCase = GetSinglePokemonUseCase()
         self.localUseCase = PokemonDetailsUseCase()
+        
+        self.output = output
+        
         super.init()
         self.beginLoading()
+        
         self.remoteUseCase.subscribe(with: self)
         self.localUseCase.subscribe(with: self)
+    }
+    
+    deinit {
+        self.output.didInteractWithDB(didChangeState: viewModel.initialSavedState != viewModel.saved)
     }
     
     override func beginLoading() {
@@ -80,7 +93,7 @@ extension RemoteDetailPresenter: GetSinglePokemonUseCaseOutput {
     
     func loadPokemon(usecase: GetSinglePokemonUseCase, result: PokemonDetailModel) {
         self.viewModel.pokemon = result
-        self.localUseCase.checkPokemon(pokemon: result)
+        self.localUseCase.checkPokemon(pokemon: result.name)
         self.makeSection()
     }
 }
@@ -90,7 +103,7 @@ extension RemoteDetailPresenter: RemoteDetailViewOutput {
         guard let saved = viewModel.saved, let pokemon = viewModel.pokemon else { return }
         if saved {
             self.view?.show(CustomAlerts.deleteAlert { [weak self] in
-                self?.localUseCase.deletePokemon(pokemon: pokemon)
+                self?.localUseCase.deletePokemon(pokemon: pokemon.name)
             }, animated: true)
         } else {
             self.localUseCase.savePokemon(pokemon: pokemon)
@@ -100,6 +113,16 @@ extension RemoteDetailPresenter: RemoteDetailViewOutput {
 
 // MARK: - PokemonDetailsUseCaseOutput
 extension RemoteDetailPresenter: PokemonDetailsUseCaseOutput {
+    func provideDelete(for name: String) {
+        guard let pokemon = self.viewModel.pokemon else { return }
+        self.localUseCase.checkPokemon(pokemon: pokemon.name)
+    }
+    
+    func provideSave(for name: String) {
+        guard let pokemon = self.viewModel.pokemon else { return }
+        self.localUseCase.checkPokemon(pokemon: pokemon.name)
+    }
+    
     func error(error: Error) {
         print(error)
     }
@@ -107,15 +130,5 @@ extension RemoteDetailPresenter: PokemonDetailsUseCaseOutput {
     func pokemonExistance(doesExist: Bool) {
         self.viewModel.saved = doesExist
         self.view?.localPokemonState(isPokeSaved: doesExist)
-    }
-    
-    func provideDelete() {
-        guard let pokemon = self.viewModel.pokemon else { return }
-        self.localUseCase.checkPokemon(pokemon: pokemon)
-    }
-    
-    func provideSave() {
-        guard let pokemon = self.viewModel.pokemon else { return }
-        self.localUseCase.checkPokemon(pokemon: pokemon)
     }
 }

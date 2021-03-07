@@ -39,7 +39,7 @@ enum SinglePokemonRouter {
     
     enum Local {
         case getSaved
-        case pokemon(id: Int)
+        case pokemon(name: String)
         
         var entityClass: AnyClass {
             return PokemonEntity.self
@@ -49,8 +49,8 @@ enum SinglePokemonRouter {
             switch  self {
             case .getSaved:
                 return LocalFactory.request(self.entityClass, predicate: nil, sortDescriptors: nil)
-            case let .pokemon(id):
-                let predicate = NSPredicate(format: "id=%@", "\(id)")
+            case let .pokemon(name):
+                let predicate = NSPredicate(format: "name=%@", "\(name)")
                 return LocalFactory.request(self.entityClass, predicate: predicate, sortDescriptors: nil)
             }
         }

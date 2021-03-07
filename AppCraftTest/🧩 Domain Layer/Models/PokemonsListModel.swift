@@ -8,5 +8,5 @@
 import Foundation
 
 struct PokemonsListModel {
-    let result: [PokemonShortModel]
+    var result: [PokemonShortModel]
 }

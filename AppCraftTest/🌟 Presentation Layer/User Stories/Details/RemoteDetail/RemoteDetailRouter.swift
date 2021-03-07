@@ -20,6 +20,10 @@ class RemoteDetailRouter: ViperRouter, RemoteDetailRouterInput {
         return mainController
     }
     
+    override func goBack(animated: Bool) {
+        print("WENT BACK")
+    }
+    
     // MARK: - RemoteDetailRouterInput
     
     // MARK: - Module functions

@@ -14,8 +14,8 @@ typealias SavedPokemonsHandler = (Result<[PokemonDetailModel], Error>) -> Void
 protocol PokemonsLocalRepositoryInterface: RepositoryInterface {
     func fetchSavedPokemons(completion: @escaping SavedPokemonsHandler)
     func savePokemon(pokemon: PokemonDetailModel, completion: ((Bool) -> Void)?)
-    func deletePokemon(pokemon: PokemonDetailModel, completion: ((Bool) -> Void)?)
-    func checkPokemon(pokemon: PokemonDetailModel, completion: ((Bool) -> Void)?)
+    func deletePokemon(pokemon: String, completion: ((Bool) -> Void)?)
+    func checkPokemon(pokemon: String, completion: ((Bool) -> Void)?)
 }
 
 class PokemonsLocalRepository: AppCraftTestRepository, PokemonsLocalRepositoryInterface {
@@ -44,8 +44,8 @@ class PokemonsLocalRepository: AppCraftTestRepository, PokemonsLocalRepositoryIn
         }
     }
     
-    func deletePokemon(pokemon: PokemonDetailModel, completion: ((Bool) -> Void)?) {
-        let request = SinglePokemonRouter.Local.pokemon(id: pokemon.id).request
+    func deletePokemon(pokemon: String, completion: ((Bool) -> Void)?) {
+        let request = SinglePokemonRouter.Local.pokemon(name: pokemon).request
         self.delete(request) { (success, err) in
             if success, err == nil {
                 completion?(true)
@@ -55,8 +55,8 @@ class PokemonsLocalRepository: AppCraftTestRepository, PokemonsLocalRepositoryIn
         }
     }
     
-    func checkPokemon(pokemon: PokemonDetailModel, completion: ((Bool) -> Void)?) {
-        let request = SinglePokemonRouter.Local.pokemon(id: pokemon.id).request
+    func checkPokemon(pokemon: String, completion: ((Bool) -> Void)?) {
+        let request = SinglePokemonRouter.Local.pokemon(name: pokemon).request
         self.select(request) { (result, _) in
             guard let result = result else { return }
             if result.isEmpty {

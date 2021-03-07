@@ -68,25 +68,22 @@ extension LocalDetailPresenter {
     func deletePokemon() {
         self.view?.show(CustomAlerts.deleteAlert { [weak self] in
             guard let self = self else { return }
-            self.localUseCase.deletePokemon(pokemon: self.viewModel.pokemon)
+            self.localUseCase.deletePokemon(pokemon: self.viewModel.pokemon.name
+            )
         }, animated: true)
     }
 }
 
 extension LocalDetailPresenter: PokemonDetailsUseCaseOutput {
-    
-    func provideDelete() {
+    func provideDelete(for name: String) {
         self.router?.goBack(animated: true)
         self.output.didDeletePoke()
     }
     
+    func provideSave(for name: String) {}
+    func pokemonExistance(doesExist: Bool) {}
+    
     func error(error: Error) {
         print(error)
     }
-    
-    func provideSave() { }
-    
-    func pokemonExistance(doesExist: Bool) { }
-    
-
 }

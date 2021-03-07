@@ -25,13 +25,21 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C8k-mv-rIK">
+                                <rect key="frame" x="338" y="2" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="C8k-mv-rIK" firstAttribute="centerY" secondItem="5RK-vD-ok7" secondAttribute="centerY" id="5IJ-NA-VLt"/>
                             <constraint firstAttribute="bottom" secondItem="0lR-1f-kwa" secondAttribute="bottom" constant="10" id="8pc-Yt-QnD"/>
+                            <constraint firstAttribute="bottom" secondItem="C8k-mv-rIK" secondAttribute="bottom" constant="2" id="DaC-ob-ndk"/>
                             <constraint firstItem="0lR-1f-kwa" firstAttribute="leading" secondItem="5RK-vD-ok7" secondAttribute="leading" constant="15" id="EXX-Fc-Doj"/>
+                            <constraint firstItem="C8k-mv-rIK" firstAttribute="top" secondItem="5RK-vD-ok7" secondAttribute="top" constant="2" id="F64-fc-CFQ"/>
                             <constraint firstAttribute="trailing" secondItem="0lR-1f-kwa" secondAttribute="trailing" constant="10" id="Y5b-1p-VSR"/>
                             <constraint firstItem="0lR-1f-kwa" firstAttribute="top" secondItem="5RK-vD-ok7" secondAttribute="top" constant="10" id="nom-pX-GSW"/>
+                            <constraint firstAttribute="trailing" secondItem="C8k-mv-rIK" secondAttribute="trailing" constant="10" id="prl-vX-JJc"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -44,6 +52,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="contentVw" destination="5RK-vD-ok7" id="QLq-4e-41x"/>
+                <outlet property="favouriteButton" destination="C8k-mv-rIK" id="kqW-WK-sP9"/>
                 <outlet property="nameLabel" destination="0lR-1f-kwa" id="okh-Ed-pz0"/>
             </connections>
             <point key="canvasLocation" x="-898" y="66"/>

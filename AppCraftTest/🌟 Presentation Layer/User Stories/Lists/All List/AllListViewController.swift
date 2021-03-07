@@ -16,7 +16,7 @@ protocol AllListViewInput: ViperViewInput {
 
 protocol AllListViewOutput: ViperViewOutput {
     func refreshData()
-    func showDetails(for url: String)
+    func showDetails(for url: String, state: Bool)
     func savePokemon(from url: String)
 }
 
@@ -26,7 +26,7 @@ class AllListViewController: ViperViewController {
     
     // MARK: - Props
     private let refreshController = UIRefreshControl()
-    private var sections : [TableSectionModel] = []
+    private var sections: [TableSectionModel] = []
     var noConnectionView: NoConnectionView?
     
     fileprivate var output: AllListViewOutput? {
@@ -129,15 +129,6 @@ extension AllListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let model = self.sections[indexPath.section].rows[indexPath.row] as? PokemonTableCellModel else { return }
-        self.output?.showDetails(for: model.url)
-    }
-    
-    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let action = UIContextualAction(style: .normal, title: "Save") { (action, view, completionHandler) in
-            guard let model = self.sections[indexPath.section].rows[indexPath.row] as? PokemonTableCellModel else { return }
-            self.output?.savePokemon(from: model.url)
-            completionHandler(true)
-        }
-        return UISwipeActionsConfiguration(actions: [action])
+        self.output?.showDetails(for: model.url, state: model.isSaved)
     }
 }

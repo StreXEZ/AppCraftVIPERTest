@@ -24,16 +24,36 @@ class GetPokemonsUseCase: UseCase, GetPokemonsUseCaseInput {
     }
     
     private let pokemonListRepository: PokemonRemoteRepositoryInterface
+    private let localPokemonsRepository: PokemonsLocalRepositoryInterface
     
     override init() {
         self.pokemonListRepository = PokemonRemoteRepository()
+        self.localPokemonsRepository = PokemonsLocalRepository()
     }
     
     func getPokemons(limit: Int) {
+        var pokemonsResult: [PokemonShortModel] = []
         pokemonListRepository.getPokemons(limit: limit) { (result) in
             switch result {
             case .success(let pokemons):
-                self.output?.loadList(useCase: self, result: pokemons)
+                self.localPokemonsRepository.fetchSavedPokemons { result in
+                    switch result {
+                    case .success(let pokes):
+                        pokemons.result.forEach { pokemon in
+                            if pokes.contains(where: { model -> Bool in
+                                model.name == pokemon.name
+                            }) {
+                                pokemonsResult.append(PokemonShortModel(name: pokemon.name, url: pokemon.url, isSaved: true))
+                            } else {
+                                pokemonsResult.append(pokemon)
+                            }
+                        }
+                        self.output?.loadList(useCase: self, result: PokemonsListModel(result: pokemonsResult))
+                        break
+                    case .failure(let err):
+                        break
+                    }
+                }
             case .failure(let err):
                 self.output?.error(useCase: self, error: err)
             }
