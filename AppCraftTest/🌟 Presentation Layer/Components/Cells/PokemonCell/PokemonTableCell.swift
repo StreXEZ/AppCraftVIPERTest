@@ -16,14 +16,14 @@ class PokemonTableCell: TableCell {
     override func setupView() {
         self.contentVw.apply(.pokemonCellStyle())
         self.favouriteButton.setTitle("", for: .normal)
-        self.favouriteButton.tintColor = .black
-        setupActions()
+        self.favouriteButton.tintColor = AppTheme.mainAssetColor
+        self.setupActions()
     }
     
     override func updateViews() {
         guard let model = self.model as? PokemonTableCellModel else { return }
         self.nameLabel.text = model.name
-        self.favouriteButton.setImage(UIImage(systemName: model.isSaved ? "star.fill" : "star"), for: .normal)
+        self.favouriteButton.setImage(model.isSaved ? AppAssets.favourite : AppAssets.notFavourite, for: .normal)
     }
     
     func setupActions() {

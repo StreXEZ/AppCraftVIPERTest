@@ -43,16 +43,16 @@ class BaseExperienceCell: TableCell {
         let circularPath = UIBezierPath(arcCenter: CGPoint(x: circleView.frame.width / 2, y: circleView.frame.height / 2), radius: 60, startAngle: -CGFloat.pi / 2, endAngle: 2 * CGFloat.pi, clockwise: true)
         
         lowerLayer.path = circularPath.cgPath
-        lowerLayer.strokeColor = UIColor.lightGray.cgColor
+        lowerLayer.strokeColor = AppTheme.lightGrayColor.cgColor
         lowerLayer.lineWidth = 8
-        lowerLayer.fillColor = UIColor.clear.cgColor
+        lowerLayer.fillColor = AppTheme.clearColor.cgColor
         circleView.layer.addSublayer(lowerLayer)
         
         
         shapeLayer.path = circularPath.cgPath
-        shapeLayer.fillColor = UIColor.clear.cgColor
+        shapeLayer.fillColor = AppTheme.clearColor.cgColor
         
-        shapeLayer.strokeColor = UIColor.green.cgColor
+        shapeLayer.strokeColor = AppTheme.greenStatisticsColor.cgColor
         shapeLayer.strokeEnd = 0
         shapeLayer.lineWidth = 10
         shapeLayer.lineCap = CAShapeLayerLineCap.round

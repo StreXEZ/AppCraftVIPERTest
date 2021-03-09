@@ -136,7 +136,7 @@ extension AllListPresenter: PokemonDetailsUseCaseOutput {
             poke.name == name
         }) else { return }
         self.viewModel.pokemons.result[id].isSaved = false
-        makeSections()
+        self.makeSections()
     }
     
     func provideSave(for name: String) {
@@ -144,7 +144,7 @@ extension AllListPresenter: PokemonDetailsUseCaseOutput {
             poke.name == name
         }) else { return }
         self.viewModel.pokemons.result[id].isSaved = true
-        makeSections()
+        self.makeSections()
     }
     
     func error(error: Error) {

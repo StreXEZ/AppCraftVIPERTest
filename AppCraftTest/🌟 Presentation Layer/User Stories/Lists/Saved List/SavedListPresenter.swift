@@ -50,16 +50,19 @@ class SavedListPresenter: ViperPresenter, SavedListPresenterInput {
     func makeSections() {
         let mainSection = TableSectionModel()
         
-        self.viewModel.pokemons.forEach { item in
-            let model = PokemonTableCellModel(name: item.name, url: "", isSaved: true)
-            model.actionCallback = { [weak self, weak model] in
-                guard let self = self else { return }
-                if model?.isSaved ?? false {
-                    print("Deleted")
-                    self.deletePokemon(by: item.name)
+        if self.viewModel.pokemons.isEmpty {
+            mainSection.rows.append(EmptyListCellModel())
+        } else {
+            self.viewModel.pokemons.forEach { item in
+                let model = PokemonTableCellModel(name: item.name, url: "", isSaved: true)
+                model.actionCallback = { [weak self, weak model] in
+                    guard let self = self else { return }
+                    if model?.isSaved ?? false {
+                        self.deletePokemon(by: item.name)
+                    }
                 }
+                mainSection.rows.append(model)
             }
-            mainSection.rows.append(model)
         }
         self.finishLoading(with: nil)
         self.view?.updateSections(with: [mainSection])

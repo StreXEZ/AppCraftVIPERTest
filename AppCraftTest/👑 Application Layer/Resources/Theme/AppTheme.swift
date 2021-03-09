@@ -51,6 +51,21 @@ enum AppTheme {
         }
     }
     
+    public static var mainAssetColor: UIColor {
+        return UIColor.black
+    }
+    
+    public static var clearColor: UIColor {
+        return UIColor.clear
+    }
+    
+    public static var lightGrayColor: UIColor {
+        return UIColor.lightGray
+    }
+    
+    public static var greenStatisticsColor: UIColor {
+        return UIColor.green
+    }
     // MARK: - Cell content colors
     /// hex: F0F0F0, alpha: 1
     public static var defaultCellColor: UIColor {
